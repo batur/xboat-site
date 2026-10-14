@@ -1,0 +1,2353 @@
+<title>X-Boat Tanımlama Testi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Special+Elite&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>:root{
+  /* akışkan yazı ölçeği: 320 px genişlikte alt sınır, 900 px ve üstünde masaüstü değeri */
+  --f11_5:clamp(0.656250rem,calc(0.621767rem + 0.172414vw),0.718750rem);
+  --f12:clamp(0.687500rem,calc(0.653017rem + 0.172414vw),0.750000rem);
+  --f12_5:clamp(0.718750rem,calc(0.684267rem + 0.172414vw),0.781250rem);
+  --f13:clamp(0.750000rem,calc(0.715517rem + 0.172414vw),0.812500rem);
+  --f13_5:clamp(0.781250rem,calc(0.746767rem + 0.172414vw),0.843750rem);
+  --f14:clamp(0.812500rem,calc(0.778017rem + 0.172414vw),0.875000rem);
+  --f15:clamp(0.825000rem,calc(0.762931rem + 0.310345vw),0.937500rem);
+  --f15_5:clamp(0.852500rem,calc(0.788362rem + 0.320690vw),0.968750rem);
+  --f16:clamp(0.880000rem,calc(0.813793rem + 0.331034vw),1.000000rem);
+  --f16_5:clamp(0.907500rem,calc(0.839224rem + 0.341379vw),1.031250rem);
+  --f17:clamp(0.935000rem,calc(0.864655rem + 0.351724vw),1.062500rem);
+  --f18:clamp(0.990000rem,calc(0.915517rem + 0.372414vw),1.125000rem);
+  --f19:clamp(0.973750rem,calc(0.855819rem + 0.589655vw),1.187500rem);
+  --f20:clamp(1.025000rem,calc(0.900862rem + 0.620690vw),1.250000rem);
+  --f21:clamp(1.076250rem,calc(0.945905rem + 0.651724vw),1.312500rem);
+  --f22:clamp(1.127500rem,calc(0.990948rem + 0.682759vw),1.375000rem);
+  --f26:clamp(1.381250rem,calc(1.246767rem + 0.672414vw),1.625000rem);
+  --f28:clamp(1.487500rem,calc(1.342672rem + 0.724138vw),1.750000rem);
+  --f30:clamp(1.593750rem,calc(1.438578rem + 0.775862vw),1.875000rem);
+  --f38:clamp(1.781250rem,calc(1.453664rem + 1.637931vw),2.375000rem);
+  --f-tick:clamp(0.875000rem,calc(0.737069rem + 0.689655vw),1.125000rem);
+}
+
+/* Düzen: sol aside eylemler, orta main durum ve periskop, sağ aside ipuçları.
+   Palet: denizci haritası (gri-yeşil kâğıt), pirinç aletler, mürekkep siyahı, kırmızı damga.
+   Tipografi: Stardos Stencil (sandık yazısı) başlıklar, Special Elite (daktilo) belgeler, Plex Sans gövde, Plex Mono veri. */
+:root{
+  --bg:#d5d9c8; --grid:#c7ccb9; --surface:#e3e6d6; --ink:#151c19; --muted:#4a554e; --line:#9aa190; --chip:#cbd1bd;
+  --accent:#7a5612; --accent-ink:#fbf3dc; --brass-hi:#dcb85e; --brass-dk:#4d3607;
+  --steel:#2d4955; --warn:#8b2a22; --ok:#35603a; --amber:#7a4f08;
+  --card:#ece3c6; --card-ink:#1e1b13; --card-line:#bdb28b;
+  --info:#1d4f73; --info-bg:#dae7ee; --info-line:#8fb2c7;
+  --font-ui:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-doc:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  --font-display:'Stardos Stencil','Arial Narrow',Impact,sans-serif;
+  --font-type:'Special Elite','Courier New',Courier,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a1114; --grid:#0f1a1e; --surface:#121c20; --ink:#d9ddcd; --muted:#8e9c93; --line:#2b3b40; --chip:#1b2a2f;
+    --accent:#d4a947; --accent-ink:#1a1305; --brass-hi:#f0d98a; --brass-dk:#6a4d0f;
+    --steel:#76a6b5; --warn:#e2705e; --ok:#86bb84; --amber:#e0b050;
+    --card:#d9d1b2; --card-ink:#1d1a12; --card-line:#b2a87e; color-scheme:dark;
+    --info:#8cc3e3; --info-bg:#11252e; --info-line:#2f5a6e;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a1114; --grid:#0f1a1e; --surface:#121c20; --ink:#d9ddcd; --muted:#8e9c93; --line:#2b3b40; --chip:#1b2a2f;
+  --accent:#d4a947; --accent-ink:#1a1305; --brass-hi:#f0d98a; --brass-dk:#6a4d0f;
+  --steel:#76a6b5; --warn:#e2705e; --ok:#86bb84; --amber:#e0b050;
+  --card:#d9d1b2; --card-ink:#1d1a12; --card-line:#b2a87e; color-scheme:dark;
+  --info:#8cc3e3; --info-bg:#11252e; --info-line:#2f5a6e;
+}
+*{box-sizing:border-box}
+body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:36px 36px;color:var(--ink);font:var(--f15)/1.5 var(--font-ui);
+  padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+/* Üç bölge: sol aside = eylemler (sabit), main = durum ve anlatı, sağ aside = ipuçları ve aspect'ler */
+#app{max-width:1440px;margin:0 auto;display:grid;gap:20px;align-items:start;
+  grid-template-columns:minmax(0,1fr);grid-template-areas:"m"}
+main,aside{display:flex;flex-direction:column;gap:16px;min-width:0}
+aside[hidden]{display:none}
+main{grid-area:m}
+#aside-l{grid-area:l}
+#aside{grid-area:r}
+#app:not(.has-r):not(.has-l) main{max-width:920px;width:100%;margin:0 auto}
+#app.has-r{grid-template-columns:minmax(0,1fr) minmax(280px,340px);grid-template-areas:"m r"}
+#app.has-l.has-r{grid-template-columns:minmax(300px,340px) minmax(0,1fr) minmax(280px,340px);grid-template-areas:"l m r"}
+#aside-l{padding:2px}
+@media (min-width:900px) and (min-height:900px){#aside-l{position:sticky;top:12px}}
+#aside-l .act{padding:8px 11px;gap:3px}
+#aside-l .stack{gap:8px}
+#aside-l .actions{gap:6px}
+#aside-l .desc{font-size:var(--f12_5);line-height:1.4}
+#aside-l .act b{font-size:var(--f15)}
+@media (max-width:1199px){
+  #app.has-l.has-r{grid-template-columns:minmax(260px,300px) minmax(0,1fr);grid-template-areas:"l m" "l r"}
+}
+@media (max-width:899px){
+  #app.has-r,#app.has-l.has-r{grid-template-columns:minmax(0,1fr);grid-template-areas:"m" "l" "r"}
+  #app.has-r:not(.has-l){grid-template-areas:"m" "r"}
+  #aside-l{padding:0}
+}
+h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
+h1{font-size:var(--f26);letter-spacing:-.01em} h2{font-size:var(--f19)} h3{font-size:var(--f15)}
+p{margin:0}
+.eyebrow{font:500 11px/1.2 var(--font-doc);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:var(--f13)}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;min-height:40px}
+button:hover:not(:disabled){border-color:var(--accent)}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+input[type=text],textarea{font:inherit;width:100%;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:9px 11px}
+textarea{min-height:76px;resize:vertical}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.stack{display:flex;flex-direction:column;gap:10px}
+
+/* adım çubuğu */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px}
+.steps li{font:500 var(--f11_5)/1.2 var(--font-doc);padding:8px 6px;border-top:3px solid var(--line);color:var(--muted);text-align:center}
+.steps li.done{border-color:var(--accent);color:var(--ink)}
+.steps li.now{border-color:var(--accent);color:var(--ink);font-weight:600;background:var(--chip)}
+.steps li span{display:block;font-size:10px;letter-spacing:.1em;color:var(--muted);margin-bottom:2px}
+
+/* görev, kaynaklar, hamle şeridi */
+.mission{display:flex;flex-direction:column;gap:6px}
+.quote{border-left:3px solid var(--warn);padding:4px 0 4px 14px;font:500 var(--f16)/1.45 var(--font-doc)}
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.meter{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:9px 12px;display:flex;flex-direction:column;gap:3px}
+.meter .k{font:500 10.5px/1.2 var(--font-doc);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.meter b{font:600 var(--f22)/1.1 var(--font-doc);font-variant-numeric:tabular-nums}
+.meter .sub{font-size:var(--f12_5);color:var(--muted);line-height:1.35}
+.ticks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px}
+.tick{border:1px solid var(--line);border-radius:4px;text-align:center;padding:5px 0 4px;background:var(--surface);font:500 var(--f12)/1.25 var(--font-doc);font-variant-numeric:tabular-nums;display:flex;flex-direction:column;gap:1px}
+.tick .a{font-size:10.5px;min-height:13px}
+.tick.now{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--chip)}
+.tick.done{background:var(--chip)}
+.tick.fire{border-color:var(--warn);color:var(--warn);justify-content:center}
+
+/* eylem sonucu */
+.last{border:1px solid var(--accent);background:var(--chip);border-radius:8px;padding:11px 14px;display:flex;flex-direction:column;gap:4px}
+.last b{font-weight:600}
+.last.idle{border-color:var(--line);background:var(--surface)}
+
+/* eylemler */
+.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.act{text-align:left;display:flex;flex-direction:column;gap:5px;padding:11px 13px}
+.act-hd{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.act b{font-weight:600;font-size:var(--f15_5)}
+.src{font:500 11px/1.3 var(--font-doc);color:var(--muted)}
+.desc{font-size:var(--f13_5);color:var(--muted)}
+.stg{display:flex;align-items:center;gap:8px;font:var(--f12)/1.2 var(--font-doc)}
+.stg>span:first-child{min-width:74px}
+.pips{display:flex;gap:3px}
+.pip{width:16px;height:6px;border-radius:2px;background:var(--line)}
+.pip.on{background:var(--accent)}
+.st{font-size:var(--f13);color:var(--muted)}
+.st.bad{color:var(--warn)}
+.st.good{color:var(--ok)}
+
+/* kartlar */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;align-items:start}
+.card{background:var(--card);color:var(--card-ink);border:1px solid var(--card-line);border-radius:4px;padding:11px 12px;font:var(--f13_5)/1.5 var(--font-doc);display:flex;flex-direction:column;gap:6px;text-align:left;position:relative}
+.card .hd{display:flex;justify-content:space-between;gap:8px;font:500 10.5px/1.3 var(--font-doc);letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.card.new{outline:3px solid var(--accent);outline-offset:1px}
+.card.sel{outline:3px solid var(--accent);outline-offset:1px}
+.card.linked{border-color:var(--ok);box-shadow:inset 0 0 0 2px var(--ok)}
+button.card{min-height:0;cursor:pointer}
+.claim{display:inline-block;align-self:flex-start;font:600 11px/1.2 var(--font-ui);background:rgba(20,33,42,.1);padding:3px 7px;border-radius:3px}
+.tag{display:inline-block;font:600 10.5px/1 var(--font-doc);padding:3px 6px;border-radius:3px;border:1px solid currentColor;text-transform:uppercase;letter-spacing:.05em}
+.tag.net{color:var(--ok)} .tag.bel{color:var(--amber)} .tag.zay{color:var(--warn)}
+.card .tag.net{color:#1f5c3a} .card .tag.bel{color:#7a5006} .card .tag.zay{color:#8a2f23}
+.newtag{position:absolute;top:-9px;right:8px;background:var(--accent);color:var(--accent-ink);font:600 10px/1 var(--font-doc);padding:3px 6px;border-radius:3px;letter-spacing:.08em}
+.slotbadge{position:absolute;top:-9px;left:8px;background:var(--accent);color:var(--accent-ink);font:600 11px/1 var(--font-doc);padding:3px 7px;border-radius:3px}
+.lkb{position:absolute;top:-9px;right:8px;display:flex;gap:3px}
+.lkb i{font-style:normal;background:var(--ok);color:#fff;font:600 11px/1 var(--font-doc);padding:3px 6px;border-radius:3px}
+
+/* aspect */
+.asp{border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:5px;background:var(--surface)}
+.asp-hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}
+.when{font:600 10.5px/1 var(--font-doc);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:3px 6px;border-radius:3px;color:var(--muted)}
+.asp.live{border-color:var(--accent)}
+
+/* seçenekler */
+.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer}
+.opt:has(input:checked){border-color:var(--accent);background:var(--chip)}
+.opt input{margin-top:4px}
+.opt.off{opacity:.5;cursor:not-allowed}
+.opt.cardopt{background:var(--card);color:var(--card-ink);border-color:var(--card-line);font:var(--f13_5)/1.5 var(--font-doc)}
+.opt.cardopt:has(input:checked){background:var(--card);color:var(--card-ink);border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.wiz{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.wiz li{font:500 var(--f12)/1.3 var(--font-doc);padding:7px 6px;border-top:3px solid var(--line);color:var(--muted)}
+.wiz li.done,.wiz li.now{border-color:var(--accent);color:var(--ink)}
+.wiz li.now{font-weight:600}
+.recap{border:1px dashed var(--line);border-radius:6px;padding:9px 12px;font-size:var(--f13_5)}
+
+/* zar */
+.dice{display:flex;gap:6px}
+.die{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;font:600 var(--f20)/1 var(--font-doc);background:var(--surface)}
+.die.p{color:var(--ok);border-color:var(--ok)} .die.m{color:var(--warn);border-color:var(--warn)}
+
+.banner{border:1px dashed var(--amber);color:var(--amber);padding:8px 12px;border-radius:6px;font:500 var(--f13)/1.4 var(--font-doc)}
+.notice{border:1px solid var(--accent);background:var(--chip);padding:10px 12px;border-radius:6px}
+.help{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:0}
+.help>summary{padding:9px 12px;color:var(--ink);font-weight:500}
+.help ul{margin:0;padding:0 14px 12px 30px;display:flex;flex-direction:column;gap:4px;font-size:var(--f14)}
+.log{font:var(--f12_5)/1.55 var(--font-doc);color:var(--muted);display:flex;flex-direction:column;gap:2px;max-height:190px;overflow:auto}
+.log b{color:var(--ink);font-weight:500}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:var(--f14)}
+.kv dt{color:var(--muted)} .kv dd{margin:0;font-weight:500}
+.kv dd .muted{font-weight:400}
+.scale{display:flex;gap:6px;flex-wrap:wrap}
+.scale label{display:inline-flex}
+.scale input{position:absolute;opacity:0;pointer-events:none}
+.scale span{display:grid;place-items:center;width:42px;height:40px;border:1px solid var(--line);border-radius:6px;background:var(--surface);cursor:pointer;font:500 var(--f15) var(--font-doc)}
+.scale input:checked+span{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.scale input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+details>summary{cursor:pointer;color:var(--muted);font-size:var(--f13_5)}
+pre.json{font:var(--f12)/1.5 var(--font-doc);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px;max-height:200px;overflow:auto;white-space:pre-wrap;word-break:break-all}
+ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+ul.plain li.ok{color:var(--ok)} ul.plain li.no{color:var(--warn)}
+
+/* giriş akışı */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(max(150px,calc((100% - 30px)/4)),1fr));gap:10px}
+.flow>div{border:1px solid var(--line);border-radius:6px;padding:11px 12px;background:var(--bg);display:flex;flex-direction:column;gap:4px;font-size:var(--f14)}
+.flow b{font-size:var(--f15)}
+.flow .n{font:600 11px/1 var(--font-doc);color:var(--accent);letter-spacing:.1em}
+.gloss{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:var(--f14);margin:0}
+.gloss dt{font-weight:600} .gloss dd{margin:0;color:var(--muted)}
+
+/* bağlama çubuğu */
+.slots{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--bg)}
+@media (max-width:720px){.slots{grid-template-columns:minmax(0,1fr)}}
+.slot{border:2px dashed var(--line);border-radius:6px;padding:9px 11px;min-height:58px;font-size:var(--f13_5);display:flex;flex-direction:column;justify-content:center}
+.slot.fill{border-style:solid;border-color:var(--accent);background:var(--chip)}
+.slot .k{font:600 10.5px/1 var(--font-doc);letter-spacing:.1em;color:var(--muted);margin-bottom:3px}
+.vs{font:600 var(--f18)/1 var(--font-doc);color:var(--muted);text-align:center}
+.fb{border-radius:6px;padding:10px 12px;font-size:var(--f14)}
+.fb.ok{border:1px solid var(--ok);color:var(--ok);background:var(--surface)}
+.fb.no{border:1px solid var(--warn);color:var(--warn);background:var(--surface)}
+
+/* görsel katman */
+h1,h2{font-family:var(--font-display);font-weight:700;letter-spacing:.02em}
+h1{text-transform:uppercase;font-size:var(--f30);letter-spacing:.06em}
+.ttl{display:inline-flex;align-items:center;gap:8px}
+.ico{flex:none;color:var(--accent)}
+.ico.sm{width:14px;height:14px;color:inherit}
+.card .ico{color:inherit}
+.steps li{font-family:var(--font-display);letter-spacing:.05em;font-size:var(--f12_5)}
+.steps li.done,.steps li.now{border-color:var(--accent)}
+.meter .k{display:flex;align-items:center;gap:6px}
+.meter .k .ico{width:15px;height:15px}
+.coins{display:flex;gap:6px;align-items:center;min-height:26px}
+.coin{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--brass-hi),var(--accent) 70%);border:1.5px solid var(--brass-dk);box-shadow:inset 0 0 0 2px rgba(255,255,255,.12)}
+.coin.off{background:none;border:1.5px dashed var(--line);box-shadow:none}
+button.primary{border-color:var(--brass-dk)}
+.act .ico{width:20px;height:20px}
+.mission{border-top:3px double var(--accent);gap:10px}
+.mission-grid{display:grid;grid-template-columns:minmax(0,1fr) clamp(96px,40cqw,190px);gap:clamp(10px,3.5cqw,18px);align-items:center}
+@container mission (max-width:220px){.mission-grid{grid-template-columns:minmax(0,1fr)} .scope{order:-1}}
+.scope{margin:0;display:flex;flex-direction:column;align-items:center;gap:5px}
+.scope svg{width:100%;max-width:clamp(96px,40cqw,190px);height:auto;display:block}
+.quote{font:var(--f22)/1.4 var(--font-type);border-left-color:var(--warn)}
+.card{font:var(--f13)/1.5 var(--font-type);background-image:linear-gradient(rgba(60,45,10,.05),rgba(60,45,10,0) 40%)}
+.opt.cardopt{font:var(--f13)/1.5 var(--font-type)}
+.card .hd .ttl{gap:6px}
+.stamp{align-self:flex-start;transform:rotate(-3deg);border:3px double currentColor;border-radius:3px;padding:4px 14px;font:700 var(--f21)/1.15 var(--font-display);letter-spacing:.08em;text-transform:uppercase}
+.stamp.ok{color:var(--ok)} .stamp.no{color:var(--warn)} .stamp.mid{color:var(--amber)}
+.hero{position:relative;height:clamp(150px,21vw,230px);border:1px solid var(--brass-dk);border-radius:4px;overflow:hidden;background:#0e1a22}
+.hero svg{display:block;width:100%;height:100%}
+.panel{background-image:none}
+
+/* geri sayım saati */
+:root{--dial:#1b2528;--dial-ink:#ecdfa8}
+.res{grid-template-columns:268px minmax(0,1fr);grid-template-areas:"clock rng"}
+.res .clock{aspect-ratio:1/1;align-self:start}
+.res.has-fp{grid-template-areas:"clock rng" "clock fp"}
+.res .clock{grid-area:clock}
+.res .m-rng{grid-area:rng}
+.res .m-fp{grid-area:fp}
+.clock{flex-direction:column;flex-wrap:nowrap;gap:6px}
+.clock-body{flex:1}
+.clock .k{flex:none}
+.clock-body{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dial{width:132px;height:132px;flex:none}
+.dial .seg{fill:none;stroke:var(--dial-ink);stroke-opacity:.18;stroke-width:11}
+.dial .seg.done{stroke:var(--brass-hi);stroke-opacity:1}
+.dial .seg.now{stroke:var(--dial-ink);stroke-opacity:.9}
+.dial .seg.now.urgent{stroke:var(--warn);stroke-opacity:1}
+.dial .hand{transform-origin:70px 70px;transform-box:view-box;transition:transform .7s cubic-bezier(.3,1.4,.5,1)}
+.clock-txt{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1 1 150px}
+.lcd{font:600 var(--f38)/1 var(--font-doc);font-variant-numeric:tabular-nums;letter-spacing:.04em;color:var(--accent-lcd,var(--accent));background:var(--dial);padding:8px 12px;border-radius:4px;border:1px solid var(--brass-dk);align-self:flex-start;color:var(--dial-ink)}
+.clock.urgent .lcd{color:#ff8f7d;animation:blink 1s steps(2,jump-none) infinite}
+.clock.urgent{border-color:var(--warn)}
+@keyframes blink{50%{opacity:.55}}
+@media (prefers-reduced-motion:reduce){.dial .hand{transition:none}.clock.urgent .lcd{animation:none}}
+
+/* giriş */
+.lead{font-size:var(--f17);line-height:1.55;max-width:62ch}
+.ident{gap:16px}
+.ident-grid{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.ident-grid>.dogtag{flex:none}
+.ident-grid>.stack{flex:1 1 240px;min-width:0}
+.dogtag{position:relative;width:118px;min-height:150px;border-radius:26px 26px 18px 18px;background:linear-gradient(155deg,var(--brass-hi),var(--accent) 80%);border:2px solid var(--brass-dk);box-shadow:inset 0 0 0 3px rgba(255,255,255,.14),0 2px 0 rgba(0,0,0,.25);color:var(--brass-dk);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;padding:18px 8px 14px;text-align:center;transform:rotate(-3deg)}
+.dt-hole{position:absolute;top:10px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--bg);border:2px solid var(--brass-dk)}
+.dt-rank{font:700 var(--f15)/1 var(--font-display);letter-spacing:.08em;text-transform:uppercase}
+.dt-name{font:var(--f15)/1.15 var(--font-type);text-transform:uppercase;overflow-wrap:anywhere;max-width:100%;border-top:1px solid var(--brass-dk);border-bottom:1px solid var(--brass-dk);padding:5px 0;width:100%}
+.dt-sub{font:600 9px/1 var(--font-doc);letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+button.primary.big{padding:12px 22px;font-size:var(--f16);min-height:46px}
+.flow2{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.flow2 li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start}
+.flow2 .fi{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--dial);color:var(--brass-hi);border:1px solid var(--brass-dk)}
+.flow2 .fi .ico{color:var(--brass-hi)}
+.flow2 div{display:flex;flex-direction:column;gap:2px;font-size:var(--f14)}
+.flow2 .n{font:600 10.5px/1 var(--font-doc);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.flow2 b{font-size:var(--f15)}
+/* telemetre */
+.rng-body{display:flex;flex-direction:column;align-items:center;gap:12px;flex:1;justify-content:center}
+.hydro{width:112px;height:112px;flex:none}
+.odo-wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;min-width:0}
+.odo{display:flex;align-items:center;gap:3px}
+.odo i{position:relative;font:600 var(--f21)/1 var(--font-doc);font-style:normal;color:var(--dial-ink);background:var(--dial);padding:6px 4px;border-radius:3px;border:1px solid var(--brass-dk);box-shadow:inset 0 -12px 12px -9px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.12);font-variant-numeric:tabular-nums}
+.odo i::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.65)}
+.odo .u{font:600 var(--f14) var(--font-doc);margin-left:3px;color:var(--muted)}
+/* eylem kartları ve aspect satırı */
+
+/* kompakt eylem kartı */
+#aside-l .actions{gap:6px}
+#aside-l .act{padding:8px 11px 7px;gap:3px}
+#aside-l .act .desc{font-size:var(--f12);line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#aside-l .act .st{font-size:var(--f12);line-height:1.3}
+.stages{display:flex;flex-wrap:wrap;gap:2px 14px}
+.stages .stg{font-size:var(--f11_5);gap:6px}
+.stages .stg>span:first-child{min-width:0}
+
+/* sayaç şeridi */
+.odo i{padding:5px 4px}
+.odo .win{display:block;height:1.15em;overflow:hidden;font-size:var(--f21);line-height:1.15em}
+.odo .strip{display:flex;flex-direction:column;will-change:transform}
+.meter .odo .strip b{display:block;height:1.15em;font:600 1em/1.15em var(--font-doc);text-align:center}
+.odo i::after{z-index:1}
+.lvl{display:flex;align-items:center;gap:8px}
+.lvl-k{font:500 10.5px/1 var(--font-doc);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lvl-bars{display:flex;gap:2px}
+.lvl-bars i{width:8px;height:12px;border-radius:1px;background:var(--line)}
+.lvl-bars i.on{background:var(--accent)}
+.lvl-bars i.on:nth-child(n+7){background:var(--warn)}
+
+/* hero animasyonu */
+.hero .w1{animation:wv1 9s linear infinite}
+.hero .w2{animation:wv2 6s linear infinite}
+@keyframes wv1{to{transform:translateX(-60px)}}
+@keyframes wv2{to{transform:translateX(-90px)}}
+.hero .bob{transform-box:fill-box;transform-origin:50% 100%;animation:bob 5.5s ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(-1px) rotate(-.4deg)}to{transform:translateY(2px) rotate(.4deg)}}
+.hero .foam{stroke-dasharray:10 12;animation:foam 1.4s linear infinite}
+.hero .foam.bow{animation-direction:reverse}
+@keyframes foam{to{stroke-dashoffset:-22}}
+.hero .tw{animation:tw 3.6s ease-in-out infinite}
+@keyframes tw{50%{opacity:.2}}
+.hero .glow{animation:glow 7s ease-in-out infinite alternate}
+@keyframes glow{from{opacity:.22}to{opacity:.36}}
+.hero .glint{animation:glint 4.5s ease-in-out infinite alternate}
+@keyframes glint{from{opacity:.4}to{opacity:1}}
+.hero .glint2{animation:glint2 6s ease-in-out infinite}
+@keyframes glint2{0%,80%,100%{opacity:0}88%{opacity:1}}
+.hero .drift{animation:drift 45s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateX(-30px)}}
+.hero .blink{animation:lamp 8s steps(1,end) infinite;opacity:0}
+@keyframes lamp{0%,86%{opacity:0}88%{opacity:1}90%{opacity:0}92%{opacity:1}94%,100%{opacity:0}}
+.hero .cloud{animation:cloud 100s linear infinite}
+@keyframes cloud{from{transform:translateX(-300px)}to{transform:translateX(1260px)}}
+@media (prefers-reduced-motion:reduce){.hero *{animation:none!important}.hero .blink,.hero .glint2{opacity:0}}
+
+/* saat kartı: ortalı, metin kadranın altında */
+.clock{align-items:center;text-align:center}
+.clock .k{align-self:stretch;justify-content:center}
+.clock-body{flex-direction:column;justify-content:center;align-items:center;gap:12px;flex:1}
+.clock-txt{flex:none;align-items:center;max-width:36ch}
+.lcd{align-self:center}
+.meter.compact{gap:6px}
+
+/* açıklamalar: kart üzerine gelince açılan ipucu balonu */
+.meter{position:relative;cursor:help}
+.meter:has(.sub)::after{content:"i";position:absolute;top:8px;right:8px;width:16px;height:16px;border-radius:50%;border:1px solid var(--muted);color:var(--muted);font:italic 600 10.5px/14px var(--font-doc);text-align:center;pointer-events:none}
+.meter:hover::after,.meter:focus-visible::after{border-color:var(--accent);color:var(--accent)}
+.meter .sub{position:absolute;z-index:30;left:50%;top:calc(100% + 9px);width:max-content;max-width:min(270px,86vw);transform:translate(-50%,-4px);background:var(--dial);color:var(--dial-ink);border:1px solid var(--brass-dk);border-radius:6px;padding:8px 11px;font:400 var(--f12_5)/1.45 var(--font-ui);text-align:left;box-shadow:0 8px 20px rgba(0,0,0,.35);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,transform .15s ease,visibility .15s}
+.meter .sub::before{content:"";position:absolute;top:-5px;left:50%;margin-left:-4px;width:8px;height:8px;background:var(--dial);border-left:1px solid var(--brass-dk);border-top:1px solid var(--brass-dk);transform:rotate(45deg)}
+.meter:hover .sub,.meter:focus-visible .sub{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.clock-txt .sub{white-space:normal}
+@media (prefers-reduced-motion:reduce){.meter .sub{transition:none}}
+
+/* Keskin Göz notu: rozetin üstüne gelince açılan ipucu balonu */
+.odo-wrap .odo,.odo-wrap .lvl{justify-content:center}
+.m-rng .k{justify-content:center}
+
+/* büyük kadranlar: kartın içine sığan en büyük boyut */
+:root{--dial-size:196px;--hydro-size:232px}
+.clock{padding:6px 8px 7px;gap:3px}
+.clock-body{gap:4px;min-height:0}
+.clock .dial{width:var(--dial-size);height:var(--dial-size);flex:none}
+.lcd{font-size:var(--f28);padding:3px 10px}
+.m-rng{padding:6px 12px 8px;gap:3px}
+.rng-body{flex-direction:row;gap:18px;align-items:center;justify-content:center;min-width:0}
+.rng-body .hydro{flex:0 1 var(--hydro-size);width:var(--hydro-size);height:auto;aspect-ratio:1/1;min-width:110px}
+.rng-body .odo-wrap{flex:none}
+/* kart bazlı ölçek: kadran/hidrofon kartın genişliğine uyar */
+.resw{container:resw/inline-size}
+.mission{container:mission/inline-size}
+.clock,.m-rng{container-type:inline-size}
+@container (max-width:260px){.rng-body{flex-direction:column;gap:6px}.rng-body .hydro{flex:none;width:clamp(96px,76cqw,150px);min-width:0}}
+/* periskop: dalgadan sallanma, deniz parıltısı, gemi ve ön dalgalar */
+.scope .sc-swell,.scope .sc-chop{transform-origin:110px 110px}
+.scope .sc-swell{animation:sc-swell 7.3s ease-in-out infinite}
+.scope .sc-chop{animation:sc-chop 2.9s ease-in-out infinite}
+@keyframes sc-swell{0%,100%{transform:translateY(-4px) rotate(-1.4deg)}35%{transform:translateY(2px) rotate(.6deg)}70%{transform:translateY(5px) rotate(1.5deg)}85%{transform:translateY(0) rotate(.2deg)}}
+@keyframes sc-chop{0%,100%{transform:translateY(-1.2px) rotate(.3deg)}50%{transform:translateY(1.2px) rotate(-.3deg)}}
+.scope .sc-gl{animation:sc-gl 5.1s ease-in-out infinite}
+.scope .sc-gl2{animation-name:sc-gl2}
+@keyframes sc-gl{0%,100%{transform:translateX(-8px);opacity:.5}50%{transform:translateX(8px);opacity:1}}
+@keyframes sc-gl2{0%,100%{transform:translateX(7px);opacity:1}50%{transform:translateX(-7px);opacity:.45}}
+.scope .sc-bob{transform-origin:0 0;animation:sc-bob 4.3s ease-in-out infinite}
+@keyframes sc-bob{0%,100%{transform:translateY(-.8px) rotate(-.7deg)}50%{transform:translateY(1.6px) rotate(.7deg)}}
+.scope .sc-w{animation:sc-w linear infinite}
+@keyframes sc-w{0%{transform:translate(0,0)}50%{transform:translate(calc(var(--w) * -.5),-1.6px)}100%{transform:translate(calc(var(--w) * -1),0)}}
+/* hidrofon: yön ibresi titremesi (--j: şiddet çarpanı) */
+.hydro .jit-a,.hydro .jit-b{transform-origin:60px 60px}
+.hydro .jit-a{animation:jit-a 3.1s ease-in-out infinite}
+.hydro .jit-b{animation:jit-b .62s linear infinite}
+@keyframes jit-a{0%,100%{transform:rotate(0)}18%{transform:rotate(calc(1.1deg * var(--j,1)))}37%{transform:rotate(calc(-.7deg * var(--j,1)))}55%{transform:rotate(calc(.5deg * var(--j,1)))}74%{transform:rotate(calc(-1.2deg * var(--j,1)))}88%{transform:rotate(calc(.3deg * var(--j,1)))}}
+@keyframes jit-b{0%,100%{transform:rotate(0)}20%{transform:rotate(calc(.45deg * var(--j,1)))}40%{transform:rotate(calc(-.35deg * var(--j,1)))}60%{transform:rotate(calc(.5deg * var(--j,1)))}80%{transform:rotate(calc(-.4deg * var(--j,1)))}}
+.hydro #hlobe{animation:lobe-fl 1.7s ease-in-out infinite alternate}
+@keyframes lobe-fl{from{opacity:.24}to{opacity:.38}}
+@media (prefers-reduced-motion:reduce){.scope svg *,.hydro *{animation:none!important}}
+/* compel iletişim kutusu: tam ekran perde, arka plan (sol aside dahil) görünür kalır */
+body.modal-open{overflow:hidden}
+.modal-back{position:fixed;inset:0;z-index:100;display:grid;padding:16px;overflow:auto;background:rgba(5,10,12,.58);animation:modal-fade .18s ease-out}
+.modal{margin:auto;width:min(520px,100%);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-top:3px solid var(--warn);border-radius:8px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;box-shadow:0 18px 50px rgba(0,0,0,.45);outline:none;animation:modal-pop .22s cubic-bezier(.2,.8,.3,1)}
+.modal:focus-visible{box-shadow:0 18px 50px rgba(0,0,0,.45),0 0 0 2px var(--accent)}
+.modal-hd{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
+.chip-asp{font:600 11px/1 var(--font-doc);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--accent);color:var(--accent);background:var(--chip);border-radius:3px;padding:4px 7px}
+.modal .modal-fp{margin-left:auto}
+@keyframes modal-fade{from{opacity:0}to{opacity:1}}
+@keyframes modal-pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.modal-back,.modal{animation:none}}
+/* hamle kaydı: compel hamlesi uyarı renginde çerçeveli, alt kenarda "Compel" etiketi */
+.tick.compel{position:relative;border-color:var(--warn);box-shadow:0 0 0 1px var(--warn)}
+.tick.compel.now{box-shadow:inset 0 0 0 1px var(--accent),0 0 0 1px var(--warn)}
+.cmp-tag{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);z-index:1;background:var(--surface);color:var(--warn);border:1px solid var(--warn);border-radius:3px;padding:1px 5px;font:700 9px/1.2 var(--font-doc);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;pointer-events:none}
+.tick.done .cmp-tag,.tick.now .cmp-tag{background:var(--chip)}
+.ticks:has(.tick.compel){margin-bottom:7px}
+.tick .a{display:flex;align-items:center;justify-content:center;min-height:16px}
+.tick .a .ico{width:15px;height:15px;color:var(--ink)}
+.mission-hd{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;justify-content:space-between}
+.link-btn{min-height:0;height:auto;border:0;background:none;padding:0;color:var(--accent);font:500 var(--f11_5)/1.2 var(--font-doc);letter-spacing:.06em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.link-btn:hover,.link-btn:hover:not(:disabled){color:var(--ink);border-color:transparent;background:none}
+.modal.brief{border-top-color:var(--accent)}
+.brief-txt{margin:0;font-size:var(--f16_5);line-height:1.55}
+.tick.future{justify-content:center}
+.tick .n{font-size:var(--f-tick);line-height:1.1}
+.tick.future .n{color:var(--muted)}
+/* ───── Eylem kuponları: delikli kenarlı, kâğıt dokulu, kopma çizgili kartlar ───── */
+.act-card{--foot:33px;position:relative;filter:drop-shadow(0 1px 1px rgba(30,22,4,.38));transition:transform .15s ease,filter .15s ease}
+.act-card:has(.act:hover:not(:disabled)){transform:translateY(-1px) rotate(-.15deg);filter:drop-shadow(0 4px 5px rgba(30,22,4,.42))}
+.act-card:has(.act-foot:hover),.act-card:has(.act-foot:focus-within){z-index:20}
+.ticket{
+  --r:7px;
+  --muted:#5b5339;--accent:#7a5612;--warn:#8b2a22;--ok:#35603a;--line:#bdb28b;--chip:#e2d8b4;
+  position:relative;display:flex;flex-direction:column;overflow:hidden;
+  background:var(--card);color:var(--card-ink);border:1px solid var(--card-line);border-radius:5px;
+  background-image:linear-gradient(rgba(70,52,12,.07),rgba(70,52,12,0) 45%),repeating-linear-gradient(0deg,rgba(70,52,12,.035) 0 1px,transparent 1px 3px);
+  -webkit-mask:radial-gradient(circle var(--r) at 0 calc(100% - var(--foot)),#0000 calc(var(--r) - .5px),#000 var(--r)) left/51% 100% no-repeat,radial-gradient(circle var(--r) at 100% calc(100% - var(--foot)),#0000 calc(var(--r) - .5px),#000 var(--r)) right/51% 100% no-repeat;
+  mask:radial-gradient(circle var(--r) at 0 calc(100% - var(--foot)),#0000 calc(var(--r) - .5px),#000 var(--r)) left/51% 100% no-repeat,radial-gradient(circle var(--r) at 100% calc(100% - var(--foot)),#0000 calc(var(--r) - .5px),#000 var(--r)) right/51% 100% no-repeat}
+/* oyuğun kenarındaki ince halka */
+.ticket::before{content:"";position:absolute;inset:-1px;pointer-events:none;z-index:1;
+  background:radial-gradient(circle var(--r) at 0 calc(100% - var(--foot)),#0000 var(--r),var(--card-line) var(--r),var(--card-line) calc(var(--r) + 1px),#0000 calc(var(--r) + 1px)),radial-gradient(circle var(--r) at 100% calc(100% - var(--foot)),#0000 var(--r),var(--card-line) var(--r),var(--card-line) calc(var(--r) + 1px),#0000 calc(var(--r) + 1px))}
+.ticket .act{border:0;border-radius:0;background:transparent;color:inherit;font-family:var(--font-type)}
+.ticket .act:hover:not(:disabled){border-color:transparent;background:rgba(122,86,18,.07)}
+.ticket .act:focus-visible,.ticket .kg:focus-visible{outline-offset:-3px}
+.ticket .act:disabled{opacity:1;cursor:not-allowed}
+.ticket .act .ttl{font:700 var(--f15)/1.2 var(--font-display);letter-spacing:.07em;text-transform:uppercase;color:var(--card-ink)}
+.ticket .act .ico{color:var(--accent)}
+.ticket .act .desc{color:var(--muted);font-family:var(--font-ui)}
+.ticket .act .st{font-family:var(--font-type)}
+.ticket .stg{font-family:var(--font-type)}
+.serial{font:600 10.5px/1 var(--font-doc);letter-spacing:.14em;color:rgba(70,52,12,.62);white-space:nowrap}
+/* deliği delinmiş ilerleme noktaları */
+.ticket .pips{gap:4px}
+.ticket .pip{width:10px;height:10px;border-radius:50%;background:transparent;border:1.5px solid rgba(70,52,12,.55)}
+.ticket .pip.on{background:var(--bg);border-color:rgba(70,52,12,.7);box-shadow:inset 0 1px 2px rgba(0,0,0,.55)}
+/* kopma payı */
+.ticket .act-foot{position:relative;display:flex;align-items:center;gap:8px;height:var(--foot);flex:none;padding:0 11px;border-top:1.5px dashed rgba(70,52,12,.5);background:rgba(70,52,12,.06)}
+.ticket .stub{font:500 var(--f11_5)/1.3 var(--font-type);color:var(--muted);letter-spacing:.02em}
+.ticket .act-foot .kg{display:inline-flex;flex-direction:row;white-space:nowrap;height:auto;align-items:center;gap:6px;border:1px solid var(--accent);border-radius:999px;padding:3px 10px 3px 8px;min-height:0;font:600 var(--f12)/1.4 var(--font-ui);color:var(--accent);background:rgba(255,250,230,.55)}
+.ticket .act-foot .kg:hover:not(:disabled){background:var(--chip)}
+.ticket .act-foot .kg .when{border:0;padding:0;font:600 10.5px/1 var(--font-doc);color:inherit;opacity:.8;letter-spacing:.04em}
+.ticket .act-foot .kg:disabled{border-color:rgba(70,52,12,.35);color:var(--muted);background:transparent;opacity:.8;cursor:help}
+/* kullanılamayan kupon: soluk kâğıt */
+.act-card:has(.act:disabled) .ticket{filter:saturate(.55) brightness(.94)}
+.act-card:has(.act:disabled) .ttl{opacity:.75}
+/* tamamlanan gözlem: mühür */
+.act-card.tk-done::after{content:"TAMAM";position:absolute;right:12px;bottom:calc(var(--foot) + 6px);z-index:3;transform:rotate(-8deg);border:2px double #35603a;color:#35603a;border-radius:3px;padding:0 8px;font:700 var(--f13)/1.5 var(--font-display);letter-spacing:.12em;opacity:.78;pointer-events:none}
+/* Keskin Göz notu: rozetin üstüne gelince açılan ipucu balonu (kupon maskesinin dışında durur) */
+.act-card .kg-note{position:absolute;z-index:30;left:11px;top:calc(100% - 3px);width:max-content;max-width:min(260px,80vw);transform:translateY(-4px);background:var(--dial);color:var(--dial-ink);border:1px solid var(--brass-dk);border-radius:6px;padding:7px 10px;font:400 var(--f12_5)/1.45 var(--font-ui);box-shadow:0 8px 20px rgba(0,0,0,.35);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,transform .15s ease,visibility .15s}
+.act-card .kg-note::before{content:"";position:absolute;top:-5px;left:26px;width:8px;height:8px;background:var(--dial);border-left:1px solid var(--brass-dk);border-top:1px solid var(--brass-dk);transform:rotate(45deg)}
+.act-card:has(.act-foot:focus-within) .kg-note{opacity:1;visibility:visible;transform:translateY(0)}
+@media (hover:hover){.act-card:has(.act-foot:hover) .kg-note{opacity:1;visibility:visible;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.act-card,.act-card .kg-note{transition:none}.act-card:has(.act:hover:not(:disabled)){transform:none}}
+
+/* ───── Bilgi kutusu (Nasıl çalışır?): mavi tonlu ───── */
+.help.info{background:var(--info-bg);border:1px solid var(--info-line);border-left:4px solid var(--info);border-radius:6px}
+.help.info>summary{display:flex;align-items:center;gap:8px;list-style:none;padding:9px 12px;color:var(--info);font-weight:600}
+.help.info>summary::-webkit-details-marker{display:none}
+.help.info>summary .ico{width:18px;height:18px;color:var(--info)}
+.help.info>summary::after{content:"";margin-left:auto;width:7px;height:7px;border-right:2px solid var(--info);border-bottom:2px solid var(--info);transform:rotate(45deg) translateY(-2px);transition:transform .15s}
+.help.info[open]>summary::after{transform:rotate(-135deg) translateY(-2px)}
+.help.info ul{padding-top:2px}
+.help.info li::marker{color:var(--info)}
+.help.info b{color:var(--info)}
+@media (prefers-reduced-motion:reduce){.help.info>summary::after{transition:none}}
+#modal.still .modal-back,#modal.still .modal{animation:none}
+.modal.wide{width:min(720px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px)}
+.modal.wide>*{flex:none}
+.modal.wide>.modal-body{flex:1 1 auto;min-height:0;overflow:auto;padding:2px 4px 2px 0}
+.modal h2{margin:0;font-size:var(--f18)}
+.m-rng .snd{position:absolute;top:5px;right:38px;z-index:2;display:inline-grid;place-items:center;width:24px;height:24px;min-height:0;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--accent);cursor:pointer}
+.m-rng .snd .ico{width:14px;height:14px;color:inherit}
+.m-rng .snd.off{color:var(--muted)}
+.m-rng .snd:hover{border-color:var(--accent)}
+
+/* ───── Rapor ipuçları, karar/sonuç ekranları, soruşturma masası asideları ───── */
+.grp{font:600 10.5px/1 var(--font-doc);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:8px 2px 0}
+.cap-nudge{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px solid var(--info-line);border-left:4px solid var(--info);background:var(--info-bg);border-radius:6px;padding:10px 12px;color:var(--ink)}
+.cap-nudge .ico{color:var(--info);flex:none}
+.cap-nudge>span{flex:1 1 220px}
+.cap-nudge button{border-color:var(--info);color:var(--info);font-weight:600}
+.act-card.cap .ticket{--accent:#1d4f73;border-color:#7fa3b8}
+.ticket .stub.hot{color:var(--accent);font-weight:700}
+.brief-tools{color:var(--muted)}
+.wide{width:100%}
+.next-panel{gap:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.pipx{display:inline-flex;gap:5px}
+.pipx i{width:13px;height:13px;border-radius:50%;border:2px solid var(--line)}
+.pipx i.on{background:var(--ok);border-color:var(--ok)}
+.pipx.warn i.on{background:var(--warn);border-color:var(--warn)}
+.meters{display:grid;gap:12px}
+.meter-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:var(--f14)}
+.meter-row .lbl{display:flex;flex-direction:column;min-width:0}
+.meter-row .mv{display:flex;align-items:center;gap:8px;flex:none}
+#aside .slots{grid-template-columns:minmax(0,1fr);padding:10px;gap:6px}
+#aside .slots .vs{justify-self:center;transform:rotate(90deg);color:var(--muted)}
+/* akışkan (masonry) ızgara: kartlar boşluk bırakmadan sütunlara dizilir */
+.evid-cards{display:block;column-width:230px;column-gap:10px}
+.evid-cards .card{display:flex;width:100%;margin:0 0 10px;break-inside:avoid;text-align:left}
+.decs{display:flex;flex-direction:column;gap:10px}
+.dec{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);opacity:0;transform:translateY(8px);animation:decIn .45s ease forwards;animation-delay:calc(var(--i)*170ms)}
+@keyframes decIn{to{opacity:1;transform:none}}
+.dec .di{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--chip);color:var(--accent)}
+.dec .di .ico{width:22px;height:22px}
+.dec.bad .di{color:var(--warn)} .dec.good .di{color:var(--ok)} .dec.mid .di{color:var(--amber)}
+.dec-b{display:flex;flex-direction:column;gap:6px;min-width:0}
+.dec-hd{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between}
+.dchip{font:600 11px/1 var(--font-doc);letter-spacing:.05em;padding:4px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);text-transform:uppercase}
+.dchip.bad{color:var(--warn);border-color:var(--warn)} .dchip.good{color:var(--ok);border-color:var(--ok)} .dchip.mid{color:var(--amber);border-color:var(--amber)}
+.dec-note{font-size:var(--f13);color:var(--muted);border-top:1px dashed var(--line);padding-top:6px}
+.dec-dice{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media (prefers-reduced-motion:reduce){.dec{animation:none;opacity:1;transform:none}}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(max(170px,calc((100% - 10px)/2)),1fr));gap:10px;align-items:start}
+.tile{border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.tile>summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:8px}
+.tile>summary::-webkit-details-marker{display:none}
+.tile>summary:hover{background:var(--chip)}
+.tile .tl{display:flex;justify-content:space-between;font:600 10.5px/1.2 var(--font-doc);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tile .tl::after{content:"+"} .tile[open] .tl::after{content:"−"}
+.tile .big{font:700 var(--f30)/1 var(--font-display);letter-spacing:.02em}
+.tile.good .big{color:var(--ok)} .tile.bad .big{color:var(--warn)} .tile.mid .big{color:var(--amber)}
+.tile .why{padding:10px 12px 12px;border-top:1px dashed var(--line);font-size:var(--f13);color:var(--muted)}
+.bondbar{position:relative;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--warn),var(--line) 50%,var(--ok));margin:4px 0}
+.bondbar i{position:absolute;top:-3px;width:4px;height:14px;background:var(--ink);border-radius:2px;transform:translateX(-50%)}
+.dossier{display:flex;flex-direction:column;gap:4px;border:1px solid var(--card-line);background:var(--card);color:var(--card-ink);border-radius:4px;padding:10px 14px;font-family:var(--font-type)}
+.dossier .eyebrow{color:rgba(70,52,12,.7)}
+.dossier .sic{font:700 var(--f22)/1.1 var(--font-display);letter-spacing:.06em;text-transform:uppercase;color:var(--warn)}
+.seg{display:flex;flex-direction:column;gap:10px}
+.seg>input{position:absolute;opacity:0;pointer-events:none}
+.seg .tabs{display:flex;flex-wrap:wrap;gap:6px}
+.seg .tabs label{padding:7px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;font-size:var(--f13_5);background:var(--surface)}
+.seg .tabs label:hover{background:var(--chip)}
+#tabF:checked~.tabs label[for=tabF],#tabM:checked~.tabs label[for=tabM]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#tabF:focus-visible~.tabs label[for=tabF],#tabM:focus-visible~.tabs label[for=tabM]{outline:3px solid var(--accent);outline-offset:2px}
+.seg .pane{display:none}
+#tabF:checked~.pane.f,#tabM:checked~.pane.m{display:grid}
+
+.snd-fab{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:40;width:42px;height:42px;min-height:0;padding:0;border-radius:50%;display:inline-grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--accent);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.snd-fab[hidden]{display:none}
+.snd-fab.off{color:var(--muted)}
+
+.odds{color:var(--info);font-weight:500}
+
+/* ───── Tempo, telsiz, baskı ───── */
+.fx-live::after{content:"▌";display:inline-block;margin-left:1px;animation:caret .7s steps(2,jump-none) infinite}
+@keyframes caret{50%{opacity:0}}
+.last.working{border-style:dashed;gap:8px}
+.last.working .wbar{display:block;height:5px;border-radius:3px;background:var(--line);overflow:hidden}
+.last.working .wbar i{display:block;height:100%;width:0;background:var(--accent);animation:wfill linear forwards}
+@keyframes wfill{to{width:100%}}
+.enigma{display:flex;gap:6px}
+.enigma .rot{display:grid;place-items:center;width:34px;height:44px;border-radius:5px;background:var(--dial);color:var(--dial-ink);font:700 var(--f22)/1 var(--font-doc);border:1px solid var(--brass-dk);box-shadow:inset 0 6px 8px rgba(0,0,0,.55),inset 0 -6px 8px rgba(0,0,0,.55)}
+.enigma .rot.set{color:var(--brass-hi);border-color:var(--brass-hi)}
+#app.busy #aside-l .actions,#app.busy .cap-nudge{opacity:.6;pointer-events:none}
+.radio{display:flex;flex-direction:column;gap:4px;background:var(--dial);color:var(--dial-ink);border:1px solid var(--brass-dk);border-left:4px solid var(--brass-hi);border-radius:6px;padding:10px 14px;box-shadow:inset 0 0 14px rgba(0,0,0,.45)}
+.radio .rk{display:flex;align-items:center;gap:6px;font:600 10.5px/1 var(--font-doc);letter-spacing:.14em;text-transform:uppercase;color:var(--brass-hi)}
+.radio .rk .ico{width:15px;height:15px}
+.radio .rde{margin:0;font:500 var(--f16)/1.4 var(--font-type);color:var(--dial-ink)}
+.radio .rtr{margin:0;font:400 var(--f13_5)/1.45 var(--font-ui);opacity:.78}
+.radio.in-modal{margin:2px 0}
+body.alert::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(110,20,14,.4) 100%);animation:alertpulse 2.6s ease-in-out infinite}
+body.alert2::after{background:radial-gradient(ellipse at center,transparent 42%,rgba(135,20,14,.55) 100%);animation-duration:1.15s}
+@keyframes alertpulse{0%,100%{opacity:.4}50%{opacity:1}}
+body.alert .scope{animation:scopeshake .9s linear infinite}
+body.alert2 .scope{animation-duration:.45s}
+@keyframes scopeshake{0%,100%{transform:translate(0,0)}20%{transform:translate(.7px,-.5px)}40%{transform:translate(-.5px,.7px)}60%{transform:translate(.6px,.4px)}80%{transform:translate(-.7px,-.3px)}}
+@media (prefers-reduced-motion:reduce){body.alert::after,body.alert2::after{animation:none;opacity:.7}body.alert .scope{animation:none}.fx-live::after{animation:none}.last.working .wbar i{animation-duration:1ms!important}}
+/* ───── mobil (en sona) ───── */
+@container resw (max-width:560px){
+  .res,.res.has-fp{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"clock rng";gap:8px}
+  .res.has-fp{grid-template-areas:"clock rng" "fp fp"}
+  .res .clock{aspect-ratio:auto}
+}
+@container (max-width:220px){
+  .clock .dial{width:min(var(--dial-size),78cqw);height:min(var(--dial-size),78cqw)}
+  .clock-txt .sub{display:none}
+  .lcd{font-size:clamp(17px,13cqw,28px);padding:3px 8px}
+  .odo i,.odo .win{font-size:clamp(14px,9.5cqw,21px)}
+  .odo i{padding:4px 2px}
+  .odo .u{font-size:11px;margin-left:1px}
+  .odo{gap:2px}
+  .m-rng .k,.clock .k{font-size:9.5px;letter-spacing:.06em;padding:0 26px;text-align:center}
+}
+@media (max-width:640px){
+  :root{--dial-size:112px;--hydro-size:128px}
+  .mission .quote{font-size:var(--f17)}
+  .clock{padding:6px 4px 8px}
+  .clock-body{flex-direction:column;justify-content:center;align-items:center;gap:6px}
+  .clock-txt{flex:none;align-items:center}
+  .m-rng{padding:6px 4px 8px}
+  .m-rng .snd{top:auto;bottom:6px;right:6px}
+  .m-rng .sub{left:auto;right:0;transform:translate(0,-4px);max-width:min(270px,calc(100vw - 32px))}
+  .m-rng:hover .sub,.m-rng:focus-visible .sub{transform:translate(0,0)}
+  .m-rng .sub::before{left:auto;right:30px;margin-left:0}
+}
+@media (max-width:899px){
+  /* soruşturma masası: bağlama kutuları ekranın altına sabit */
+  body.has-bind #app{padding-bottom:150px}
+  body.has-bind .snd-fab{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+  .panel.bind{position:fixed;left:0;right:0;bottom:0;z-index:35;margin:0;border-radius:12px 12px 0 0;border-width:1px 0 0;
+    padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));box-shadow:0 -6px 18px rgba(0,0,0,.2);background:var(--surface);gap:6px}
+  .panel.bind>.eyebrow{display:none}
+  #aside .panel.bind .slots,.panel.bind .slots{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:0;border:0;background:none;gap:6px}
+  .panel.bind .slots .vs{display:none}
+  .panel.bind .slot{min-height:46px;padding:5px 8px;font-size:var(--f12);line-height:1.3;overflow:hidden}
+  .panel.bind .row{display:flex;gap:8px}
+  .panel.bind .row button{flex:1}
+  .panel.bind .fb{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:10px;right:10px;max-width:560px;margin:0 auto;z-index:60;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-size:var(--f13);line-height:1.4;padding:10px 14px;touch-action:pan-y;cursor:pointer}
+  .panel.bind .fb.enter{animation:toast-in .3s ease-out}
+  .panel.bind .fb.stale{display:none}
+}
+
+/* ───── mobil: giriş, alt çubuk (dock) ve alt sayfa (bottom sheet) ───── */
+@media (max-width:640px){
+  .hero{height:auto;aspect-ratio:960/240}
+  .ident{gap:12px;padding:14px}
+  .ident-grid{gap:14px;align-items:start}
+  .ident-grid>.stack{flex-basis:200px}
+  .dogtag{zoom:.78}
+  .ident .row{flex-direction:column;align-items:stretch;gap:6px}
+  .ident .row button{width:100%}
+  .ident .row .muted{display:none}
+  body[data-screen=intro] .snd-fab{top:calc(10px + env(safe-area-inset-top,0px));bottom:auto;right:10px;width:36px;height:36px;opacity:.85}
+}
+/* alçak ekran (kısa telefon / yatay): dikey alan tasarrufu */
+@media (max-width:899px) and (max-height:700px){
+  :root{--dial-size:92px;--hydro-size:104px}
+  .scope svg{max-width:clamp(84px,34cqw,132px)}
+  .mission-grid{grid-template-columns:minmax(0,1fr) clamp(84px,34cqw,132px)}
+  .dk{min-height:42px;padding-top:6px;padding-bottom:6px}
+  body.has-dock #app{padding-bottom:96px}
+  .sheet{max-height:92dvh}
+}
+@media (max-width:899px){
+  body.has-dock #app{padding-bottom:120px}
+  /* mobil: aşamalar şeridi gizli; aynı yerde hamle kaydı durur */
+  #main .steps{display:none}
+  #main .tickwrap{order:-1}
+  .mission .m-fold{display:grid;grid-template-rows:1fr;transition:grid-template-rows .5s ease,opacity .4s ease}
+  .mission .m-fold>.stack{overflow:hidden;min-height:0}
+  .mission.mini .m-fold{grid-template-rows:0fr;opacity:0}
+  .mission .quote{transition:font-size .5s ease,padding .5s ease}
+  .mission.mini .quote{font-size:var(--f14);line-height:1.4;padding:2px 0 2px 10px}
+  .mission.mini{padding-top:10px;padding-bottom:10px;gap:0}
+  .mission.mini .mission-grid>.stack{gap:6px}
+  body.has-dock #main .resw{order:5}
+  .radio{padding:6px 12px;gap:3px}
+  .radio .rde{font-size:var(--f14);line-height:1.35}
+  .radio .rtr{font-size:var(--f12_5);line-height:1.4}
+  .sheet-body .stack>h2.ttl{display:none}
+  .dk.primary .ico{color:var(--accent-ink)}
+  .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(0,0,0,.16);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .toast{position:fixed;top:calc(78px + env(safe-area-inset-top,0px));left:10px;right:10px;max-width:560px;margin:0 auto;z-index:45;touch-action:pan-y;cursor:pointer}
+  .toast.enter{animation:toast-in .3s ease-out}
+  @keyframes toast-in{from{transform:translateY(-24px);opacity:0}to{transform:none;opacity:1}}
+  .toast .last{margin:0;border-radius:12px;padding:10px 14px;gap:3px;font-size:var(--f13);line-height:1.4;max-height:170px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.3);background:var(--surface)}
+  .toast .last .eyebrow{font-size:10px}
+  .toast .last.working{gap:5px;border-style:solid}
+  .toast .last.working .enigma{transform:scale(.75);transform-origin:left center;margin:-4px 0 -4px}
+  .dock-new{position:absolute;right:10px;top:7px;font:600 11px/1 var(--font-doc);color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:4px 9px}
+  .dock-hint{padding:8px 14px;font-size:var(--f12_5);color:var(--muted);text-align:center;border-bottom:1px solid var(--line)}
+  .dock{container:dockc/inline-size}
+  .dock-bar{display:flex;gap:8px;padding:8px 12px}
+  .dk{flex:1;position:relative;display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:8px 10px;font-weight:600;font-size:var(--f14)}
+  .dk.primary{flex:1.5;background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .dk .ico{width:18px;height:18px}
+  .dk{min-width:0;white-space:nowrap}
+  .dk>span,.dk .lbl{overflow:hidden;text-overflow:ellipsis}
+  @container dockc (max-width:340px){.dk .ico{display:none}.dk.primary{flex:.85}.dk .cnt{padding:2px 5px}.dock-bar{gap:6px;padding:8px 8px}}
+  @container dockc (max-width:420px){.dk{padding:8px 6px;gap:4px}.dk:not(.primary) .ico{display:none}.dk.primary{flex:1.1}}
+  .dk .cnt{font:600 11px/1 var(--font-doc);font-style:normal;background:var(--chip);color:var(--ink);border-radius:999px;padding:3px 7px}
+  .dk .dot{position:absolute;top:6px;right:8px;width:9px;height:9px;border-radius:50%;background:var(--warn);border:1.5px solid var(--bg)}
+  .dk.on:not(.primary){border-color:var(--accent);background:var(--chip)}
+  .sheet-back{position:fixed;inset:0;z-index:50;background:rgba(5,10,12,.5)}
+  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:51;max-height:84vh;max-height:84dvh;display:flex;flex-direction:column;background:var(--bg);border-radius:16px 16px 0 0;border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(0,0,0,.35);outline:none}
+  .sheet.enter{animation:sheet-up .22s ease-out}
+  @keyframes sheet-up{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+  .sheet header{position:relative;display:flex;align-items:center;justify-content:space-between;padding:18px 14px 8px;border-bottom:1px solid var(--line)}
+  .sheet header::before{content:"";position:absolute;top:7px;left:50%;width:40px;height:4px;margin-left:-20px;border-radius:2px;background:var(--line)}
+  .sheet header b{font-size:var(--f16)}
+  .sheet-x{min-height:36px;width:36px;padding:0;font-size:var(--f22);line-height:1;border-radius:50%}
+  .sheet header,.sheet-back{touch-action:none}
+  .sheet-body{touch-action:pan-y;overflow:auto;overscroll-behavior:contain;padding:12px 14px calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
+  .sheet .act{padding:8px 11px;gap:3px}
+  .sheet .stack{gap:8px}
+  .sheet .actions{gap:6px}
+  .sheet .desc{font-size:var(--f12_5);line-height:1.4}
+  .sheet .act b{font-size:var(--f15)}
+}
+@media (prefers-reduced-motion:reduce){.sheet.enter,.toast.enter{animation:none}.mission .m-fold,.mission .quote{transition:none}}
+/* mobil: metin seçimi ve uzun basma menüsü kapalı; yazı alanları ve kayıt çıktısı hariç */
+@media (pointer:coarse),(max-width:899px){
+  body,body *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+  input,textarea,[contenteditable],#jsonOut,#jsonOut *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+  body{-webkit-tap-highlight-color:transparent}
+}
+/* ───── tema uyumlu form kontrolleri ve kaydırma çubukları ───── */
+.opt input[type=checkbox],.opt input[type=radio]{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin:2px 0 0;display:inline-grid;place-content:center;
+  background:var(--surface);border:1.5px solid var(--brass-dk);cursor:pointer;transition:background .15s,border-color .15s,box-shadow .15s}
+.opt input[type=checkbox]{border-radius:3px}
+.opt input[type=radio]{border-radius:50%}
+.opt input[type=checkbox]::after{content:"";width:10px;height:5px;border-left:2.5px solid var(--accent-ink);border-bottom:2.5px solid var(--accent-ink);transform:translateY(-1px) rotate(-45deg) scale(0);transition:transform .12s}
+.opt input[type=radio]::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent-ink);transform:scale(0);transition:transform .12s}
+.opt input:checked{background:var(--accent);border-color:var(--brass-dk);box-shadow:inset 0 0 0 1px var(--brass-hi)}
+.opt input[type=checkbox]:checked::after{transform:translateY(-1px) rotate(-45deg) scale(1)}
+.opt input[type=radio]:checked::after{transform:scale(1)}
+.opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt input:disabled{cursor:not-allowed;border-style:dashed;background:transparent}
+@media (hover:hover){.opt:not(.off):hover input:not(:checked){border-color:var(--accent);box-shadow:0 0 0 3px var(--chip)}}
+.opt.cardopt input{border-color:var(--card-ink);background:var(--card)}
+.opt.cardopt input:checked{background:var(--accent)}
+.opt input,.scale input,.seg>input{accent-color:var(--accent)}
+*{scrollbar-width:thin;scrollbar-color:var(--brass-dk) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--brass-dk);border-radius:999px;border:2.5px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background:var(--accent);background-clip:padding-box;border:2.5px solid transparent}
+::-webkit-scrollbar-corner{background:transparent}
+@media (max-width:899px){::-webkit-scrollbar{width:6px;height:6px}}
+/* mobil: hamle kaydı %15 küçük */
+@media (max-width:899px){
+  #main .ticks{gap:3.4px}
+  #main .tick{padding:4px 0 3px;border-radius:3.4px;font-size:calc(var(--f12)*.85)}
+  #main .tick .n{font-size:calc(var(--f-tick)*.85)}
+  #main .tick .a{font-size:8.9px;min-height:13.6px}
+  #main .tick .a .ico{width:12.75px;height:12.75px}
+  #main .tick.future .a,#main .tick.done .a{min-height:13.6px}
+}
+/* mobil: haklar bitince bağlama çubuğu sonuç düğmesine dönüşür */
+@media (max-width:899px){
+  .panel.bind.done{gap:8px}
+  .panel.bind.done .bind-done{margin:0;font-size:var(--f13);line-height:1.4;color:var(--ink)}
+  .panel.bind.done>.eyebrow{display:block}
+  .panel.bind.done .big{width:100%;min-height:48px}
+}
+</style>
+
+<div id="app"><aside id="aside-l" aria-label="Eylemler" hidden></aside><main id="main"></main><aside id="aside" aria-label="İpuçların ve aspect’lerin" hidden></aside></div>
+<div id="modal"></div>
+<button type="button" id="sndFab" class="snd-fab" hidden></button>
+
+<script>
+(function(){
+'use strict';
+
+/* ───────── Metinler ve veri (PoC vaka dosyasından) ───────── */
+const CAT={sil:'Siluet',route:'Rota',beh:'Davranış',mark:'İşaretler'};
+const SRC={sil:'Gemi kitabı',route:'Program listesi ve seyir defteri',beh:'UZO gözlemi',mark:'Dürbün'};
+const DESC={
+  sil:'Gemi kitabı · gövde ve üst yapı karşılaştırması',
+  route:'Program ve seyir defteri · yön, dost geçişleri',
+  beh:'UZO gözlemi · hız, zikzak, ışık, sinyal',
+  mark:'Dürbün · bayrak, boya, armatör işareti'};
+const ACT_NAME={sil:'Siluet',route:'Rota',beh:'Davranış',mark:'İşaretler',report:'Kaptana rapor',wait:'Bekle'};
+const ASP={
+  keskin:{name:'Keskin Göz',when:'Gözlemde',desc:'Seçtiğin bir gözlem eylemi 1 hamle kısalır.'},
+  kural:{name:'Kuralcı',when:'Raporda',desc:'Raporda bir Rota ipucu varsa zara +2.'},
+  sadik:{name:'Sadık Subay',when:'Raporda',desc:'Üslup yumuşaksa zara +2.'}
+};
+const STEPS=['Gözlem','Ateş','Sonrası','Kanıt masası','Sonuç'];
+const CASES={
+ 1:{n:1,title:'Tanker',
+  line:'“Tanker. Düşman. Refakatsiz. Ateş hazırlığı.”',
+  intro:'Ocak 1942, alacakaranlık, Biscay. Torpido az. UZO başındasın.',
+  truth:'Hedef gerçekte dost bir Alman blokaj kırıcısıydı (yaklaşık 6 saat gecikmeli).',
+  claimTrue:false,fireTick:9,vis:0.9,
+  actions:{
+   sil:[{n:2,min:1,c:'S1'},{n:2,min:3,c:'S2'}],
+   route:[{n:1,min:1,c:'R1'},{n:1,min:1,c:'R2'}],
+   beh:[{n:2,min:1,c:'B1'}],
+   mark:[{n:3,min:5,c:'M1'},{n:3,min:7,c:'M2'}]},
+  timed:{a:'beh',from:6,to:7,c:'B2',hint:'Üst yapıda bir ışık hareketi seziliyor. Davranışı izlemeye değer.'},
+  compel:{tick:5,asp:'sadik',text:'Kaptan dürbünden başını çevirmeden emri tekrarlıyor: “Sorgulama, hazırlan.”',ask:'Sadık Subay özelliğin devrede: ek rapor vermeden hazırlanır mısın?'},
+  clues:{
+   S1:{cat:'sil',rel:.7,against:false,t:'Tek baca, iki direk, dört ambar. Köprü üstü gövdenin ortasında.'},
+   S2:{cat:'sil',rel:.6,against:false,t:'Gemi kitabında iki kayıtla eşleşiyor: bir İngiliz kuru yük sınıfı ve bir Alman blokaj kırıcı.'},
+   R1:{cat:'route',rel:.8,against:true,t:'Program listesi: bu hatta 24 saat içinde gecikmeli bir dost geçişi bekleniyor.'},
+   R2:{cat:'route',rel:.75,against:true,t:'Seyir: Fransız Atlantik kıyısındaki bir limana (ör. Bordeaux) yöneliyor. Düşman ticaret hatları ters yönde.'},
+   B1:{cat:'beh',rel:.6,against:false,t:'Refakatsiz, ışıksız, yaklaşık 10 knot, düz seyir. Zikzak yok.'},
+   B2:{cat:'beh',rel:.5,against:true,t:'Üst yapıdan kısa bir ışık sinyali, iki kez. Tanıma sinyali olabilir.'},
+   M1:{cat:'mark',rel:.6,against:true,t:'Bordada soluk bir ulusal bayrak boyası seçiliyor: Alman.'},
+   M2:{cat:'mark',rel:.5,against:true,t:'Baca bantları bir Alman armatör düzenine benziyor.'}}},
+ 2:{n:2,title:'Kuru yük',
+  line:'“Kuru yük, ışıksız, zikzak yapıyor. Düşman. Ateş.”',
+  intro:'Aynı seferin devamı, gece başlangıcı. Görüş daha kötü.',
+  truth:'Hedef gerçekte bir düşman gemisiydi (tarafsız bayrak boyalı; kurgusal bir hile).',
+  claimTrue:true,fireTick:10,vis:0.8,
+  actions:{
+   sil:[{n:2,min:1,c:'S1'},{n:2,min:6,c:'S2'}],
+   route:[{n:1,min:1,c:'R1'},{n:1,min:1,c:'R2'}],
+   beh:[{n:2,min:1,c:'B1'}],
+   mark:[{n:3,min:5,c:'M1'},{n:3,min:9,c:'M2'}]},
+  timed:{a:'beh',from:5,to:6,c:'B2',hint:'Telsiz odasından bir hışırtı geliyor. Davranışı izlemeye değer.'},
+  compel:{tick:6,asp:'kural',text:'Kaptan: “Program dışı iş yok, usul bu.”',ask:'Kuralcı özelliğin devrede: usulen susup emri beklemeye razı mısın?'},
+  clues:{
+   S1:{cat:'sil',rel:.7,against:false,t:'Kuru yük gemisi, iki ambar. Gemi kitabında iki kayıt: bir İngiliz sahil taşıyıcısı sınıfı ve bir tarafsız yük gemisi sınıfı.'},
+   S2:{cat:'sil',rel:.5,against:false,t:'Ön güvertede bir top yuvası izi (silah kalkanı).'},
+   R1:{cat:'route',rel:.7,against:false,t:'Programda bu saat ve hatta dost ya da tarafsız bir geçiş kaydı yok.'},
+   R2:{cat:'route',rel:.7,against:false,t:'Seyir: Fransız kıyısından uzaklaşıyor, batı-güneybatıya gidiyor.'},
+   B1:{cat:'beh',rel:.75,against:false,t:'Düzenli zikzak ve tam karartma.'},
+   B2:{cat:'beh',rel:.4,against:false,t:'Telsiz odası: zayıf, kısa, kaynağı belirsiz bir yayın yakalandı.'},
+   M1:{cat:'mark',rel:.6,against:true,t:'Bordada büyük bir tarafsız bayrak boyası.'},
+   M2:{cat:'mark',rel:.5,against:false,t:'Bayrak boyası taze. Ad boyasının altında eski bir ad izi var.'}}}
+};
+const R0=4200,STEP=300,FP0=2,ATTEMPTS=4;
+const rangeAt=t=>R0-STEP*(t-1);
+const effRel=(d,id)=>Math.round(d.clues[id].rel*d.vis*100)/100;
+const label=(d,id)=>{const e=effRel(d,id);return e>=.6?['net','Net']:e>=.4?['bel','Belirsiz']:['zay','Zayıf'];};
+
+
+/* ───────── Görsel varlıklar (satır içi SVG) ───────── */
+const IC={
+  sil:'<path d="M2 15h20l-3 4H5z"/><path d="M9 15v-4h4v4"/><path d="M11 11V5M8 8h6"/><path d="M15 15v-3h2v3"/>',
+  route:'<circle cx="12" cy="12" r="9"/><path d="M12 4l3 8-3 8-3-8z"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/>',
+  beh:'<circle cx="7" cy="16" r="4"/><circle cx="17" cy="16" r="4"/><path d="M7 12V6h3v6M17 12V6h-3v6M10 15h4"/>',
+  mark:'<path d="M6 3v18"/><path d="M6 4h13l-3 4.5 3 4.5H6"/>',
+  report:'<path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4M8 12h8M8 16h8"/>',
+  wait:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+  scope:'<circle cx="12" cy="12" r="9"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/>',
+  torp:'<path d="M2 12c0-2 2-3 5-3h9l5 3-5 3H7c-3 0-5-1-5-3z"/><path d="M6 12h7"/>',
+  folder:'<path d="M3 6h7l2 2h9v11H3z"/><path d="M7 13h10"/>',
+  bolt:'<path d="M13 2L5 14h6l-1 8 8-12h-6z"/>',
+  spk:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/>',
+  spkoff:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.2v.4"/>',
+  radio:'<rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M7 9l9-6"/><circle cx="8.5" cy="14.5" r="2.3"/><path d="M14 13h4M14 16h4"/>',
+  hphone:'<path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/>'
+};
+const ico=(n,c)=>'<svg class="ico '+(c||'')+'" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>';
+const SHIPS={
+  1:'<path d="M-60 0L-56 -9H50L60 -4L56 0Z"/><path d="M-52 -9V-22H-34V-9Z"/><path d="M-50 -22V-27H-38V-22Z"/><path d="M-30 -9V-20H-23V-9Z"/><path d="M-20 -9V-12H25V-9Z"/><path d="M30 -9V-25M26 -21H34" stroke-width="1.6" stroke="currentColor" fill="none"/>',
+  2:'<path d="M-55 0L-50 -9H48L58 -3L54 0Z"/><path d="M30 -9V-14H52L54 -9Z"/><path d="M-12 -9V-24H6V-9Z"/><path d="M-10 -24V-29H4V-24Z"/><path d="M8 -9V-22H15V-9Z"/><path d="M-30 -9V-13H-20V-9Z"/><path d="M-34 -9V-35M-34 -31L-20 -13M36 -14V-37" stroke-width="1.6" stroke="currentColor" fill="none"/>'
+};
+/* animasyon fazı duvar saatine bağlı: yeniden çizimde (render) hareket baştan başlamaz, kaldığı yerden sürer */
+const animPhase=p=>'animation-duration:'+p+'s;animation-delay:-'+(((Date.now()/1000)%p)).toFixed(2)+'s';
+function scopeWave(y,amp,w){let d='M'+(-2*w)+' '+y;for(let x=-2*w;x<=220+w;x+=w)d+=' q'+(w/2)+' '+(-amp)+' '+w+' 0';return d+' V240 H'+(-2*w)+'Z';}
+function scopeHtml(n,range,vis){
+  const night=n===2;
+  const s=Math.max(.35,Math.min(1.3,.35+.85*(4200-range)/3000));
+  const sky=night?['#04080b','#1b2a32']:['#27384a','#c88b52'];
+  const sea=night?'#060b0e':'#16262d',ship=night?'#020405':'#090f12';
+  const ty=120+(s-.35)*10;
+  let stars='';
+  if(night)[[30,30],[70,55],[95,25],[130,45],[160,28],[185,60],[50,80],[150,85]].forEach(a=>{stars+='<circle cx="'+a[0]+'" cy="'+a[1]+'" r="1" fill="#cfd8d4" opacity=".7"/>';});
+  let ticks='';for(let x=40;x<=180;x+=14)ticks+='M'+x+' 117v6';
+  const haze=Math.min(.4,(1-vis)*1.2);
+  return '<figure class="scope"><svg viewBox="0 0 220 220" role="img" aria-label="Periskop görüntüsü, hedef '+range+' metrede"><defs><clipPath id="scl"><circle cx="110" cy="110" r="100"/></clipPath><linearGradient id="scs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+sky[0]+'"/><stop offset="1" stop-color="'+sky[1]+'"/></linearGradient></defs>'
+   +'<g clip-path="url(#scl)"><g class="sc-swell" style="'+animPhase(7.3)+'"><g class="sc-chop" style="'+animPhase(2.9)+'"><rect width="220" height="220" fill="url(#scs)"/>'+stars
+   +(night?'':'<ellipse cx="60" cy="118" rx="80" ry="16" fill="#f0bb80" opacity=".35"/>')
+   +'<rect y="120" width="220" height="100" fill="'+sea+'"/>'
+   +'<g class="sc-gl" style="'+animPhase(5.1)+'"><path d="M20 140h30M90 150h40M150 135h36" stroke="#8aa0a6" stroke-opacity=".2" stroke-width="1.5"/></g>'
+   +'<g class="sc-gl sc-gl2" style="'+animPhase(3.7)+'"><path d="M40 168h50M120 180h60" stroke="#8aa0a6" stroke-opacity=".2" stroke-width="1.5"/></g>'
+   +'<g transform="translate(110 '+ty.toFixed(1)+') scale('+s.toFixed(3)+')" fill="'+ship+'" style="color:'+ship+'"><g class="sc-bob" style="'+animPhase(4.3)+'">'+SHIPS[n]+'</g></g>'
+   +'<path class="sc-w" style="--w:26px;'+animPhase(3.4)+'" d="'+scopeWave(ty+.5,3.5,26)+'" fill="'+sea+'" stroke="#9fb3b3" stroke-opacity=".16" stroke-width="1"/>'
+   +'<path class="sc-w" style="--w:40px;'+animPhase(2.6)+'" d="'+scopeWave(ty+5,6,40)+'" fill="'+sea+'" stroke="#9fb3b3" stroke-opacity=".22" stroke-width="1"/>'
+   +'<rect y="70" width="220" height="60" fill="'+sky[1]+'" opacity="'+haze.toFixed(2)+'"/></g></g>'
+   +'<path d="M10 120H210" stroke="#ecdfa8" stroke-opacity=".7" stroke-width="1"/><path d="M110 10V210" stroke="#ecdfa8" stroke-opacity=".3" stroke-width="1"/><path d="'+ticks+'" stroke="#ecdfa8" stroke-opacity=".7" stroke-width="1"/></g>'
+   +'<circle cx="110" cy="110" r="100" fill="none" stroke="#0b1013" stroke-width="9"/><circle cx="110" cy="110" r="105" fill="none" stroke="#b08a3a" stroke-width="1.5"/></svg>'
+   +'</figure>';
+}
+function waveD(y,amp,w){let d='M0 '+y;for(let x=0;x<=960+2*w;x+=w)d+=' q'+(w/2)+' '+(-amp)+' '+w+' 0';return d+' V240 H0Z';}
+function heroHtml(){
+  const stars=[[120,30],[260,55],[380,22],[520,40],[610,18],[840,28],[900,60],[70,70],[700,36]].map((a,i)=>'<circle class="tw" style="animation-delay:-'+(i*0.7).toFixed(1)+'s" cx="'+a[0]+'" cy="'+a[1]+'" r="'+(i%3===0?1.4:1)+'"/>').join('');
+  return '<div class="hero"><svg viewBox="0 0 960 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Alacakaranlıkta su yüzeyinde seyreden bir denizaltı. Ufukta küçük bir yük gemisi görünüyor.">'
+  +'<defs><linearGradient id="hsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1922"/><stop offset=".55" stop-color="#33454d"/><stop offset="1" stop-color="#bb844c"/></linearGradient><linearGradient id="hsea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2d34"/><stop offset="1" stop-color="#070d10"/></linearGradient></defs>'
+  +'<rect width="960" height="240" fill="url(#hsky)"/><ellipse class="glow" cx="760" cy="152" rx="280" ry="28" fill="#e6ab69" opacity=".28"/>'
+  +'<g fill="#d8dfd9" opacity=".7">'+stars+'</g>'
+  +'<g fill="#aab8bd"><g class="cloud" style="animation-duration:110s;animation-delay:-40s"><ellipse cx="0" cy="62" rx="130" ry="5" opacity=".1"/><ellipse cx="60" cy="68" rx="70" ry="3" opacity=".08"/></g><g class="cloud" style="animation-duration:150s;animation-delay:-120s"><ellipse cx="0" cy="40" rx="100" ry="4" opacity=".09"/></g></g>'
+  +'<rect y="152" width="960" height="90" fill="url(#hsea)"/>'
+  +'<g class="drift"><g fill="#0a1216" transform="translate(790 152)"><path d="M-34 0L-31 -6H27L34 -3L31 0Z"/><path d="M-28 -6V-14H-18V-6Z"/><path d="M-12 -6V-12H-7V-6Z"/><circle class="blink" cx="-23" cy="-12.5" r="1.8" fill="#ffe9a8"/></g></g>'
+  +'<path class="glint" d="M690 160h60M730 170h40M820 164h70" stroke="#e6ab69" stroke-opacity=".28" stroke-width="1.5"/>'
+  +'<g transform="translate(-150 0)"><g class="bob" fill="#05090b"><path d="M425 163Q445 152 470 159L770 161Q796 162 806 168L790 174L452 174Q430 172 425 163Z"/><path d="M572 161L580 138H642L652 161Z"/>'
+  +'<rect x="590" y="130" width="5" height="9"/><circle cx="592.5" cy="127" r="3"/><rect x="603" y="130" width="5" height="9"/><circle cx="605.5" cy="127" r="3"/>'
+  +'<path d="M614 138V108h9M632 138V116M505 159v-8h12l22-3" fill="none" stroke="#05090b" stroke-width="3" stroke-linejoin="round"/><circle class="glint2" cx="623" cy="108" r="1.6" fill="#fff3c4"/></g>'
+  +'<path class="foam" d="M800 176q30-5 60 0t60 0" fill="none" stroke="#cdd5cc" stroke-opacity=".5" stroke-width="1.6"/><path class="foam bow" d="M420 174q14-9 32 0" fill="none" stroke="#cdd5cc" stroke-opacity=".5" stroke-width="1.6"/></g>'
+  +'<g class="w1"><path d="'+waveD(178,3,60)+'" fill="#09141a"/></g><g class="w2"><path d="'+waveD(196,4,90)+'" fill="#060d11"/></g></svg></div>';
+}
+
+/* ───────── Durum ───────── */
+const S={screen:'intro',name:'',hint:true,t0:0,sid:null,events:[],cases:{},st:null,survey:null,saveMsg:''};
+function newId(){return 's'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+function ev(type,data){S.events.push(Object.assign({ms:Math.round(performance.now()-S.t0),case:S.st?S.st.d.n:null,tick:S.st?S.st.tick:null,type:type},data||{}));}
+const $app=document.getElementById('app'),$modal=document.getElementById('modal');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function startCase(n){
+  const d=CASES[n];
+  S.st={d,tick:1,prog:{sil:0,route:0,beh:0,mark:0},got:[],hist:[],log:[],fp:FP0,armed:false,
+    reported:false,report:null,compelDone:false,locked:false,phase:'act',brief:n===1,
+    draft:null,fire:{resp:null},post:{second:null,rescue:null,ktb:null},
+    sabotage:false,detected:false,escaped:false,sunk:false,narr:[],last:null,
+    cards:[],sel:[],attempts:[],proven:[],pinfo:{},skipped:false,invalid:0,lastLink:null,result:null};
+  S.screen='case';
+  ev('case_start',{caseId:n});
+  afterAdvance();
+  render();
+}
+
+/* ───────── Mantık ───────── */
+function stageInfo(st,a){
+  const stages=st.d.actions[a];let cum=0;
+  for(let i=0;i<stages.length;i++){
+    const s=stages[i];
+    if(st.prog[a]<cum+s.n){
+      const starting=st.prog[a]===cum;
+      return {done:false,s,cum,starting,eligible:!starting||st.tick>=s.min,remaining:cum+s.n-st.prog[a]};
+    }
+    cum+=s.n;
+  }
+  return {done:true};
+}
+function actionState(st,a){
+  const info=stageInfo(st,a);
+  if(info.done) return a==='beh'?{ok:true,text:'Tamam. İzlemeye devam: anlık olay yakalanabilir.',cls:''}:{ok:false,text:'Bu gözlem tamamlandı.',cls:'good'};
+  if(!info.eligible) return {ok:false,text:'Hamle '+info.s.min+'’te açılır (hedef '+rangeAt(info.s.min)+' m).',cls:'bad'};
+  return {ok:true,text:(info.remaining===1?'Bu hamleyle yeni ipucu gelir.':info.remaining+' hamle sonra yeni ipucu.'),cls:''};
+}
+function reveal(st,id){
+  if(st.got.indexOf(id)>=0) return false;
+  st.got.push(id);ev('clue',{id});return true;
+}
+function doAction(a,kg){
+  const st=S.st;
+  if(st.phase!=='act') return;
+  const as=actionState(st,a);if(!as.ok) return;
+  const info=stageInfo(st,a);const notes=[],newIds=[];
+  let gain=1,usedKeskin=false;
+  const hamle=st.tick,r0=rangeAt(st.tick),r1=rangeAt(st.tick+1);
+  if(!info.done){
+    if(kg&&st.fp>=1&&info.remaining>=2){gain=2;st.fp--;usedKeskin=true;ev('invoke',{aspect:'keskin'});}
+    const before=st.prog[a];
+    st.prog[a]=Math.min(before+gain,info.cum+info.s.n);
+    if(st.prog[a]===info.cum+info.s.n&&reveal(st,info.s.c)){notes.push('yeni ipucu');newIds.push(info.s.c);}
+  }
+  const tm=st.d.timed;
+  if(a===tm.a&&st.tick>=tm.from&&st.tick<=tm.to&&reveal(st,tm.c)){notes.push('anlık olay yakalandı');newIds.push(tm.c);}
+  ev('action',{action:a,notes});
+  // eylem sonucu özeti
+  const after=stageInfo(st,a);
+  let txt;
+  if(newIds.length){txt='<b>Yeni ipucu bulundu:</b> '+newIds.map(id=>CAT[st.d.clues[id].cat]+' ('+label(st.d,id)[1].toLowerCase()+')').join(', ')+'. “İpuçların” panosunda “YENİ” etiketiyle görünüyor.';}
+  else if(!after.done){const done=st.d.actions[a].reduce((x,s)=>x+s.n,0)-0;txt='İlerleme kaydedildi: bir sonraki ipucuna <b>'+after.remaining+' hamle</b> kaldı. Yeni ipucu henüz yok.';}
+  else txt='Yeni bir şey görülmedi.';
+  if(usedKeskin) txt+=' Keskin Göz sayesinde bu eylem 1 hamle kısaldı.';
+  st.last={hamle,action:a,text:txt,newIds,r0,r1};
+  st.log.push('<b>Hamle '+hamle+'</b> · '+CAT[a]+' · '+(newIds.length?'yeni ipucu':'ipucu yok')+' · mesafe '+r0+' → '+r1+' m');
+  st.hist.push(a);
+  st.tick++;afterAdvance();render();
+}
+function doWait(){
+  const st=S.st;if(st.phase!=='act')return;
+  ev('action',{action:'wait'});
+  const hamle=st.tick;
+  st.last={hamle,action:'wait',text:'Bir hamle bekledin. Hiçbir şey öğrenmedin; hedef yaklaştı.',newIds:[],r0:rangeAt(st.tick),r1:rangeAt(st.tick+1)};
+  st.log.push('<b>Hamle '+hamle+'</b> · Beklendi · mesafe '+st.last.r0+' → '+st.last.r1+' m');
+  st.hist.push('wait');st.tick++;afterAdvance();render();
+}
+function afterAdvance(){
+  const st=S.st;
+  if(st.tick>=st.d.fireTick){st.phase='fire';return;}
+  const c=st.d.compel;
+  if(!st.compelDone&&!st.reported&&st.tick===c.tick){st.phase='compel';ev('compel_offer',{aspect:c.asp});return;}
+  st.phase='act';
+}
+function roll4dF(){const r=[];for(let i=0;i<4;i++)r.push(Math.floor(Math.random()*3)-1);return r;}
+const OUT={FAIL:'Başarısızlık',TIE:'Beraberlik',SUCCESS:'Başarı',STYLE:'Üstün Başarı'};
+function outcome(sh){return sh<0?'FAIL':sh===0?'TIE':sh<3?'SUCCESS':'STYLE';}
+const KTBFX={
+  STYLE:'Uyarın savaş günlüğüne (KTB) yazılı geçti; kaptan imzaladı. Sonra güçlü bir kanıt olacak.',
+  SUCCESS:'Uyarın savaş günlüğüne (KTB) geçti.',
+  TIE:'Uyarın KTB’de “sözlü, kayıtsız” olarak düşüldü. Sonra zayıf bir kanıt olacak.',
+  FAIL:'Kaptan KTB girişini sildi. Uyarını artık yalnızca tanıklar kanıtlayabilir.'};
+function draftInfo(st){
+  const d=st.draft;
+  return {kuralOk:d.cards.some(id=>st.d.clues[id].cat==='route'),sadikOk:d.tone==='yumusak'};
+}
+/* 4dF toplamı −4..+4 için olasılık payları (toplam 81) */
+const D4=[1,4,10,16,19,16,10,4,1];
+function reportOdds(diff,inv){let ok=0,bad=0;for(let r=-4;r<=4;r++){const sh=r+2+inv*2-diff,c=D4[r+4];if(sh>=1)ok+=c;else if(sh<0)bad+=c;}return {ok:Math.round(ok/.81),bad:Math.round(bad/.81)};}
+function draftDiff(st,tm){
+  const d=st.draft,against=d.cards.filter(id=>st.d.clues[id].against).length;
+  return 4-Math.min(2,against)+(d.cards.length===0?1:0)+tm;
+}
+function resolveReport(){
+  const st=S.st,d=st.draft;
+  const against=d.cards.filter(id=>st.d.clues[id].against).length;
+  const info=draftInfo(st);
+  const inv=[];
+  if(d.inv.kural&&info.kuralOk&&st.fp-inv.length>=1) inv.push('kural');
+  if(d.inv.sadik&&info.sadikOk&&st.fp-inv.length>=1) inv.push('sadik');
+  st.fp-=inv.length;
+  if(st.fp<1) st.armed=false;
+  const dice=roll4dF();const roll=dice.reduce((a,b)=>a+b,0);
+  const tm={yumusak:0,israrli:-1,itirazli:-2}[d.tone]||0;
+  const diff=draftDiff(st,tm);
+  const shifts=roll+2+inv.length*2-diff;
+  const out=outcome(shifts);
+  st.reported=true;
+  st.report={cards:d.cards.slice(),tone:d.tone,tm,inv,dice,roll,diff,against,shifts,outcome:out};
+  ev('report',{cards:d.cards,tone:d.tone,toneMod:tm,invoked:inv,dice,roll,difficulty:diff,against,shifts,outcome:out});
+  st.log.push('<b>Hamle '+st.tick+'</b> · Kaptana rapor · '+OUT[out]);
+  st.hist.push('report');
+  st.phase='report_result';
+}
+
+/* ───────── Kanıt kartları ───────── */
+function ktbText(st){
+  const k={acik:'Olay açıkça yazıldı. ',yumusat:'Olay “değerlendirme farkı” olarak yazıldı, ayrıntılar kısaltıldı. ',koru:'Kaptanın kararı “mevcut bilgiyle makul” diye kayda geçti. '}[st.post.ktb];
+  let w;
+  if(st.post.ktb==='koru') w='Senin uyarın anılmadı.';
+  else if(st.reported) w={STYLE:'Uyarın yazılı ve imzalı.',SUCCESS:'Uyarın kayıtlı.',TIE:'Uyarın “sözlü, kayıtsız” olarak düşülmüş.',FAIL:'Uyarına ait satır silinmiş; kenarda “düzeltildi” notu var.'}[st.report.outcome];
+  else w='Rapor verilmediği için uyarı yok.';
+  return k+w;
+}
+function reportText(st){
+  const tone={yumusak:'yumuşak',israrli:'ısrarlı',itirazli:'itirazlı'}[st.report.tone];
+  if(!st.report.cards.length) return 'Kaptana ipucu bildirmedin, yalnızca genel bir kuşku ilettin ('+tone+' üslup).';
+  return 'Kaptana bildirdiklerin ('+tone+' üslup): '+st.report.cards.map(id=>'“'+st.d.clues[id].t+'”').join(' ');
+}
+function buildCards(st){
+  const n=st.d.n,c=[];
+  const add=(id,src,claim,t)=>c.push({id,src,claim,t});
+  if(n===1){
+    add('E1','Kaptan · ateş emri','Hedef düşman','Tanker. Düşman. Refakatsiz. Ateş.');
+    add('E2','Senin KTB girişin','KTB kaydı',ktbText(st));
+    if(st.reported) add('E3','Kaptana raporun','Kaptan bilgilendirildi',reportText(st));
+    add('E4','Obersteuermann · tanık','Dost geçişi bekleniyordu','Program listesine göre o hatta o gün gecikmeli bir dost blokaj kırıcı bekleniyordu.');
+    add('E5','Funkmaat · tanık','Dost geçişi uyarısı yayımlandı','Kıyı telsizi iki saat önce, gecikmeli bir dost geçişi için uyarı yayımlamıştı.');
+    if(st.got.indexOf('M1')>=0) add('E6','Gözcü · tanık','Bayrak: Alman','Bordada Alman bayrağı boyası seçildi. Soluktu ama netti.');
+    add('E7','Cankurtaran botu','Bot yazısı: Alman','Botun üzerinde bir Alman armatör adı yazılı.');
+    add('E8','Kaptan · soruşturma ifadesi','Kaptan: “uyarılmadım”','Beni hiç uyarmadılar. Elimdeki bilgiyle karar verdim.');
+    if(st.detected) add('E9','Obersteuermann · tanık','Atış çözümü tutarsızdı','Atış çözümündeki tutarsızlığı fark ettim. Verilen değerler gözlemle uyuşmuyordu.');
+  }else{
+    add('F1','Kaptan · ateş emri','Hedef düşman','Kuru yük, ışıksız, zikzak yapıyor. Düşman. Ateş.');
+    add('F2','Senin KTB girişin','KTB kaydı',ktbText(st));
+    if(st.reported) add('F3','Kaptana raporun','Kaptan bilgilendirildi',reportText(st));
+    add('F4','Obersteuermann · tanık','Programda kayıt yok','Program listesinde o hatta o saatte hiçbir dost ya da tarafsız geçiş kaydı yoktu.');
+    add('F5','Funkmaat · tanık','Belirsiz telsiz yayını','Hedeften zayıf, kısa, kaynağı belirsiz bir yayın yakaladım.');
+    if(st.got.indexOf('M1')>=0) add('F6','Gözcü · tanık','Bayrak: tarafsız','Bordada büyük bir tarafsız bayrak boyası vardı.');
+    if(st.sunk) add('F7','Enkaz','Belgeler: düşman','Batan gemiden çıkan belgeler gemiyi düşman olarak gösteriyor.');
+    if(!st.sunk&&!st.escaped) add('F9','Dinleme kaydı','Hedef yardım çağırdı','Hedef ateşten sonra telsizle yardım çağırdı.');
+    if(st.detected) add('F8','Obersteuermann · tanık','Atış çözümü tutarsızdı','Atış çözümündeki tutarsızlığı fark ettim. Verilen değerler gözlemle uyuşmuyordu.');
+  }
+  return c;
+}
+/* Çelişki kuralı kartların kendi iddiasından türetilir (cevap anahtarı listesi yok).
+   Kural 1: hedefi düşman gösteren kart ↔ hedefi dost ya da tarafsız gösteren kart.
+   Kural 2: kaptan “uyarılmadım” diyor ↔ bilginin ya da uyarının kaptana ulaştığını gösteren kart. */
+const TAGS={E1:['enemy'],E3:['informed'],E4:['friend','informed'],E5:['friend','informed'],E6:['friend'],E7:['friend'],E8:['notwarned'],
+ F1:['enemy'],F4:['enemy'],F5:['enemy'],F6:['friend'],F7:['enemy']};
+function tagsOf(st,id){
+  const t=(TAGS[id]||[]).slice();
+  if(id==='E2'&&st.reported&&(st.report.outcome==='STYLE'||st.report.outcome==='SUCCESS')&&st.post.ktb!=='koru')t.push('informed');
+  return t;
+}
+function conflict(st,a,b){
+  const ta=tagsOf(st,a.id),tb=tagsOf(st,b.id),has=(t,x)=>t.indexOf(x)>=0;
+  const pair=(x,y,f)=>has(ta,x)&&has(tb,y)?f(a,b):has(tb,x)&&has(ta,y)?f(b,a):null;
+  return pair('enemy','friend',(e,f)=>({x:'“'+e.claim+'” kartı hedefi düşman gösteriyor; “'+f.claim+'” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz.'}))
+    ||pair('notwarned','informed',(n,i)=>({x:'Kaptan “uyarılmadım” diyor; ama “'+i.claim+'” kartı bilginin ya da uyarının ulaştığını gösteriyor.',captain:i.id==='E2'||i.id==='E3'}));
+}
+const pairKey=(a,b)=>[a,b].sort().join('|');
+function pairsFor(st){
+  const out=[],c=st.cards;
+  for(let i=0;i<c.length;i++)for(let j=i+1;j<c.length;j++){const r=conflict(st,c[i],c[j]);if(r)out.push(Object.assign({k:pairKey(c[i].id,c[j].id)},r));}
+  return out;
+}
+function linkFor(st,a,b){
+  const A=st.cards.find(c=>c.id===a),B=st.cards.find(c=>c.id===b);
+  const r=A&&B&&conflict(st,A,B);
+  return r?Object.assign({k:pairKey(a,b)},r):null;
+}
+/* Çelişki ve itiraz yoksa soruşturma açılmaz: kaptan haklıydı, emri uyguladın, ikinci torpidoyu da verdin */
+const noDesk=st=>st.d.claimTrue&&st.fire.resp==='hesapla'&&st.post.second==='evet'&&!st.escaped;
+function missMsg(st,a,b){
+  const k=pairKey(a,b);if(LURE[k])return LURE[k];
+  const ta=tagsOf(st,a),tb=tagsOf(st,b),both=x=>ta.indexOf(x)>=0&&tb.indexOf(x)>=0;
+  if(both('friend')||both('enemy'))return 'İkisi aynı yöne işaret ediyor: birbirini doğruluyor, çelişmiyor.';
+  return 'Bu iki kart birbirine zıt bir şey söylemiyor.';
+}
+const LURE={'E4|E5':'İkisi aynı yöne işaret ediyor: birbirini doğruluyor, çelişmiyor.','F1|F3':'Rapor ile emir çelişmiyor, ikisi de “düşman” diyor.'};
+
+/* ───────── Anlatı ───────── */
+function narrLines(st){
+  const L=[];
+  const r=st.fire.resp;
+  L.push(st.missed?'İlk torpido hedefi ıskaladı. Gemi rotasını bozmadan devam ediyor.':'İlk torpido çıktı ve hedefe isabet etti. Gemi yan yatıyor.');
+  if(r==='hesapla') L.push('Atış çözümünü verdin; emir uygulandı, itirazsız.');
+  if(r==='itiraz') L.push('İtirazın kayda geçti, ama emir uygulandı. Kaptanla aranız gerildi.');
+  if(r==='sabotaj') L.push(st.missed?'Bilerek yanlış çözüm verdin ve işe yaradı. Fark edilme riskin yüksekti; fark edilip edilmediğini soruşturmada göreceksin.':'Bilerek yanlış çözüm verdin ama tutmadı: torpido yine hedefi buldu. Fark edilip edilmediğini soruşturmada göreceksin.');
+  if(st.escaped) L.push('Rapor ve itirazlar zaman kaybettirdi: hedef karanlıkta uzaklaştı. Kaçırılan fırsat.');
+  else if(st.post.second==='evet') L.push('İkinci torpido çıktı. Gemi batıyor.');
+  else if(st.d.n===1) L.push('İkinci torpidoyu reddettin; kaptan emri geri aldı. Gemi hâlâ su üstünde.');
+  else L.push('İkinci torpidoyu reddettin. Hedef batmadı ve telsizle yardım çağırıyor.');
+  L.push({dusuk:'Hayatta kalanlar için kısa bir arama yaptırdın. Mürettebat sessiz.',orta:'Hayatta kalanlar için birkaç dakika aratıldı.',yuksek:'Uzun bir arama yaptırdın. Mürettebat bunu not etti.'}[st.post.rescue]);
+  L.push('Savaş günlüğüne (KTB) şöyle geçti: '+ktbText(st));
+  return L;
+}
+
+/* ───────── Puanlama ───────── */
+function score(st){
+  const proven=st.proven.length,total=st.skipped?0:pairsFor(st).length,need=Math.min(3,total);
+  const sab=st.detected?1:0;
+  const guilt=(st.skipped?0:Math.max(0,need-proven))+sab;
+  const exposed=st.proven.some(k=>st.pinfo[k]&&st.pinfo[k].captain);
+  const toneCost=st.reported&&(st.report.tone==='itirazli'||(st.report.tone==='israrli'&&st.report.outcome!=='SUCCESS'&&st.report.outcome!=='STYLE'));
+  const bond=st.post.ktb==='koru'?1:(st.fire.resp==='itiraz'||exposed||toneCost?-1:0);
+  const cred=Math.max(0,3-st.invalid);
+  let sicil=null;
+  if(st.d.n===1){
+    const rAgainst=st.reported&&st.report.cards.some(id=>st.d.clues[id].against);
+    if(rAgainst&&st.fire.resp==='itiraz') sicil='İtaatsiz';
+    else if(st.post.ktb==='koru'||(st.reported&&st.report.outcome==='FAIL'&&st.fire.resp!=='itiraz')) sicil='Günah Keçisi';
+    else sicil='Suç Ortağı';
+  }
+  const notes=[];
+  if(st.d.n===2){
+    if(st.escaped) notes.push('Kaçırılan fırsat: aşırı temkin hedefi kaçırdı.');
+    else if(!st.sunk) notes.push('Karşı saldırı riski: ikinci torpidoyu reddettin, hedef batmadı ve yardım çağırdı.');
+    else if(!st.reported&&st.fire.resp==='hesapla') notes.push('Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti.');
+  }
+  if(st.fire.resp==='sabotaj') notes.push(st.detected?'Bilerek yanlış çözümün bir tanık tarafından fark edildi.':'Bilerek yanlış çözümün fark edilmedi.');
+  return {proven,total,need,guilt,bond,cred,sicil,notes};
+}
+
+/* ───────── Kayıt ───────── */
+function payload(){
+  const cs={};
+  Object.keys(S.cases).forEach(k=>{const c=S.cases[k];cs[k]={got:c.got,reported:c.reported,report:c.report,fire:c.fire,post:c.post,detected:c.detected,sunk:c.sunk,escaped:c.escaped,attempts:c.attempts,skippedEvid:c.skipped,proven:c.proven,invalid:c.invalid,result:c.result,fpEnd:c.fp};});
+  return {sid:S.sid,name:S.name,hint:S.hint,startedAt:new Date(Date.now()-Math.round(performance.now()-S.t0)).toISOString(),cases:cs,survey:S.survey,events:S.events};
+}
+let saveChain=Promise.resolve();
+function saveSession(){
+  saveChain=saveChain.then(async()=>{
+    const body=JSON.stringify(payload());
+    let ok=false;
+    for(let i=0;i<3&&!ok;i++){
+      try{
+        const r=await fetch('/api/session',{method:'POST',headers:{'content-type':'application/json'},body,keepalive:body.length<60000});
+        ok=r.ok;
+      }catch(e){}
+      if(!ok)await new Promise(r=>setTimeout(r,700*(i+1)));
+    }
+    S.saveMsg=ok?'Oturum kaydedildi.':'Kayıt şu an yapılamadı. İnternet bağlantını kontrol edip “Kaydı yeniden dene”ye bas.';
+    if(S.screen==='done') render();
+  });
+  return saveChain;
+}
+
+/* ───────── Arayüz parçaları ───────── */
+function stepperHtml(st){
+  const idx={act:0,compel:0,report:0,report_result:0,fire:1,post:2,narr:2,evid:3,result:4}[st.phase];
+  return '<ol class="steps" aria-label="Aşamalar">'+STEPS.map((s,i)=>`<li class="${i<idx?'done':i===idx?'now':''}"><span>${i+1}</span>${s}</li>`).join('')+'</ol>';
+}
+function missionHtml(st){
+  const d=st.d,after=isM()&&st.tick>1;
+  /* mobil: ilk hamleden sonra panel küçülür (önce açık gelir, sonra .mini eklenip animasyonla kapanır) */
+  const cls=after&&st.missDone?' mini':'',shr=after&&!st.missDone?' data-shrink':'';
+  return `<section class="panel mission${cls}"${shr}><div class="mission-grid"><div class="stack"><div class="mission-hd"><span class="eyebrow">Vaka ${d.n} / 2 · ${esc(d.title)}</span><button type="button" class="link-btn" data-do="openBrief">Görev emri</button></div>
+   <div class="m-fold"><div class="stack"><p class="muted">${esc(d.intro)}</p></div></div>
+   <div class="quote">${esc(d.line)}</div></div>${scopeHtml(d.n,rangeAt(Math.min(st.tick,d.fireTick)),d.vis)}</div></section>`;
+}
+
+/* ───────── Geri sayım saati ───────── */
+const SEC=30; /* bir hamle = 30 saniye */
+const fmtTime=sec=>Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');
+function clockHtml(st){
+  const d=st.d,N=d.fireTick-1,t=Math.min(st.tick,d.fireTick);
+  const spent=t-1,remain=d.fireTick-t,sec=remain*SEC;
+  const live=['act','compel','report','report_result'].indexOf(st.phase)>=0;
+  const urgent=remain<=2&&remain>0;
+  const C=70,R=56,gap=2.2;
+  const pt=(a,r)=>[(C+r*Math.sin(a*Math.PI/180)).toFixed(2),(C-r*Math.cos(a*Math.PI/180)).toFixed(2)];
+  let segs='',marks='';
+  for(let i=0;i<N;i++){
+    const a0=i*360/N+gap,a1=(i+1)*360/N-gap,p0=pt(a0,R),p1=pt(a1,R);
+    const cls=i<spent?'done':(i===spent&&live)?(urgent?'now urgent':'now'):'';
+    segs+='<path class="seg '+cls+'" d="M'+p0[0]+' '+p0[1]+'A'+R+' '+R+' 0 0 1 '+p1[0]+' '+p1[1]+'"/>';
+    const m0=pt(i*360/N,R-10),m1=pt(i*360/N,R-15);
+    marks+='M'+m0[0]+' '+m0[1]+'L'+m1[0]+' '+m1[1];
+  }
+  const to=spent*360/N;
+  if(st.handShown===undefined)st.handShown=to;
+  st.handTo=to;
+  const lcdShown=st.lcdCur===undefined?sec:st.lcdCur;
+  st.lcdTo=sec;
+  const top=pt(0,R+13);
+  return '<div class="meter clock'+(urgent?' urgent':'')+'" tabindex="0"><span class="k">'+ico('wait')+'Ateşe kalan süre</span>'
+   +'<div class="clock-body"><svg class="dial" viewBox="0 0 140 140" role="img" aria-label="Geri sayım saati: '+fmtTime(sec)+' kaldı"><circle cx="70" cy="70" r="67" fill="var(--dial)" stroke="var(--brass-dk)" stroke-width="2"/><circle cx="70" cy="70" r="64" fill="none" stroke="var(--brass-hi)" stroke-opacity=".6" stroke-width="1"/>'
+   +segs+'<path d="'+marks+'" stroke="var(--dial-ink)" stroke-opacity=".5" stroke-width="1" fill="none"/>'
+   +'<path d="M'+top[0]+' '+(Number(top[1])+2)+'l-4.5 -8h9z" fill="var(--warn)"/>'
+   +'<g class="hand" style="transform:rotate('+st.handShown+'deg)"><path d="M70 82V22" stroke="var(--dial-ink)" stroke-width="2" stroke-linecap="round"/><path d="M70 82V86" stroke="var(--dial-ink)" stroke-width="4" stroke-linecap="round"/></g>'
+   +'<circle cx="70" cy="70" r="4.5" fill="var(--brass-hi)" stroke="var(--brass-dk)"/></svg>'
+   +'<div class="clock-txt"><b class="lcd" aria-live="off">'+fmtTime(Math.max(0,Math.round(lcdShown)))+'</b><span class="sub">'+(remain>0?remain+' hamle kaldı. Her hamle '+SEC+' saniye. Süre bitince kaptan ateş eder.':'Süre doldu. Kaptan ateş etti.')+'</span></div></div></div>';
+}
+
+const RADAR={MAXR:4500,R:54,C:60};
+const isM=()=>{try{return window.matchMedia('(max-width:899px)').matches;}catch(e){return false;}};
+const REDUCED=()=>{try{return window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){return false;}};
+/* mekanik sayaç: her hane 0-9 şeridi; alt hane sürekli döner, üst hane yalnız alt hane 9'dan 0'a geçerken ilerler */
+function digitPos(v,k){
+  const p10=Math.pow(10,k);
+  const base=Math.floor(v/p10)%10;
+  if(k===0) return ((v%10)+10)%10;
+  const lower=(v%p10)/p10;
+  const carry=Math.max(0,(lower-.9)/.1);
+  return (base+carry)%10;
+}
+const stripY=(v,k)=>'translateY('+(-(digitPos(v,k)+1)*1.15).toFixed(3)+'em)';
+function digitsHtml(v){
+  const col='9,0,1,2,3,4,5,6,7,8,9,0'.split(',').map(x=>'<b>'+x+'</b>').join('');
+  let h='';
+  for(let k=3;k>=0;k--) h+='<i aria-hidden="true"><span class="win"><span class="strip" data-k="'+k+'" style="transform:'+stripY(v,k)+'">'+col+'</span></span></i>';
+  return h;
+}
+const levelOf=v=>Math.max(0,Math.min(1,(RADAR.MAXR-v)/3300));
+const jitOf=l=>(1.5-.7*l).toFixed(2); /* sinyal zayıfken (uzak hedef) titreme biraz artar */
+function lobePath(l){
+  const r=14+34*l,h=(12+8*l)*Math.PI/180;
+  const x1=(60-r*Math.sin(h)).toFixed(2),x2=(60+r*Math.sin(h)).toFixed(2),y=(60-r*Math.cos(h)).toFixed(2);
+  return 'M60 60L'+x1+' '+y+'A'+r.toFixed(1)+' '+r.toFixed(1)+' 0 0 1 '+x2+' '+y+'Z';
+}
+/* ───────── Pervane sesi: hedef yaklaştıkça güçlenir (Web Audio, dosya yok, sentezlenir) ─────────
+   Kahverengi gürültü → alçak geçiren süzgeç → kanat vuruşu (LFO) + alçak makine uğultusu.
+   Seviye 0..1 (levelOf): ses yüksekliği, süzgeç açıklığı ve kanat vuruş hızı birlikte artar. */
+const Snd={
+  AC:window.AudioContext||window.webkitAudioContext,
+  on:(()=>{try{return localStorage.getItem('xb_snd')!=='0';}catch(e){return true;}})(),
+  ctx:null,node:null,level:0,active:false,duck:false,
+  gainFor(l){return (Snd.on&&Snd.active)?(0.03+0.36*Math.pow(l,1.4))*(Snd.duck?.35:1):0;},
+  build(ctx){
+    const len=ctx.sampleRate*2,buf=ctx.createBuffer(1,len,ctx.sampleRate),d=buf.getChannelData(0);
+    let last=0;for(let i=0;i<len;i++){const w=Math.random()*2-1;last=(last+.02*w)/1.02;d[i]=last*3.5;}
+    const noise=ctx.createBufferSource();noise.buffer=buf;noise.loop=true;
+    const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.Q.value=.7;lp.frequency.value=220;
+    const beat=ctx.createGain();beat.gain.value=.5;
+    const lfo=ctx.createOscillator();lfo.type='sine';lfo.frequency.value=1.8;
+    const depth=ctx.createGain();depth.gain.value=.5;lfo.connect(depth);depth.connect(beat.gain);
+    noise.connect(lp);lp.connect(beat);
+    const hum=ctx.createGain();hum.gain.value=.25;
+    const o1=ctx.createOscillator();o1.type='sine';o1.frequency.value=52;
+    const o2=ctx.createOscillator();o2.type='sine';o2.frequency.value=104.7;
+    const g2=ctx.createGain();g2.gain.value=.3;
+    o1.connect(hum);o2.connect(g2);g2.connect(hum);
+    const mix=ctx.createGain();mix.gain.value=1;beat.connect(mix);hum.connect(mix);
+    const master=ctx.createGain();master.gain.value=0;mix.connect(master);
+    noise.start();lfo.start();o1.start();o2.start();
+    return {ctx,master,lp,lfo,hum};
+  },
+  apply(imm){
+    const n=Snd.node;if(!n)return;
+    const t=n.ctx.currentTime,l=Snd.level;
+    const set=(p,v,tc)=>{if(imm){p.cancelScheduledValues(t);p.setValueAtTime(v,t);}else p.setTargetAtTime(v,t,tc);};
+    set(n.master.gain,Snd.gainFor(l),.12);
+    set(n.lp.frequency,220+900*l,.2);
+    set(n.lfo.frequency,1.8+2.2*l,.3);
+    set(n.hum.gain,.25+.5*l,.3);
+  },
+  sync(){Snd.apply();Crew.sync();},
+  unlock(){
+    if(!Snd.AC||!Snd.on)return;
+    try{
+      if(!Snd.ctx){Snd.ctx=new Snd.AC();Snd.node=Snd.build(Snd.ctx);Snd.node.master.connect(Snd.ctx.destination);}
+      if(Snd.ctx.state==='suspended')Snd.ctx.resume().catch(()=>{});
+      Snd.apply();Mus.resume();
+    }catch(e){}
+  },
+  setLevel(l){Snd.level=Math.max(0,Math.min(1,l));Snd.active=true;Snd.apply();Crew.sync();},
+  stop(){if(Snd.active){Snd.active=false;Snd.apply();}Crew.sync();},
+  setDuck(b){if(Snd.duck!==b){Snd.duck=b;Snd.apply();Mus.applyAll();}Crew.sync();},
+  toggle(){
+    Snd.on=!Snd.on;
+    try{localStorage.setItem('xb_snd',Snd.on?'1':'0');}catch(e){}
+    if(Snd.on)Snd.unlock();else Snd.apply();
+    Mus.applyAll();Crew.sync();
+  }
+};
+/* Mürettebat uğultusu: alarm verilmiş, herkes muharebe istasyonunda. Tarayıcının Almanca sesiyle,
+   çok kısık ve aralıklı kısa komutlar. Almanca ses yoksa sessiz kalır. */
+
+/* ───────── Müzik (Stable Audio ile üretilen parçalar) ─────────
+   Döngüler Web Audio ile kesintisiz çalar; sahneye göre katmanlar yumuşakça geçer.
+   Pervane sesiyle aynı ses düğmesine bağlıdır; modal açıkken kısılır. Dosya yoksa sessizce atlanır. */
+const Mus={
+  files:{intro:'intro.mp3',calm:'obs1_calm.mp3',tense:'obs1_tense.mp3',night:'obs2.mp3',evid:'evid.mp3',fire:'fire.mp3',win:'win.mp3',lose:'lose.mp3'},
+  vol:{intro:.5,calm:.5,tense:.55,night:.55,evid:.45,fire:.75,win:.7,lose:.7},
+  loops:['intro','calm','tense','night','evid'],
+  raw:{},buf:{},dec:{},play:{},want:{},key:'',shot:null,
+  init(){
+    let base='audio/';try{base=new URL('audio/',location.href).href;}catch(e){}
+    Object.keys(Mus.files).forEach(n=>{try{Mus.raw[n]=fetch(base+Mus.files[n]).then(r=>r.ok?r.arrayBuffer():null).catch(()=>null);}catch(e){Mus.raw[n]=Promise.resolve(null);}});
+  },
+  ready(n){
+    if(Mus.buf[n])return Promise.resolve(Mus.buf[n]);
+    if(!Snd.ctx||!Mus.raw[n])return Promise.resolve(null);
+    return Mus.dec[n]||(Mus.dec[n]=Mus.raw[n].then(ab=>ab?new Promise(res=>{try{Snd.ctx.decodeAudioData(ab.slice(0),b=>{Mus.buf[n]=b;res(b);},()=>res(null));}catch(e){res(null);}}):null));
+  },
+  level(n,lv){return Snd.on?lv*Mus.vol[n]*(Snd.duck?.4:1)*(Mus.vduck||1):0;},
+  apply(n){const p=Mus.play[n];if(!p||!Snd.ctx)return;p.g.gain.setTargetAtTime(Mus.level(n,p.lv||0),Snd.ctx.currentTime,.9);},
+  applyAll(){Object.keys(Mus.play).forEach(Mus.apply);},
+  drive(n,lv){
+    const ctx=Snd.ctx;if(!ctx)return;
+    let p=Mus.play[n];
+    if(!p){
+      if(lv<=.001)return;
+      p=Mus.play[n]={g:ctx.createGain(),lv:0,src:null};p.g.gain.value=0;p.g.connect(ctx.destination);
+      Mus.ready(n).then(b=>{if(!b||Mus.play[n]!==p)return;const src=ctx.createBufferSource();src.buffer=b;src.loop=true;src.connect(p.g);src.start();p.src=src;});
+    }
+    p.lv=lv;Mus.apply(n);
+    clearTimeout(p.kill);
+    if(lv<=.001)p.kill=setTimeout(()=>{if(Mus.play[n]===p&&(Mus.want[n]||0)<=.001){try{p.src&&p.src.stop();}catch(e){}try{p.g.disconnect();}catch(e){}delete Mus.play[n];}},5000);
+  },
+  setLoops(w){Mus.want=w;Mus.loops.forEach(n=>Mus.drive(n,w[n]||0));},
+  fadeShot(){const sh=Mus.shot;if(!sh||!Snd.ctx)return;Mus.shot=null;try{sh.g.gain.setTargetAtTime(0,Snd.ctx.currentTime,.4);setTimeout(()=>{try{sh.s.stop();}catch(e){}},2000);}catch(e){}},
+  once(n){
+    const ctx=Snd.ctx;if(!ctx||!Snd.on)return;
+    Mus.ready(n).then(b=>{if(!b||Mus.shotWant!==n)return;const s=ctx.createBufferSource(),g=ctx.createGain();s.buffer=b;g.gain.value=Mus.level(n,1);s.connect(g);g.connect(ctx.destination);s.start();Mus.shot={s,g};});
+  },
+  scene(key,w,once){
+    Mus.setLoops(w);
+    if(key===Mus.key)return;
+    Mus.key=key;Mus.fadeShot();Mus.shotWant=once||null;
+    if(once)Mus.once(once);
+  },
+  resume(){Mus.setLoops(Mus.want);if(Mus.shotWant&&!Mus.shot)Mus.once(Mus.shotWant);}
+};
+Mus.init();
+
+/* ───────── Tempo: gecikme, daktilo, Enigma şifre çözme; telsiz; baskı ───────── */
+const FAST=/(^|[#,])fast(,|$)/.test(location.hash);
+/* daktilo tuşu, telsiz çıtırtısı, kalp atışı: Web Audio ile sentezlenir */
+Snd.key=function(){
+  if(!Snd.on||!Snd.ctx)return;
+  try{
+    const c=Snd.ctx,len=Math.floor(c.sampleRate*.03),b=c.createBuffer(1,len,c.sampleRate),d=b.getChannelData(0);
+    for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,3);
+    const s=c.createBufferSource();s.buffer=b;
+    const f=c.createBiquadFilter();f.type='bandpass';f.frequency.value=1700+Math.random()*900;f.Q.value=1.1;
+    const g=c.createGain();g.gain.value=.2*(Snd.duck?.4:1);
+    s.connect(f);f.connect(g);g.connect(c.destination);s.start();
+  }catch(e){}
+};
+Snd.squelch=function(){
+  if(!Snd.on||!Snd.ctx)return;
+  try{
+    const c=Snd.ctx,len=Math.floor(c.sampleRate*.22),b=c.createBuffer(1,len,c.sampleRate),d=b.getChannelData(0);
+    for(let i=0;i<len;i++){const e=i<len*.08?i/(len*.08):Math.pow(1-(i-len*.08)/(len*.92),2);d[i]=(Math.random()*2-1)*e;}
+    const s=c.createBufferSource();s.buffer=b;
+    const f=c.createBiquadFilter();f.type='bandpass';f.frequency.value=1500;f.Q.value=.9;
+    const g=c.createGain();g.gain.value=.26*(Snd.duck?.4:1);
+    s.connect(f);f.connect(g);g.connect(c.destination);s.start();
+  }catch(e){}
+};
+Snd.heartBpm=0;
+Snd.setHeart=function(bpm){
+  if(bpm===Snd.heartBpm)return;
+  Snd.heartBpm=bpm;clearInterval(Snd.heartT);
+  if(!bpm)return;
+  const beat=()=>{
+    if(!Snd.on||!Snd.ctx||document.hidden)return;
+    try{
+      const c=Snd.ctx,t=c.currentTime,v=(Snd.duck?.4:1);
+      const thump=(at,amp)=>{
+        [[1,1],[2,.35]].forEach(([m,k])=>{
+          const o=c.createOscillator(),g=c.createGain();
+          o.type='sine';o.frequency.setValueAtTime(64*m,t+at);o.frequency.exponentialRampToValueAtTime(34*m,t+at+.16);
+          g.gain.setValueAtTime(0,t+at);g.gain.linearRampToValueAtTime(amp*k*v,t+at+.012);g.gain.exponentialRampToValueAtTime(.001,t+at+.24);
+          o.connect(g);g.connect(c.destination);o.start(t+at);o.stop(t+at+.28);
+        });
+      };
+      thump(0,.5);thump(.17,.34);
+    }catch(e){}
+  };
+  beat();Snd.heartT=setInterval(beat,60000/bpm);
+};
+
+const textNodesOf=el=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),a=[];let n;while((n=w.nextNode()))a.push(n);return a;};
+const scramble=t=>t.replace(/[A-Za-zÇĞİÖŞÜçğıöşü]/g,()=>String.fromCharCode(65+Math.floor(Math.random()*26)));
+const Fx={
+  busy:false,work:null,typed:new Set(),timers:[],spin:null,
+  WORK:{sil:'Siluet, gemi kitabıyla karşılaştırılıyor…',route:'Şifreli seyir kaydı çözülüyor…',beh:'UZO gözlemleniyor…',mark:'Bayrak ve işaretler okunuyor…',wait:'Bekleniyor…'},
+  /* eylem önce kısa bir "işleniyor" aşaması gösterir, sonra sonucu yazar */
+  start(kind,fn){
+    const st=S.st;
+    if(!st||st.phase!=='act'||Fx.busy)return;
+    if(FAST){fn();return;}
+    Fx.busy=true;Fx.work={kind,t0:performance.now(),dur:kind==='route'?2300:1400};
+    render();
+    clearTimeout(Fx.tm);
+    Fx.tm=setTimeout(()=>{Fx.busy=false;Fx.work=null;Fx.stopSpin();fn();},Fx.work.dur);
+  },
+  stopSpin(){clearInterval(Fx.spin);Fx.spin=null;},
+  /* Enigma rotorları: harfler döner, sırayla yerine oturur */
+  startSpin(){
+    Fx.stopSpin();
+    const rots=document.querySelectorAll('.enigma .rot');if(!rots.length||!Fx.work)return;
+    const st=S.st,t0=Fx.work.t0;
+    Fx.spin=setInterval(()=>{
+      const el=performance.now()-t0;
+      rots.forEach((r,i)=>{
+        if(el>=900+i*450){
+          if(!r.classList.contains('set')){r.textContent=String.fromCharCode(65+(st.tick*7+i*11)%26);r.classList.add('set');Snd.key();}
+        }else r.textContent=String.fromCharCode(65+Math.floor(Math.random()*26));
+      });
+    },70);
+  },
+  /* [data-fx] taşıyan öğeleri daktilo (type) ya da şifre çözme (decrypt) biçiminde yazar */
+  apply(){
+    Fx.timers.forEach(clearTimeout);Fx.timers=[];
+    const offs={};
+    document.querySelectorAll('[data-fx]').forEach(el=>{
+      const k=el.dataset.k;
+      if(FAST||REDUCED()||!k||Fx.typed.has(k))return;
+      Fx.typed.add(k);
+      const nodes=textNodesOf(el),texts=nodes.map(n=>n.nodeValue),total=texts.join('').length;
+      if(!total)return;
+      const mode=el.dataset.fx,spd=mode==='decrypt'?30:20,g=el.dataset.g||'_';
+      const delay=offs[g]||0;offs[g]=delay+total*spd+(Number(el.dataset.gap)||350);
+      el.style.minHeight=el.offsetHeight+'px';
+      nodes.forEach(n=>n.nodeValue='');
+      el.classList.add('fx-live');
+      Fx.run(el,nodes,texts,total,spd,mode,delay);
+    });
+  },
+  run(el,nodes,texts,total,spd,mode,delay){
+    const t0=performance.now()+delay;let last=0;
+    const step=()=>{
+      if(!el.isConnected)return;
+      const now=performance.now();
+      if(now<t0){Fx.timers.push(setTimeout(step,40));return;}
+      const n=Math.min(total,Math.floor((now-t0)/spd)),done=n>=total;
+      if(n>last&&n%3===0)Snd.key();
+      last=n;
+      let left=n;
+      nodes.forEach((nd,i)=>{
+        const tx=texts[i],take=Math.max(0,Math.min(tx.length,left));left-=take;
+        nd.nodeValue=done?tx:tx.slice(0,take)+(mode==='decrypt'?scramble(tx.slice(take)):'');
+      });
+      if(done){el.classList.remove('fx-live');el.style.minHeight='';}
+      else Fx.timers.push(setTimeout(step,45));
+    };
+    step();
+  }
+};
+
+/* Kaptanın telsiz mesajları: Almanca metin + Türkçe altyazı. Ses dosyası (audio/radio/<id>.mp3) varsa çalar. */
+const RTXT={
+  c1_1:['Erster Offizier, Tanker voraus. Allein, kein Geleit. Das ist ein Feind. Bestätigen Sie.','Birinci Subay, önümüzde tanker. Tek başına, refakatsiz. Bu bir düşman. Doğrulayın.'],
+  c1_4:['Der Abstand schrumpft. Was haben Sie für mich?','Mesafe kapanıyor. Bana ne getirdin?'],
+  c1_7:['Noch eine Minute. Die Rohre sind klar.','Bir dakika kaldı. Kovanlar hazır.'],
+  c1_8:['Letzte Gelegenheit, Erster Offizier. Gleich gebe ich den Feuerbefehl.','Son fırsat, Birinci Subay. Birazdan ateş emri veriyorum.'],
+  c2_1:['Erster Offizier, Frachter voraus. Kein Licht, Zickzackkurs. So fährt nur ein Feind.','Birinci Subay, önümüzde yük gemisi. Işıksız, zikzaklı. Böyle ancak bir düşman seyreder.'],
+  c2_4:['Es ist dunkel und die Zeit läuft. Was haben Sie?','Hava karanlık, zaman işliyor. Elinde ne var?'],
+  c2_8:['Noch eine Minute. Ich schieße, sobald er im Fadenkreuz steht.','Bir dakika kaldı. Nişangâha girer girmez ateş ediyorum.'],
+  c2_9:['Jetzt oder nie, Erster Offizier.','Şimdi ya da hiç, Birinci Subay.'],
+  r_ok:['Ich habe Sie gehört, Erster Offizier. Das wird vermerkt.','Sizi duydum, Birinci Subay. Kayda geçilecek.'],
+  r_tie:['Zweifel, Erster Offizier, aber keine Beweise.','Şüphe var, Birinci Subay, ama kanıt yok.'],
+  r_fail:['Zweifel bringen mich nicht von meinem Befehl ab. Weitermachen!','Şüpheler beni emrimden döndürmez. Devam edin!'],
+  r_itirazli:['Das ist Befehlsverweigerung, Erster Offizier! Merken Sie sich das.','Bu emre itaatsizlik, Birinci Subay! Bunu aklınızda tutun.'],
+  f_fire:['Rohr eins, Feuer!','Birinci kovan, ateş!']
+};
+const RADIO={1:[{t:1,id:'c1_1'},{t:4,id:'c1_4'},{t:7,id:'c1_7'},{t:8,id:'c1_8'}],2:[{t:1,id:'c2_1'},{t:4,id:'c2_4'},{t:8,id:'c2_8'},{t:9,id:'c2_9'}]};
+const Radio={
+  raw:{},buf:{},dec:{},seen:{},
+  init(){
+    let base='audio/radio/';try{base=new URL('audio/radio/',location.href).href;}catch(e){}
+    Object.keys(RTXT).forEach(id=>{try{Radio.raw[id]=fetch(base+id+'.mp3').then(r=>r.ok?r.arrayBuffer():null).catch(()=>null);}catch(e){Radio.raw[id]=Promise.resolve(null);}});
+  },
+  ready(id){
+    if(Radio.buf[id])return Promise.resolve(Radio.buf[id]);
+    if(!Snd.ctx||!Radio.raw[id])return Promise.resolve(null);
+    return Radio.dec[id]||(Radio.dec[id]=Radio.raw[id].then(ab=>ab?new Promise(res=>{try{Snd.ctx.decodeAudioData(ab.slice(0),b=>{Radio.buf[id]=b;res(b);},()=>res(null));}catch(e){res(null);}}):null));
+  },
+  /* mesaj ilk kez ekrana geldiğinde: çıtırtı, sonra (varsa) ses */
+  arrive(id){
+    const st=S.st,key=(st?st.d.n:0)+':'+id;
+    if(!id||Radio.seen[key])return;
+    Radio.seen[key]=1;
+    Snd.squelch();
+    Radio.ready(id).then(b=>{
+      if(!b||!Snd.ctx||!Snd.on)return;
+      const s=Snd.ctx.createBufferSource(),g=Snd.ctx.createGain();
+      s.buffer=b;g.gain.value=.8;s.connect(g);g.connect(Snd.ctx.destination);s.start(Snd.ctx.currentTime+.18);
+      Mus.vduck=.45;Mus.applyAll();
+      s.onended=()=>{Mus.vduck=1;Mus.applyAll();};
+    });
+  }
+};
+Radio.init();
+function radioId(st){
+  if(!st||S.screen!=='case')return null;
+  const ph=st.phase;
+  if(ph==='fire')return 'f_fire';
+  if(ph==='report_result'&&st.report){const r=st.report;return r.tone==='itirazli'?'r_itirazli':r.outcome==='FAIL'?'r_fail':r.outcome==='TIE'?'r_tie':'r_ok';}
+  return tickRadio(st);
+}
+function tickRadio(st){
+  if(!st||S.screen!=='case'||st.brief)return null;
+  const ph=st.phase;
+  if(ph!=='act'&&ph!=='compel'&&ph!=='report'&&ph!=='report_result')return null;
+  let id=null;(RADIO[st.d.n]||[]).forEach(l=>{if(st.tick>=l.t)id=l.id;});return id;
+}
+function radioBox(id,cls){
+  const t=RTXT[id],n=S.st?S.st.d.n:0;if(!t)return '';
+  return `<div class="radio ${cls||''}" role="status"><span class="rk">${ico('radio','sm')}Telsiz · Kaptan</span><p class="rde" lang="de" data-fx="type" data-k="rde:${n}:${id}" data-g="radio" data-gap="200">${esc(t[0])}</p><p class="rtr" data-fx="type" data-k="rtr:${n}:${id}" data-g="radio">${esc(t[1])}</p></div>`;
+}
+const radioHtml=st=>{const id=tickRadio(st);return id?radioBox(id):'';};
+/* son hamlelerde baskı: kırmızı kenar, periskop sallantısı, kalp atışı */
+function pressure(){
+  const st=S.st;let lv=0;
+  if(S.screen==='case'&&st&&(st.phase==='act'||st.phase==='compel'||st.phase==='report'||st.phase==='report_result')){
+    const rem=st.d.fireTick-st.tick;
+    lv=rem<=1?2:rem<=2?1:0;
+  }
+  document.body.classList.toggle('alert',lv>=1);
+  document.body.classList.toggle('alert2',lv>=2);
+  Snd.setHeart(lv===2?92:lv===1?64:0);
+}
+function workHtml(st){
+  const k=Fx.work.kind;
+  const rot=k==='route'?'<div class="enigma" aria-hidden="true"><span class="rot">K</span><span class="rot">R</span><span class="rot">Q</span></div>':'';
+  return `<div class="last working" role="status" aria-live="polite"><span class="eyebrow">Hamle ${st.tick} · işleniyor</span>${rot}<span>${Fx.WORK[k]}</span><span class="wbar" aria-hidden="true"><i style="animation-duration:${Fx.work.dur}ms"></i></span></div>`;
+}
+const Crew={
+  lines:['Alle Mann auf Gefechtsstation!','Alarm! Alarm!','Rohr eins klar!','Torpedos klar machen!','Ruhe im Boot!','Horcher, Peilung?','Zentrale, Meldung!','Tiefe halten!','Jawohl, Herr Kaleun!','Schiff in Sicht!','Maschine volle Kraft!','Druckhülle dicht!','Fertig machen zum Tauchen!','Auf Gefechtsstation!'],
+  enabled:false, /* kapalı: yapay geldi. Gerçek kayıt eklenirse true yapılır */
+  timer:0,running:false,last:-1,
+  ss:()=>window.speechSynthesis&&window.SpeechSynthesisUtterance?window.speechSynthesis:null,
+  voice(){const v=(Crew.ss().getVoices()||[]).filter(x=>/^de/i.test(x.lang));return v.find(x=>x.localService)||v[0]||null;},
+  wants(){return Crew.enabled&&Snd.on&&Snd.active&&!Snd.duck&&!document.hidden;},
+  next(){
+    clearTimeout(Crew.timer);if(!Crew.running)return;
+    const ss=Crew.ss(),v=ss&&Crew.voice();
+    if(!Crew.wants()||!v){Crew.timer=setTimeout(Crew.next,v?1000:4000);return;}
+    let i;do{i=Math.floor(Math.random()*Crew.lines.length);}while(i===Crew.last);Crew.last=i;
+    const u=new SpeechSynthesisUtterance(Crew.lines[i]);
+    u.voice=v;u.lang=v.lang;u.volume=0.07+0.13*Snd.level;u.rate=.95+Math.random()*.25;u.pitch=.6+Math.random()*.5;
+    const again=()=>{Crew.timer=setTimeout(Crew.next,1500+Math.random()*3500);};
+    u.onend=again;u.onerror=again;
+    try{ss.speak(u);}catch(e){again();}
+  },
+  sync(){
+    const ss=Crew.ss();if(!ss)return;
+    if(Crew.wants()){if(!Crew.running){Crew.running=true;Crew.next();}}
+    else if(Crew.running){Crew.running=false;clearTimeout(Crew.timer);try{ss.cancel();}catch(e){}}
+  }
+};
+['pointerdown','keydown'].forEach(t=>document.addEventListener(t,()=>Snd.unlock(),true));
+document.addEventListener('visibilitychange',()=>{Crew.sync();if(!Snd.ctx)return;try{if(document.hidden)Snd.ctx.suspend();else if(Snd.on)Snd.ctx.resume();}catch(e){}});
+function paintOdo(v){
+  document.querySelectorAll('.odo .strip').forEach(el=>{el.style.transform=stripY(v,Number(el.dataset.k));});
+  const l=levelOf(v);
+  const lobe=document.getElementById('hlobe');if(lobe)lobe.setAttribute('d',lobePath(l));
+  const hy=document.getElementById('hydro');if(hy)hy.style.setProperty('--j',jitOf(l));
+  if(hy)Snd.setLevel(l);
+  const n=Math.round(l*8);
+  document.querySelectorAll('.lvl-bars i').forEach((e,i)=>e.classList.toggle('on',i<n));
+}
+/* LCD geri sayımı: her hamlede süre 30 sn düşer; sayaç odometreyle aynı sürede ve aynı ivmeyle akar */
+let lcdRaf=0;
+function paintLcd(v){const el=document.querySelector('.lcd');if(el)el.textContent=fmtTime(Math.max(0,Math.round(v)));}
+function startLcd(st){
+  cancelAnimationFrame(lcdRaf);
+  if(!st||st.lcdTo===undefined||!document.querySelector('.lcd')) return;
+  const to=st.lcdTo,from=st.lcdCur===undefined?to:st.lcdCur;
+  if(from===to||REDUCED()){st.lcdCur=to;paintLcd(to);return;}
+  const t0=performance.now(),dur=1400;
+  const step=now=>{
+    const k=Math.min(1,(now-t0)/dur),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+    const v=k<1?from+(to-from)*e:to;
+    st.lcdCur=v;paintLcd(v);
+    if(k<1)lcdRaf=requestAnimationFrame(step);
+  };
+  lcdRaf=requestAnimationFrame(step);
+}
+let odoRaf=0;
+function startOdo(st){
+  cancelAnimationFrame(odoRaf);
+  if(!st||st.odoTo===undefined||!document.querySelector('.odo')) return;
+  const to=st.odoTo,from=st.odoCur===undefined?to:st.odoCur;
+  if(from===to||REDUCED()){st.odoCur=to;if(from!==to)paintOdo(to);return;}
+  const t0=performance.now(),dur=1400;
+  const step=now=>{
+    const k=Math.min(1,(now-t0)/dur),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+    const v=k<1?from+(to-from)*e:to;
+    st.odoCur=v;paintOdo(v);
+    if(k<1)odoRaf=requestAnimationFrame(step);
+  };
+  odoRaf=requestAnimationFrame(step);
+}
+function rangeCard(st){
+  const d=st.d,t=Math.min(st.tick,d.fireTick),target=rangeAt(t);
+  const rng=st.odoCur===undefined?target:st.odoCur;
+  st.odoTo=target;
+  const br=d.n===1?38:322,l=levelOf(rng),n=Math.round(l*8);
+  let ticks='';for(let a=0;a<360;a+=10){const long=a%30===0,r0=50,r1=long?44:47,sa=Math.sin(a*Math.PI/180),ca=Math.cos(a*Math.PI/180);ticks+='M'+(60+r0*sa).toFixed(1)+' '+(60-r0*ca).toFixed(1)+'L'+(60+r1*sa).toFixed(1)+' '+(60-r1*ca).toFixed(1);}
+  const brg=String(br).padStart(3,'0');
+  const bars=Array.from({length:8},(_,i)=>'<i'+(i<n?' class="on"':'')+'></i>').join('');
+  return '<div class="meter m-rng" tabindex="0"><span class="k">'+ico('hphone')+'Hidrofon · tahmini mesafe</span>'
+   +(Snd.AC?'<button type="button" class="snd'+(Snd.on?'':' off')+'" data-do="toggleSound" aria-pressed="'+Snd.on+'" aria-label="Ses (pervane ve müzik): '+(Snd.on?'açık. Kapatmak için tıkla':'kapalı. Açmak için tıkla')+'" title="Ses (pervane ve müzik) '+(Snd.on?'açık':'kapalı')+'">'+ico(Snd.on?'spk':'spkoff','sm')+'</button>':'')+'<div class="rng-body">'
+   +'<svg class="hydro" id="hydro" style="--j:'+jitOf(l)+'" viewBox="0 0 120 120" role="img" aria-label="Hidrofon kadranı: hedef yönü '+br+' derece"><circle cx="60" cy="60" r="58" fill="var(--dial)" stroke="var(--brass-dk)" stroke-width="2"/><circle cx="60" cy="60" r="50" fill="none" stroke="var(--dial-ink)" stroke-opacity=".25" stroke-width=".8"/>'
+   +'<path d="'+ticks+'" stroke="var(--dial-ink)" stroke-opacity=".6" stroke-width=".9" fill="none"/>'
+   +'<g font-size="7" fill="var(--dial-ink)" opacity=".8" text-anchor="middle" font-family="IBM Plex Mono,monospace"><text x="60" y="38">0</text><text x="85" y="63">90</text><text x="60" y="88">180</text><text x="35" y="63">270</text></g>'
+   +'<g transform="rotate('+br+' 60 60)"><g class="jit-a" style="'+animPhase(3.1)+'"><g class="jit-b" style="'+animPhase(.62)+'"><path id="hlobe" d="'+lobePath(l)+'" fill="var(--brass-hi)" opacity=".3"/><path d="M60 60V12" stroke="var(--brass-hi)" stroke-width="1.6" stroke-linecap="round"/><path d="M60 6l-3.6 7.5h7.2z" fill="var(--brass-hi)"/></g></g></g>'
+   +'<circle cx="60" cy="60" r="9" fill="none" stroke="var(--brass-hi)" stroke-opacity=".6" stroke-width="1"/><circle cx="60" cy="60" r="3.6" fill="var(--brass-hi)" stroke="var(--brass-dk)" stroke-width=".8"/></svg>'
+   +'<div class="odo-wrap"><span class="eyebrow">Yön '+brg+'°</span><div class="odo" role="img" aria-label="'+target+' metre">'+digitsHtml(rng)+'<span class="u">m</span></div>'
+   +'<div class="lvl" role="img" aria-label="Pervane sesi şiddeti"><span class="lvl-k">Ses</span><span class="lvl-bars">'+bars+'</span></div>'
+   +'<span class="sub">Mesafe pervane sesinden kestirilir. Hedef yaklaştıkça ses güçlenir. Her hamlede 300 m kapanır. Sağ üstteki düğme pervane sesini açar ya da kapatır.</span></div></div></div>';
+}
+
+function fpCard(st,compact){
+  const fpn=Math.max(0,st.fp);
+  const fp='<span class="coin"></span>'.repeat(fpn)+'<span class="coin off"></span>'.repeat(Math.max(0,FP0+1-fpn));
+  return '<div class="meter m-fp'+(compact?' compact':'')+'" tabindex="0"><span class="k">Fate puanı (FP)</span><span class="coins" role="img" aria-label="'+fpn+' Fate puanı">'+fp+'</span><span class="sub">'+(compact?'Aspect çağırmak için jeton. Keskin Göz gözlemde, Kuralcı ve Sadık Subay raporda kullanılır.':'Aspect (subayın özelliği) çağırmak için jeton. Keskin Göz gözlemde, Kuralcı ve Sadık Subay raporda kullanılır.')+'</span></div>';
+}
+function resourcesHtml(st){
+  const d=st.d,remain=Math.max(0,d.fireTick-st.tick),t=Math.min(st.tick,d.fireTick);
+  const rng=rangeAt(t),fpn=Math.max(0,st.fp);
+  const fp='<span class="coin"></span>'.repeat(fpn)+'<span class="coin off"></span>'.repeat(Math.max(0,FP0+1-fpn));
+  const cells=[];
+  const cmpTag='<span class="cmp-tag">Compel</span>',CMP_T=' title="Compel hamlesi: kaptan bir özelliğini sana karşı kullanır"';
+  for(let i=1;i<=d.fireTick;i++){
+    const cp=i===d.compel.tick&&i<d.fireTick&&(st.compelDone||(st.phase==='compel'&&st.tick===i)),tag=cp?cmpTag:'',cc=cp?' compel':'';
+    if(i===d.fireTick) cells.push('<div class="tick fire"><span>ATEŞ</span></div>');
+    else if(i<st.tick) cells.push(`<div class="tick done${cc}"${cp?CMP_T:''}><span class="n">${i}</span><span class="a" role="img" aria-label="${ACT_NAME[st.hist[i-1]]||''}" title="${ACT_NAME[st.hist[i-1]]||''}">${st.hist[i-1]?ico(st.hist[i-1],'sm'):''}</span>${tag}</div>`);
+    else if(i===st.tick&&st.phase!=='fire'&&st.phase!=='post'&&st.phase!=='narr'&&st.phase!=='evid'&&st.phase!=='result') cells.push(`<div class="tick now${cc}"${cp?CMP_T:''}><span class="n">${i}</span><span class="a">şimdi</span>${tag}</div>`);
+    else cells.push(`<div class="tick future${cc}"${cp?CMP_T:''}><span class="n">${i}</span>${tag}</div>`);
+  }
+  const showFp=['act','compel','report','report_result'].indexOf(st.phase)<0;
+  return `<div class="resw"><div class="res${showFp?' has-fp':''}">
+    ${clockHtml(st)}
+    ${rangeCard(st)}
+    ${showFp?fpCard(st):''}</div></div>
+   <div class="stack tickwrap" style="gap:6px"><div class="ticks" aria-label="Hamle kaydı">${cells.join('')}</div></div>`;
+}
+const isFirst=()=>Object.keys(S.cases).length===0&&S.st&&S.st.d.n===1;
+function helpHtml(title,items,open){
+  return `<details class="help info" ${open?'open':''}><summary>${ico('info','sm')}<span>${title}</span></summary><ul>${items.map(i=>'<li>'+i+'</li>').join('')}</ul></details>`;
+}
+function clueCard(st,id,isNew){
+  const c=st.d.clues[id],[cls,txt]=label(st.d,id);
+  return `<div class="card${isNew?' new':''}">${isNew?'<span class="newtag">YENİ</span>':''}<div class="hd"><span class="ttl">${ico(c.cat,'sm')}${CAT[c.cat]} · ${SRC[c.cat]}</span><span class="tag ${cls}" title="Bu ipucuna ne kadar güvenebileceğin">${txt}</span></div><div${isNew?` data-fx="${c.cat==='route'?'decrypt':'type'}" data-k="clue:${st.d.n}:${id}" data-g="card"`:''}>${esc(c.t)}</div></div>`;
+}
+function boardHtml(st){
+  const newIds=(st.last&&st.last.newIds)||[];
+  const items=st.got.slice().reverse().map(id=>clueCard(st,id,newIds.indexOf(id)>=0)).join('')||'<p class="muted small">Henüz ipucu yok. Bir gözlem eylemi seç.</p>';
+  return `<div class="stack"><h2 class="ttl">${ico('beh')}İpuçların (${st.got.length})</h2><p class="muted small">Etiket, ipucuna ne kadar güvenebileceğini söyler: net, belirsiz ya da zayıf.</p><div class="cards" style="grid-template-columns:minmax(0,1fr)">${items}</div></div>`;
+}
+function logHtml(st){return `<details><summary>Geçmiş (${st.log.length} kayıt)</summary><div class="log" style="margin-top:8px">${st.log.slice().reverse().map(l=>'<div>'+l+'</div>').join('')||'<div>Henüz kayıt yok.</div>'}</div></details>`;}
+function stagesHtml(st,a){
+  const stages=st.d.actions[a];let cum=0;
+  return '<span class="stages">'+stages.map((s,i)=>{
+    let p='';for(let k=0;k<s.n;k++)p+='<span class="pip'+(st.prog[a]>cum+k?' on':'')+'"></span>';
+    const done=st.prog[a]>=cum+s.n,cur=Math.min(s.n,Math.max(0,st.prog[a]-cum));
+    cum+=s.n;
+    return `<span class="stg"><span>${done?'✓ ':''}${i+1}. ipucu</span><span class="pips">${p}</span><span class="muted">${cur}/${s.n}</span></span>`;
+  }).join('')+'</span>';
+}
+function kgState(st,a){
+  const info=stageInfo(st,a);
+  if(info.done||!actionState(st,a).ok) return {ok:false,text:'Bu eylem şu an kullanılamıyor.'};
+  if(st.fp<1) return {ok:false,text:'FP kalmadı.'};
+  if(info.remaining<2) return {ok:false,text:'Yalnız 1 hamlelik iş kaldı; kısaltmaya gerek yok.'};
+  return {ok:true,text:'Bu eylem 1 hamle kısalır: tek hamlede 2 hamlelik ilerleme sağlar. 1 FP harcar.'};
+}
+function actHtml(st){
+  const btn=(a,no)=>{
+    const as=actionState(st,a),info=stageInfo(st,a),nm=(a==='beh'&&info.done)?'Davranış (izlemeye devam)':CAT[a];
+    const kg=kgState(st,a),done=info.done&&a!=='beh';
+    return `<div class="act-card${done?' tk-done':''}"><div class="ticket"><button class="act" data-do="act" data-a="${a}" ${as.ok?'':'disabled'}><span class="act-hd"><b class="ttl">${ico(a)}${nm}</b><span class="serial">Nº ${no}</span></span><span class="desc">${DESC[a]}</span>${stagesHtml(st,a)}<span class="st ${as.cls}">${esc(as.text)}</span></button>
+     <div class="act-foot"><button class="kg" data-do="actKg" data-a="${a}" ${kg.ok?'':'disabled'} aria-label="${ASP.keskin.name} aspect’ini bu eyleme uygula, 1 FP. ${esc(kg.text)}">${ico('bolt','sm')}${ASP.keskin.name}<span class="when">1 FP</span></button></div></div><span class="kg-note">${esc(kg.text)}</span></div>`;
+  };
+  const rText=st.reported?'Rapor zaten verildi.':st.locked?'Compel kabul edildi: bu vakada rapor veremezsin.':'Bulduklarını kaptana bildirirsin. 1 hamle, tek sefer.';
+  const nudge=st.got.length>0&&!st.reported&&!st.locked;
+  const hintOn=S.hint&&st.tick>=st.d.timed.from&&st.tick<=st.d.timed.to;
+  return `${hintOn?'<div class="banner" role="status">'+esc(st.d.timed.hint)+'</div>':''}
+   <div class="actions">${btn('sil','01')}${btn('route','02')}${btn('beh','03')}${btn('mark','04')}
+    <span class="grp">Kaptanla</span>
+    <div class="act-card cap"><div class="ticket"><button class="act" data-do="openReport" ${(st.reported||st.locked)?'disabled':''}><span class="act-hd"><b class="ttl">${ico('report')}Kaptana rapor ver</b><span class="serial">Nº 05</span></span><span class="desc">${rText}</span></button><div class="act-foot">${nudge?'<span class="stub hot">Yeni ipuçların var: bildir.</span>':'<span class="stub">Aspect’ler: Kuralcı, Sadık Subay</span>'}</div></div></div>
+    <div class="act-card"><div class="ticket"><button class="act" data-do="wait"><span class="act-hd"><b class="ttl">${ico('wait')}Bekle</b><span class="serial">Nº 06</span></span><span class="desc">1 hamle geçer; yeni bilgi yok.</span></button><div class="act-foot"><span class="stub">Hedef 300 m yaklaşır.</span></div></div></div></div>`;
+}
+function capNudge(st){
+  if(st.phase!=='act'||st.got.length<2||st.reported||st.locked)return '';
+  return `<div class="cap-nudge" role="status">${ico('report')}<span><b>${st.got.length} ipucun var.</b> Kaptan hâlâ ateş etmeye hazır. Bulduklarını ona bildirmek istersen rapor ver.</span><button type="button" data-do="openReport">Kaptana rapor ver</button></div>`;
+}
+/* son eylem: sayfanın en üstünde toast. Dokun: ipuçları açılır. Sola/sağa kaydır: kapanır. */
+const toastKey=st=>Fx.work?'w:'+st.tick:(st.last?'l:'+st.last.hamle+':'+st.last.action:'');
+function toastHtml(st){
+  const k=toastKey(st);
+  if(!k||S.sheet||st.toastOff===k)return '';
+  const enter=S.toastShown!==k;S.toastShown=k;
+  const fresh=st.got.length>(st.seen||0)&&!Fx.work;
+  return `<div class="toast${enter?' enter':''}" data-do="toastOpen" data-k="${k}" role="status" aria-live="polite">${lastHtml(st)}${fresh?'<span class="dock-new">Yeni ipucu</span>':''}</div>`;
+}
+function dockHtml(st){
+  const n=st.got.length,fresh=n>(st.seen||0)&&S.sheet!=='clues';
+  const strip=(st.last||Fx.work)?'':'<div class="dock-hint">Bir eylem seçmek için “Eylemler”e dokun.</div>';
+  const b=(s,ic,txt,extra,cls)=>`<button type="button" class="dk${cls?' '+cls:''}${S.sheet===s?' on':''}" data-do="openSheet" data-s="${s}" aria-haspopup="dialog" aria-expanded="${S.sheet===s}">${ico(ic)}<span>${txt}</span>${extra||''}</button>`;
+  return `<div class="dock">${strip}<div class="dock-bar">${b('act','bolt','Eylemler','','primary')}${b('clues','folder','İpuçların','<i class="cnt">'+n+'</i>'+(fresh?'<i class="dot" aria-label="yeni ipucu"></i>':''))}${b('more','info','Bilgi')}</div></div>`;
+}
+function sheetHtml(st,helpH){
+  const T={act:'Eylemler',clues:'İpuçların ('+st.got.length+')',more:'Bilgi'};
+  const body=S.sheet==='act'?fpCard(st,true)+`<section class="stack">${actHtml(st)}</section>`
+    :S.sheet==='clues'?boardHtml(st)
+    :helpH+`<section class="panel">${logHtml(st)}</section>`;
+  return `<div class="sheet-back" data-do="closeSheet"></div>
+   <section class="sheet${S.sheetNew?' enter':''}" id="sheet" role="dialog" aria-modal="true" aria-label="${T[S.sheet]}" tabindex="-1">
+    <header><b>${T[S.sheet]}</b><button type="button" class="sheet-x" data-do="closeSheet" aria-label="Kapat">×</button></header>
+    <div class="sheet-body">${body}</div></section>`;
+}
+function lastHtml(st){
+  if(Fx.work)return workHtml(st);
+  if(!st.last) return '<div class="last idle"><span class="eyebrow">Son eylem</span><span>Henüz bir eylem yapmadın. Bir eylem seç.</span></div>';
+  const l=st.last,nm=l.action==='wait'?'Bekleme':CAT[l.action];
+  return `<div class="last" role="status"><span class="eyebrow">Son eylem · hamle ${l.hamle}</span><span><b>${nm}</b> · mesafe ${l.r0} m → ${l.r1} m</span><span data-fx="type" data-k="last:${st.d.n}:${l.hamle}:${l.action}" data-g="last">${l.text}</span></div>`;
+}
+function briefHtml(st){
+  return `<div class="modal-back"><div class="modal brief" role="dialog" aria-modal="true" aria-labelledby="brfT" aria-describedby="brfD" data-esc="closeBrief" tabindex="-1">
+   <span class="eyebrow" id="brfT">Görev emri · Vaka ${st.d.n} / 2</span>
+   <p id="brfD" class="brief-txt"><b>Görevin:</b> Kaptan ateş etmeden önce hedefi tanımla. Gemi gerçekten düşman mı? İpuçlarını topla, gerekirse kaptana bildir.</p>
+   <p class="brief-tools small">Elindeki araçlar: dört gözlem eylemi ve <b>Kaptana rapor ver</b>. Raporda bulduklarını kaptana iletip onu ikna etmeye çalışırsın; vaka başına tek sefer, 1 hamle harcar.</p>
+   <div class="row"><button type="button" class="primary" data-do="closeBrief" data-autofocus>Göreve başla</button></div></div></div>`;
+}
+function compelHtml(st){
+  const c=st.d.compel,a=ASP[c.asp];
+  return `<div class="modal-back"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="cmpT" aria-describedby="cmpD" tabindex="-1">
+   <div class="modal-hd"><span class="eyebrow" id="cmpT">Compel · kaptan bir özelliğini sana karşı kullanıyor</span><span class="chip-asp">${esc(a.name)}</span></div>
+   <p class="quote">${esc(c.text)}</p>
+   <p id="cmpD">${esc(c.ask)}</p>
+   <ul class="plain small"><li><b>Kabul edersen:</b> +1 FP kazanırsın, ama bu vakada artık kaptana rapor veremezsin.</li><li><b>Reddedersen:</b> 1 FP ödersin ve raporu hâlâ verebilirsin.</li></ul>
+   <div class="row"><button class="primary" data-do="compelYes">Kabul et (+1 FP)</button><button data-do="compelNo" ${st.fp<1?'disabled':''}>Reddet (−1 FP)</button><span class="small muted modal-fp">Şu an ${st.fp} FP</span></div>
+   ${st.fp<1?'<p class="small muted">FP’n yok: reddedemezsin.</p>':''}</div></div>`;
+}
+function reportHtml(st){
+  const d=st.draft,info=draftInfo(st),step=d.step;
+  const titles=['Neyi bildireceksin?','Nasıl bildireceksin?','Aspect çağıracak mısın?'];
+  const wiz='<ol class="wiz">'+titles.map((t,i)=>`<li class="${i+1===step?'now':i+1<step?'done':''}">${i+1}. ${t}</li>`).join('')+'</ol>';
+  const toneName={yumusak:'Yumuşak',israrli:'Israrlı',itirazli:'İtirazlı'}[d.tone];
+  const nInv=(d.inv.kural&&info.kuralOk?1:0)+(d.inv.sadik&&info.sadikOk?1:0);
+  const recap=`<div class="recap"><b>Özet:</b> ${d.cards.length} ipucu bildirilecek · üslup: ${toneName} · aspect çağrısı: ${Math.min(nInv,st.fp)} (maliyet ${Math.min(nInv,st.fp)} FP) · bu rapor <b>1 hamle</b> harcar · tahmini başarı ≈ %${reportOdds(draftDiff(st,{yumusak:0,israrli:-1,itirazli:-2}[d.tone]||0),Math.min(nInv,st.fp)).ok}.</div>`;
+  let body='';
+  if(step===1){
+    const list=st.got.map(id=>{
+      const c=st.d.clues[id],[cls,txt]=label(st.d,id);
+      return `<label class="opt cardopt"><input type="checkbox" data-f="card" value="${id}" ${d.cards.indexOf(id)>=0?'checked':''}><span><b>${CAT[c.cat]}</b> <span class="tag ${cls}">${txt}</span><br>${esc(c.t)}</span></label>`;}).join('')||'<p class="muted">Henüz bildirecek ipucun yok. Yine de genel bir kuşku iletebilirsin.</p>';
+    body=`<p class="muted small">Kaptana söylemek istediğin ipuçlarını işaretle. Kaptanın görüşüne ters düşen ipuçlarını söylemek onu ikna etmeyi kolaylaştırır. Hiçbir şey söylemezsen ikna zorlaşır.</p><div class="stack">${list}</div>`;
+  }else if(step===2){
+    const TM={yumusak:0,israrli:-1,itirazli:-2};
+    const tone=(v,t,s)=>{const o=reportOdds(draftDiff(st,TM[v]),0);return `<label class="opt"><input type="radio" name="tone" data-f="tone" value="${v}" ${d.tone===v?'checked':''}><span><b>${t}</b><br><span class="muted small">${s}</span><br><span class="odds small">Başarı ≈ %${o.ok} · başarısızlık ≈ %${o.bad}</span></span></label>`;};
+    body=`<p class="muted small">Üslup hem zorluğu hem kaptanla bağını etkiler. Yüzdeler aspect çağrısı olmadan, seçtiğin ipuçlarına göre hesaplanır. <b>Yumuşak:</b> zorluk değişmez, Sadık Subay çağrılabilir. <b>Israrlı:</b> zorluk −1; ikna edemezsen kaptanla bağ bozulur. <b>İtirazlı:</b> zorluk −2, ama sonuç ne olursa olsun kaptanla bağ bozulur ve Sadık Subay çağrılamaz.</p><div class="stack">${tone('yumusak','Yumuşak','“Kaptanım, birkaç şey dikkatimi çekti.”')}${tone('israrli','Israrlı','“Kaptanım, hedefin kimliği net değil.”')}${tone('itirazli','İtirazlı','“Kaptanım, bu hedefe ateş edilmemeli.”')}</div>`;
+  }else{
+    const inv=(k,ok,why)=>`<label class="opt ${ok&&st.fp>=1?'':'off'}"><input type="checkbox" data-f="inv" value="${k}" ${d.inv[k]&&ok&&st.fp>=1?'checked':''} ${ok&&st.fp>=1?'':'disabled'}><span><b>${ASP[k].name}</b> · zara +2 · 1 FP<br><span class="muted small">${ok?ASP[k].desc:'Şu an kullanılamıyor: '+why}</span></span></label>`;
+    body=`<p class="muted small">İstersen aspect’lerini çağır; her biri 1 FP harcar ve zara +2 verir. Elindeki FP: <b>${st.fp}</b>. Zar atıldığında 4 zar (−4 ile +4 arası) + beceri 2 + çağrılar, zorlukla karşılaştırılır.</p><div class="stack">${inv('kural',info.kuralOk,'raporda bir Rota ipucu olmalı.')}${inv('sadik',info.sadikOk,'üslubun Yumuşak olmalı.')}</div>`;
+  }
+  const nav=`<div class="row">${step>1?'<button data-do="repBack">Geri</button>':''}${step<3?'<button class="primary" data-do="repNext">İleri</button>':'<button class="primary" data-do="doReport">Raporu ver ve zar at</button>'}<button data-do="cancelReport">Vazgeç</button></div>`;
+  return `<div class="modal-back"><div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="repT" data-esc="cancelReport" tabindex="-1">
+   <div class="modal-hd"><h2 id="repT">Kaptana rapor · adım ${step}/3</h2><span class="chip-asp">1 hamle</span></div>${wiz}
+   <div class="modal-body"><div class="stack">${body}</div></div>${recap}${nav}</div></div>`;
+}
+function diceHtml(dice){return '<div class="dice" aria-label="Zarlar">'+dice.map(v=>`<span class="die ${v>0?'p':v<0?'m':''}">${v>0?'+':v<0?'−':'○'}</span>`).join('')+'</div>';}
+function reportResultHtml(st){
+  const r=st.report;
+  const lines=[
+    '4 zar: '+(r.roll>=0?'+':'')+r.roll,
+    'Beceri: +2'+(r.inv.length?' · Aspect çağrısı: +'+r.inv.length*2+' ('+r.inv.map(k=>ASP[k].name).join(', ')+')':''),
+    'Zorluk: '+r.diff+' (taban 4'+(r.against?'; kaptanın görüşüne ters düşen '+r.against+' ipucu bildirdiğin için −'+Math.min(2,r.against):'')+(r.cards.length===0?'; hiç ipucu bildirmediğin için +1':'')+(r.tm?'; '+({israrli:'ısrarlı',itirazli:'itirazlı'}[r.tone])+' üslup için '+r.tm:'')+')',
+    'Fark: '+(r.roll>=0?'+':'')+r.roll+' + 2'+(r.inv.length?' + '+r.inv.length*2:'')+' − '+r.diff+' = '+r.shifts+'. 0’ın altı başarısızlık, 0 beraberlik, 1–2 başarı, 3 ve üstü üstün başarı.'];
+  return `<div class="modal-back"><div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="rrT" tabindex="-1"><div class="modal-body"><div class="stack"><div class="eyebrow" id="rrT">Rapor sonucu · 1 hamle harcandı</div><div class="stamp ${r.outcome==='FAIL'?'no':r.outcome==='TIE'?'mid':'ok'}">${OUT[r.outcome]}</div>${diceHtml(r.dice)}
+   <ul class="plain small">${lines.map(w=>'<li>'+esc(w)+'</li>').join('')}</ul>
+   ${radioBox(radioId(st),'in-modal')}
+   <div class="notice"><b>Savaş günlüğüne etkisi:</b> ${esc(KTBFX[r.outcome])}</div>
+   <p class="muted small">İlk torpido bu sonuçtan bağımsız olarak çıkacak.</p></div></div>
+   <div class="row"><button class="primary" data-do="afterReport" data-autofocus>Devam</button></div></div></div>`;
+}
+function fireHtml(st){
+  const o=(v,t,s)=>`<label class="opt"><input type="radio" name="resp" data-f="resp" value="${v}" ${st.fire.resp===v?'checked':''}><span><b>${t}</b><br><span class="muted small">${s}</span></span></label>`;
+  return `<div class="panel"><div class="mission-grid"><div class="stack"><div class="eyebrow">Hamleler bitti · ateş anı</div><div class="quote">“Ateş!”</div>
+   <p>Kaptan emri verdi. <b>İlk torpido çıkacak, bunu engelleyemezsin.</b> Senin elinde atış çözümüne ne yapacağın var.</p></div>${scopeHtml(st.d.n,rangeAt(st.d.fireTick),st.d.vis)}</div>
+   <div class="stack">${o('hesapla','Hesaplamayı yap','Emri uygularsın; kayda itirazsız geçer.')}${o('itiraz','İtiraz et','İtirazın kayda girer; kaptanla bağın bozulur.')}${o('sabotaj','Bilerek yanlış çözüm ver','Zar atılır (yaklaşık %38 başarı): başarırsan ilk torpido ıskalar ama fark edilme riskin %80 olur; başarısız olursa torpido yine isabet eder (risk %50). Fark edilirsen soruşturmada aleyhine kanıt olur.')}</div>
+   <div class="row"><button class="primary" data-do="fireGo" ${st.fire.resp?'':'disabled'}>Torpido çıksın</button></div></div>`;
+}
+function sabHtml(st){
+  const r=st.sabRoll;
+  return `<div class="notice"><b>Yanlış çözüm: ${r.missed?'işe yaradı':'tutmadı'}.</b> 4 zar ${r.roll>=0?'+':''}${r.roll} + beceri 2 − zorluk ${r.diff} = ${r.shifts}. ${r.missed?'İlk torpido hedefi ıskaladı, ama ıskalamak dikkat çeker: bir tanığın fark etme şansı yüksek (%80).':'Torpido yine hedefi buldu. Bir tanığın fark etme şansı %50.'}${diceHtml(r.dice)}</div>`;
+}
+function postHtml(st){
+  const o=(g,v,t)=>`<label class="opt"><input type="radio" name="${g}" data-f="${g}" value="${v}" ${st.post[g]===v?'checked':''}><span>${t}</span></label>`;
+  const second=st.escaped?'<p class="notice">Hedef karanlıkta uzaklaştı. İkinci torpido kararı yok.</p>':
+    `<div class="stack"><h3>1. İkinci torpido</h3><p class="small muted">Kaptan ikinci torpidoyu emretti.</p>${o('second','evet','Emri uygula')}${o('second','hayir','Reddet')}</div>`;
+  const ready=(st.escaped||st.post.second)&&st.post.rescue&&st.post.ktb;
+  return `<div class="panel"><div class="eyebrow">Sonrası · üç karar</div><h2>${st.missed?'Torpido hedefi ıskaladı':'Torpido hedefe isabet etti'}</h2>
+   ${st.sabRoll?sabHtml(st):''}${second}
+   <div class="stack"><h3>${st.escaped?'1':'2'}. Hayatta kalanları arama</h3>${o('rescue','dusuk','Düşük çaba')}${o('rescue','orta','Orta çaba')}${o('rescue','yuksek','Yüksek çaba')}</div>
+   <div class="stack"><h3>${st.escaped?'2':'3'}. Savaş günlüğüne (KTB) ne yazdırıyorsun?</h3><p class="small muted">KTB, olayın resmi kaydıdır. Soruşturmada kanıt olarak karşına çıkacak.</p>${o('ktb','acik','Olayı açıkça yaz')}${o('ktb','yumusat','Yumuşat: “değerlendirme farkı”')}${o('ktb','koru','Kaptanı koru')}</div>
+   <div class="row"><button class="primary" data-do="postGo" ${ready?'':'disabled'}>Kararları ver</button></div></div>`;
+}
+const RESP_TXT={hesapla:'Hesaplamayı yaptın',itiraz:'İtiraz ettin',sabotaj:'Bilerek yanlış çözüm verdin'};
+const KTB_TXT={acik:'Olayı açıkça yazdırdın',yumusat:'Yumuşattırdın',koru:'Kaptanı korudun'};
+const RESCUE_TXT={dusuk:'Düşük çaba',orta:'Orta çaba',yuksek:'Yüksek çaba'};
+/* Kararların özeti: sonuç ekranlarının sol asidesi */
+function choicesPanel(st){
+  const sec=st.escaped?'Yok (hedef kaçtı)':st.post.second==='evet'?'Emri uyguladın':'Reddettin';
+  const rep=st.reported?'Verildi · '+OUT[st.report.outcome]:st.locked?'Compel kabul: kilitli':'Verilmedi';
+  return `<section class="panel"><span class="eyebrow">Vaka ${st.d.n} · verdiğin kararlar</span>
+   <dl class="kv"><dt>Kaptana rapor</dt><dd>${esc(rep)}</dd><dt>Atış çözümü</dt><dd>${RESP_TXT[st.fire.resp]}</dd><dt>İkinci torpido</dt><dd>${sec}</dd><dt>Arama</dt><dd>${RESCUE_TXT[st.post.rescue]}</dd><dt>KTB</dt><dd>${KTB_TXT[st.post.ktb]}</dd></dl></section>`;
+}
+/* ───── Kararların sonuçları ───── */
+function narrCards(st){
+  const r=st.fire.resp,L=st.narr,esc2=st.escaped;
+  const out=[];
+  out.push({ic:'torp',t:'İlk torpido',chip:st.missed?'Iskaladı':'İsabet',cls:st.missed?'good':'bad',x:L[0]});
+  const sab=r==='sabotaj'&&st.sabRoll?`<div class="dec-dice">${diceHtml(st.sabRoll.dice)}<span class="small muted">4 zar ${st.sabRoll.roll>=0?'+':''}${st.sabRoll.roll} + beceri 2 − zorluk ${st.sabRoll.diff} = ${st.sabRoll.shifts} · ${OUT[st.sabRoll.outcome]}</span></div>`:'';
+  out.push({ic:'scope',t:'Atış çözümü',chip:RESP_TXT[r],cls:r==='sabotaj'?(st.missed?'mid':'bad'):r==='itiraz'?'mid':'',x:L[1],extra:sab});
+  out.push({ic:'torp',t:'İkinci torpido',chip:esc2?'Yok':st.post.second==='evet'?'Çıktı':'Reddedildi',cls:esc2?'bad':st.sunk?'':'mid',x:L[2]});
+  out.push({ic:'mark',t:'Hayatta kalanlar',chip:RESCUE_TXT[st.post.rescue],cls:'',x:L[3]});
+  out.push({ic:'folder',t:'Savaş günlüğü (KTB)',chip:KTB_TXT[st.post.ktb],cls:st.post.ktb==='koru'?'mid':'',x:L[4],extra:'<div class="dec-note">Soruşturmada: KTB kaydın kanıt kartı olarak masaya gelecek.</div>'});
+  return out;
+}
+function narrMain(st){
+  const items=narrCards(st).map((c,i)=>`<article class="dec ${c.cls}" style="--i:${i}"><span class="di">${ico(c.ic)}</span><div class="dec-b"><div class="dec-hd"><h3>${c.t}</h3><span class="dchip ${c.cls}">${esc(c.chip)}</span></div><p data-fx="type" data-k="dec:${st.d.n}:${i}" data-g="dec" data-gap="500">${esc(c.x)}</p>${c.extra||''}</div></article>`).join('');
+  return `<div class="stack"><span class="eyebrow">Neler oldu</span><h2>Kararlarının sonuçları</h2><div class="decs">${items}</div></div>`;
+}
+function narrSide(st){
+  if(noDesk(st))return `<section class="panel next-panel"><span class="eyebrow">Sıradaki aşama</span><h2>Soruşturma açılmıyor</h2>
+   <p class="small muted">Kaptan haklıydı, emri uyguladın ve ikinci torpidoyu da verdin. Ortada çelişki ya da itiraz yok; doğrudan sonuca geçiyoruz.</p>
+   <button class="primary big wide" data-do="toEvid" data-autofocus>Sonuca geç</button></section>`;
+  const n=st.cards.length||buildCards(st).length;
+  return `<section class="panel next-panel"><span class="eyebrow">Sıradaki aşama</span><h2>Soruşturma masası</h2>
+   <p class="small muted">Bu kararlar kayda geçti. Soruşturmada ${n} kart masaya gelecek; çelişen iki kartı bulup bağlayacaksın.</p>
+   <button class="primary big wide" data-do="toEvid" data-autofocus>Soruşturmaya geç</button></section>`;
+}
+/* ───── Soruşturma masası ───── */
+function evidMain(st){
+  const badges={};
+  st.proven.forEach((k,i)=>k.split('|').forEach(id=>{(badges[id]=badges[id]||[]).push(i+1);}));
+  const sel=st.sel;
+  const cards=st.cards.map(c=>{
+    const pos=sel.indexOf(c.id),bd=badges[c.id];
+    return `<button class="card${pos>=0?' sel':''}${bd?' linked':''}" data-do="selCard" data-id="${c.id}" aria-pressed="${pos>=0}">${pos>=0?'<span class="slotbadge">'+(pos===0?'A':'B')+'</span>':''}${bd?'<span class="lkb">'+bd.map(n=>'<i>bağlantı '+n+'</i>').join('')+'</span>':''}<div class="hd"><span>${c.id} · ${esc(c.src)}</span></div><span class="claim">İddia: ${esc(c.claim)}</span><div>${esc(c.t)}</div></button>`;}).join('');
+  return `<div class="stack"><h2>Soruşturma masası</h2>
+   <p>Kayıtların hepsi masada. Görevin: <b>birbiriyle çelişen iki kartı bulup bağlamak.</b> Kartları seç; seçtiklerin A ve B kutularına girer.</p>
+   <div class="cards evid-cards">${cards}</div></div>`;
+}
+function evidLeft(st){
+  return helpHtml('Soruşturma masası: nasıl çalışır?',[
+    '<b>Amaç:</b> birbiriyle çelişen iki kartı bulmak. İki türlü çelişki var: biri hedefi <b>düşman</b>, öbürü <b>dost ya da tarafsız</b> gösteriyorsa; ya da kaptan <b>“uyarılmadım”</b> derken başka bir kart bilginin ya da uyarının ona ulaştığını gösteriyorsa.',
+    'İkisi aynı yöne işaret ediyorsa çelişmezler.',
+    'Bir kart seç: <b>Kart A</b> kutusuna girer. Çelişen ikinci kartı seç: <b>Kart B</b> kutusuna girer.',
+    '<b>Bağla</b> düğmesine bas. Sonuç hemen görünür.',
+    'Her deneme 1 hakkını harcar. Çelişmeyen bir çift seçersen güvenilirliğin de düşer.',
+    'Doğru bağladığın kartlar yeşil çerçeve ve bağlantı numarası alır.',
+    'Bağlamak zorunda değilsin: istediğin zaman masayı bitirebilirsin.'],true);
+}
+function evidSide(st){
+  const left=ATTEMPTS-st.attempts.length,cred=Math.max(0,3-st.invalid);
+  const A=st.cards.find(c=>c.id===st.sel[0]),B=st.cards.find(c=>c.id===st.sel[1]);
+  const pips=(n,max)=>'<span class="pipx'+(n<=1?' warn':'')+'" aria-hidden="true">'+Array.from({length:max},(_,i)=>'<i class="'+(i<n?'on':'')+'"></i>').join('')+'</span>';
+  const slot=(k,c)=>`<div class="slot${c?' fill':''}"><span class="k">Kart ${k}</span>${c?'<b>'+c.id+'</b> · '+esc(c.claim):'<span class="muted">Bir kart seç</span>'}</div>`;
+  const hist=st.proven.map((k,i)=>{const l=st.pinfo[k]||{x:''};return `<li class="ok"><b>Bağlantı ${i+1}: ${k.split('|').join(' ↔ ')}</b> · ${esc(l.x)}</li>`;}).join('')||'<li class="muted">Henüz doğru bir bağlantı kurmadın.</li>';
+  const fbK=String(st.attempts.length),fbEnter=S.fbShown!==fbK&&st.lastFresh;if(st.lastFresh)S.fbShown=fbK;
+  const fb=st.lastLink?`<div class="fb ${st.lastLink.ok?'ok':'no'}${(st.lastFresh&&st.fbOff!==fbK)?'':' stale'}${fbEnter?' enter':''}"${isM()?` data-do="fbClose" data-k="${fbK}"`:''} role="status"><b>${st.lastLink.ok?'Doğru bağlantı':'Çelişki bulunamadı'}</b> (${st.lastLink.a} ↔ ${st.lastLink.b}): ${esc(st.lastLink.msg)}</div>`:'';
+  const done=isM()&&left<=0;
+  if(done) return `<section class="panel bind done"><span class="eyebrow">Bağlama</span>
+   <p class="bind-done"><b>Haklarını kullandın.</b> ${st.proven.length?'Kurduğun '+st.proven.length+' doğru bağlantıyla masayı kapatabilirsin.':'Doğru bir bağlantı kuramadın; masayı kapatıp sonucu görebilirsin.'}</p>
+   <button class="primary big wide" data-do="finishEvid">Masayı bitir ve sonucu gör</button>${fb}</section>
+   <section class="panel"><div class="meters">
+    <div class="meter-row"><span class="lbl"><b>Kalan hak</b><span class="muted small">her deneme 1 hak</span></span><span class="mv">${pips(left,ATTEMPTS)}<b>${left} / ${ATTEMPTS}</b></span></div>
+    <div class="meter-row"><span class="lbl"><b>Güvenilirlik</b><span class="muted small">yanlış bağ düşürür</span></span><span class="mv">${pips(cred,3)}<b>${cred} / 3</b></span></div></div></section>
+   <section class="panel"><h3>Kurduğun bağlantılar</h3><ul class="plain small">${hist}</ul></section>`;
+  return `<section class="panel bind"><span class="eyebrow">Bağlama</span>
+   <div class="slots">${slot('A',A)}<span class="vs" aria-hidden="true">↔</span>${slot('B',B)}</div>
+   <div class="row"><button class="primary" data-do="link" ${st.sel.length===2&&left>0?'':'disabled'}>Bağla</button><button data-do="clearSel" ${st.sel.length?'':'disabled'}>Temizle</button></div>${fb}</section>
+   <section class="panel"><div class="meters">
+    <div class="meter-row"><span class="lbl"><b>Kalan hak</b><span class="muted small">her deneme 1 hak</span></span><span class="mv">${pips(left,ATTEMPTS)}<b>${left} / ${ATTEMPTS}</b></span></div>
+    <div class="meter-row"><span class="lbl"><b>Güvenilirlik</b><span class="muted small">yanlış bağ düşürür</span></span><span class="mv">${pips(cred,3)}<b>${cred} / 3</b></span></div></div></section>
+   <section class="panel"><h3>Kurduğun bağlantılar</h3><ul class="plain small">${hist}</ul></section>
+   <button class="big wide" data-do="finishEvid">Masayı bitir ve sonucu gör</button>`;
+}
+/* ───── Vaka sonucu ───── */
+function bondWhy(st){
+  const w=[];
+  if(st.post.ktb==='koru')w.push('KTB’de kaptanı korudun: +1');
+  else{
+    if(st.fire.resp==='itiraz')w.push('Atış anında itiraz ettin: −1');
+    if(st.proven.some(k=>st.pinfo[k]&&st.pinfo[k].captain))w.push('Uyarını kaptan kayda geçirmemişti, bunu kanıtladın: −1');
+    if(st.reported&&(st.report.tone==='itirazli'||(st.report.tone==='israrli'&&st.report.outcome!=='SUCCESS'&&st.report.outcome!=='STYLE')))w.push('Raporun üslubu kaptanı gerdi: −1');
+  }
+  return w.length?w.join('. ')+'.':'Kaptanla aran değişmedi.';
+}
+const SICIL_WHY={
+  'İtaatsiz':'Kaptanın görüşüne ters düşen ipucu bildirdin ve atış anında itiraz ettin.',
+  'Günah Keçisi':'Kayıtta kaptan korundu ya da raporun işe yaramadı; suç senin üzerine kalabilir.',
+  'Suç Ortağı':'Kayıtta itiraz ya da korunmuş bir uyarın yok; olayda ortak sayıldın.'};
+function resultMain(st){
+  const s=score(st),d=st.d,sign=n=>(n>0?'+':'')+n;
+  const missed=Object.keys(d.clues).filter(id=>st.got.indexOf(id)<0);
+  const gW=[];
+  if(st.skipped)gW.push('Soruşturma açılmadı: kaptan haklıydı ve emri uyguladın.');
+  else gW.push('Kanıtlayamadığın her çelişki +1 (bu vakada '+Math.max(0,s.need-s.proven)+'). Sıfırlamak için en az '+s.need+' çelişki kanıtlamalısın.');
+  if(st.detected)gW.push('Bilerek yanlış çözümün fark edildi: +1.');
+  const gTone=s.guilt===0?'good':s.guilt<=1?'mid':'bad';
+  const bTone=s.bond>0?'good':s.bond<0?'bad':'mid',cTone=s.cred>=3?'good':s.cred===2?'mid':'bad';
+  const tile=(cls,lbl,big,vis,why)=>`<details class="tile ${cls}"><summary><span class="tl">${lbl}</span><span class="big">${big}</span>${vis}</summary><div class="why">${why}</div></details>`;
+  const pipsOf=(n,max)=>'<span class="pipx" aria-hidden="true">'+Array.from({length:max},(_,i)=>'<i class="'+(i<n?'on':'')+'"></i>').join('')+'</span>';
+  const tiles=[
+    st.skipped?tile('mid','Kanıtlanan çelişki','—','<span class="muted small">soruşturma açılmadı</span>','Kaptan haklıydı ve emri uyguladın. Ortada çelişki ya da itiraz olmadığı için soruşturma açılmadı.')
+     :tile(s.proven>=s.need?'good':s.proven?'mid':'bad','Kanıtlanan çelişki',s.proven+' / '+s.total,pipsOf(Math.min(s.proven,6),Math.min(s.total,6)),'Masada bulunabilecek çelişkilerden kanıtladıkların. Bu vakada '+s.total+' çelişki vardı.'),
+    tile(gTone,'Suçluluk',s.guilt,'<span class="muted small">0 en iyisi</span>',gW.join(' ')),
+    tile(bTone,'Kaptanla bağ',sign(s.bond),'<span class="bondbar" aria-hidden="true"><i style="left:'+(50+s.bond*50)+'%"></i></span>',esc(bondWhy(st))),
+    tile(cTone,'Güvenilirlik',s.cred+' / 3',pipsOf(s.cred,3),'Geçersiz bağlantı denemesi sayısı: '+st.invalid+'. Her biri 1 puan düşürür.')
+  ].join('');
+  const sicil=s.sicil?`<div class="dossier"><span class="eyebrow">Sicil etiketi</span><b class="sic">${esc(s.sicil)}</b><span class="small">${esc(SICIL_WHY[s.sicil]||'')}</span></div>`:'';
+  const notes=s.notes.length?'<div class="stack">'+s.notes.map(n=>'<div class="notice small">'+esc(n)+'</div>').join('')+'</div>':'';
+  const cardOf=id=>{const c=d.clues[id];return `<div class="card"><div class="hd"><span>${CAT[c.cat]} · ${SRC[c.cat]}</span><span class="tag ${label(d,id)[0]}">${label(d,id)[1]}</span></div><div>${esc(c.t)}</div>${id==='M2'?'<div class="small" style="opacity:.7">Hiçbir yolla ulaşılamazdı.</div>':''}</div>`;};
+  const found=st.got.map(cardOf).join('')||'<p class="muted small">Hiç ipucu toplamadın.</p>';
+  const miss=missed.map(cardOf).join('')||'<p class="muted small">Ulaşılabilir her şeyi buldun.</p>';
+  return `<div class="stack"><span class="eyebrow">Vaka ${d.n} sonucu</span><div class="stamp ${d.claimTrue?'ok':'no'}">${d.claimTrue?'Kaptan haklıydı':'Kaptan yanıldı'}</div><h2>${esc(d.truth)}</h2>
+   <p class="muted small">Karnenin bir kutusuna dokun: nasıl hesaplandığını görürsün.</p>
+   <div class="tiles">${tiles}</div>${sicil}${notes}
+   <div class="seg"><input type="radio" name="clueTab" id="tabF" checked><input type="radio" name="clueTab" id="tabM">
+    <div class="tabs" role="presentation"><label for="tabF">Bulduklarım (${st.got.length})</label><label for="tabM">Bulamadıklarım (${missed.length})</label></div>
+    <div class="pane f cards">${found}</div><div class="pane m cards">${miss}</div></div></div>`;
+}
+function resultSide(st){
+  const s=score(st),n=st.d.n;
+  const nxt=n===1?'Vaka 2’ye geç':'Ankete geç';
+  const teaser=n===1?`<p class="small muted">Sırada: <b>${esc(CASES[2].title)}</b>. Yeni bir hedef, yeni bir emir.</p>`:'<p class="small muted">İki vaka da bitti. Birkaç soru kaldı.</p>';
+  return `<section class="panel next-panel"><span class="eyebrow">Vaka ${n} bitti</span>
+   <div class="chips"><span class="tag ${s.guilt===0?'net':s.guilt<=1?'bel':'zay'}">Suçluluk ${s.guilt}</span><span class="tag ${s.bond>0?'net':s.bond<0?'zay':'bel'}">Bağ ${s.bond>0?'+':''}${s.bond}</span>${s.sicil?'<span class="tag bel">'+esc(s.sicil)+'</span>':''}</div>
+   ${teaser}<button class="primary big wide" data-do="${n===1?'nextCase':'toSurvey'}" data-autofocus>${nxt}</button></section>`;
+}
+const RATINGS=[['tension','Gerilim hissettim'],['basis','Kararlarım elimdeki bilgiye dayanıyordu'],['replay','Tekrar oynamak isterim'],['fate','Aspect ve FP oyuna anlamlı bir şey kattı'],['clarity','Kuralları ve arayüzü anlamak kolaydı']];
+function surveyHtml(){
+  const sc=RATINGS.map(([k,t])=>`<div class="stack" style="gap:6px"><span>${t}</span><div class="scale" role="radiogroup" aria-label="${t}">${[1,2,3,4,5].map(v=>`<label><input type="radio" name="r_${k}" data-f="rate" data-k="${k}" value="${v}"><span>${v}</span></label>`).join('')}</div></div>`).join('');
+  return `<div class="panel"><h2>Son birkaç soru</h2><p class="muted small">1 = hiç katılmıyorum, 5 = tamamen katılıyorum.</p>${sc}
+   <div class="stack"><label for="q1">En gergin an hangisiydi?</label><textarea id="q1" data-f="txt" data-k="tense"></textarea></div>
+   <div class="stack"><label for="q2">Seni en çok düşündüren karar neydi?</label><textarea id="q2" data-f="txt" data-k="hard"></textarea></div>
+   <div class="stack"><label for="q4">Hangi ekran ya da kavram anlaşılır değildi?</label><textarea id="q4" data-f="txt" data-k="confusing"></textarea></div>
+   <div class="stack"><label for="q3">Neyi değiştirirdin?</label><textarea id="q3" data-f="txt" data-k="change"></textarea></div>
+   <div class="row"><button class="primary" data-do="submitSurvey">Gönder</button></div></div>`;
+}
+function doneHtml(){
+  return `<div class="panel"><h2>Teşekkürler</h2><p>Oturum tamamlandı.</p>
+   <p class="small ${S.saveMsg.indexOf('kaydedildi')>=0?'':'muted'}" role="status">${esc(S.saveMsg||'Kaydediliyor…')}</p>
+   <div class="row">${S.saveMsg.indexOf('kaydedildi')>=0?'':'<button data-do="retrySave">Kaydı yeniden dene</button>'}</div></div>`;
+}
+function introMain(){
+  return heroHtml()+`<div class="stack" style="gap:8px"><span class="eyebrow">X-Boat · PoC kâğıt testi</span><h1>Tanım Masası</h1>
+   <p class="lead">Bir denizaltının birinci subayısın. Kaptan bir gemiye ateş etmek üzere. Hedefin dost mu düşman mı olduğunu anlamaya çalışacak, sonra kararlarının kayıtlara nasıl yansıdığını göreceksin.</p>
+   <p class="muted small">İki kısa vaka, toplam yaklaşık 20 dakika. Doğru ya da yanlış cevap yok; seçimlerin sonuçlarını görmek yeterli.</p></div>
+   <form class="panel ident" id="startForm" data-form="start" novalidate>
+    <div class="ident-grid">
+     <div class="dogtag" aria-hidden="true"><span class="dt-hole"></span><span class="dt-rank">1. Subay</span><span class="dt-name" id="tagName">Adsız</span><span class="dt-sub">X-Boat · 1942</span></div>
+     <div class="stack" style="gap:8px">
+      <span class="eyebrow">Subay künyesi</span>
+      <label for="nick">Takma ad <span class="muted">(isteğe bağlı)</span></label>
+      <input type="text" id="nick" name="nick" autocomplete="off" maxlength="40" placeholder="Örn. Birinci Subay" aria-describedby="nickHelp">
+      <span class="small muted" id="nickHelp">Kaydedilen oturumda bu ad görünür. Boş bırakabilirsin.</span>
+     </div>
+    </div>
+    <div class="row"><button type="submit" class="primary big" id="startBtn">Göreve başla</button><span class="small muted">Enter tuşuyla da başlayabilirsin.</span></div>
+   </form>
+   <details class="help"><summary>Test yöneticisi için</summary><ul class="plain small" style="margin:0;padding:0 14px 12px 30px"><li>Oyuncudan sesli düşünmesini iste, kurallara yardım etme, soruları not et.</li><li>Anlık ipucu uyarısı varsayılan olarak ${S.hint?'açık':'kapalı'}. Adresin sonuna <code>#hint</code> ya da <code>#nohint</code> ekleyerek değiştirebilirsin.</li><li>Oturumlar bu sayfa tarafından kaydedilir; kayıt yoksa son ekrandan JSON kopyalanır.</li></ul></details>`;
+}
+function introSide(){
+  const step=(ic,n,t,x)=>`<li><span class="fi">${ico(ic)}</span><div><span class="n">${n}</span><b>${t}</b><span class="muted">${x}</span></div></li>`;
+  return `<section class="panel"><h2>Oyun akışı</h2><ol class="flow2">
+    ${step('beh','1 · Gözlem','İpucu topla','Her eylem 1 hamle (30 sn) harcar. Süre dolunca kaptan ateş eder.')}
+    ${step('torp','2 · Ateş','Kaptan ateş eder','İlk torpido engellenemez. Atış çözümüne ne yapacağına karar verirsin.')}
+    ${step('report','3 · Sonrası','Üç karar','İkinci torpido, arama çabası ve savaş günlüğüne (KTB) ne yazdıracağın.')}
+    ${step('folder','4 · Kanıt masası','Kayıtlar döner','Seçimlerin kanıt kartı olarak karşına çıkar. Çelişen kartları bulup bağlarsın.')}</ol></section>
+   <section class="panel"><h2>Sözlük</h2><dl class="gloss">
+    <dt>Hamle</dt><dd>30 saniyelik süre birimi. Her eylem 1 hamle harcar.</dd>
+    <dt>Mesafe</dt><dd>Hedefe uzaklık; hidrofon pervane sesinden kestirir. Her hamlede 300 m kapanır. Bazı gözlemler yalnız yakından yapılabilir.</dd>
+    <dt>İpucu</dt><dd>Etiketi net, belirsiz ya da zayıf. Hepsini toplamak mümkün değil.</dd>
+    <dt>Aspect</dt><dd>Subayın özelliği. Çağırınca bir avantaj sağlar.</dd>
+    <dt>FP</dt><dd>Fate puanı. Aspect çağırmak için jeton; 2 ile başlarsın.</dd>
+    <dt>KTB</dt><dd>Savaş günlüğü. Yazdırdığın şey sonra kanıt olarak döner.</dd></dl></section>`;
+}
+function musicScene(){
+  const st=S.st,w={};let once=null,key='quiet';
+  if(S.screen==='intro'){key='intro';w.intro=1;}
+  else if(S.screen==='survey'||S.screen==='done'){key='end';w.intro=.6;}
+  else if(st){
+    const ph=st.phase;
+    if(ph==='act'||ph==='compel'||ph==='report'||ph==='report_result'){
+      const cur=st.odoTo,l=cur===undefined?0:levelOf(cur);
+      if(st.d.n===1){const t=Math.max(0,Math.min(1,(l-.2)/.6));w.calm=1-.75*t;w.tense=t;}
+      else w.night=.7+.3*l;
+      key='obs'+st.d.n;
+    }else if(ph==='fire'){key='fire';once='fire';}
+    else if(ph==='evid'){key='evid';w.evid=1;}
+    else if(ph==='result'){key='res'+st.d.n;once=st.d.claimTrue?'win':'lose';}
+  }
+  Mus.scene(key,w,once);
+}
+function syncFab(){
+  const f=document.getElementById('sndFab');if(!f)return;
+  f.hidden=!Snd.AC||!!document.querySelector('.m-rng');
+  f.className='snd-fab'+(Snd.on?'':' off');
+  f.setAttribute('aria-pressed',String(Snd.on));
+  const t=Snd.on?'Ses açık. Kapatmak için tıkla':'Ses kapalı. Açmak için tıkla';
+  f.setAttribute('aria-label',t);f.title=t;
+  f.innerHTML=ico(Snd.on?'spk':'spkoff');
+}
+function render(){
+  const st=S.st;let h='',side='',left='',modal='';
+  if(S.screen!=='case')S.sheet=null;
+  if(S.screen==='intro'){h=introMain();side=introSide();}
+  else if(S.screen==='survey') h=surveyHtml();
+  else if(S.screen==='done') h=doneHtml();
+  else{
+    h=stepperHtml(st);
+    const ph=st.phase;
+    if(!(ph==='act'||ph==='compel'||ph==='report'||ph==='report_result'))S.sheet=null;
+    if(ph==='act'||ph==='compel'||ph==='report'||ph==='report_result'){
+      h+=missionHtml(st)+radioHtml(st)+resourcesHtml(st)+capNudge(st);
+      const helpH=helpHtml('Nasıl çalışır?',[
+        'Amacın, kaptan ateş etmeden önce hedefin kimliği hakkında bilgi toplamak.',
+        'Her eylem <b>1 hamle</b> (30 saniye) harcar. Saat sıfıra inince kaptan ateş eder; ilk torpido engellenemez.',
+        'Her hamlede hedef 300 m yaklaşır. Bazı gözlemler yalnız yakından yapılabilir.',
+        'Bazı ipuçları birkaç hamle ister. Eylem kartındaki çubuk ilerlemeni gösterir.',
+        'Bulduğun ipuçları “İpuçların” panosunda toplanır. Etiket (net, belirsiz, zayıf) ipucuna ne kadar güvenebileceğini söyler.',
+        'Her gözlem kartının altında <b>Keskin Göz</b> aspect’i var: 1 FP verip o eylemi 1 hamle kısaltırsın.',
+        'Kaptana rapor vermek de 1 hamledir ve yalnız bir kez yapılır.',
+        'Hidrofon kartının sağ üstündeki hoparlör düğmesi pervane sesini açar ya da kapatır. Hedef yaklaştıkça ses güçlenir.'],false);
+      if(isM()){
+        if(S.sheet==='clues')st.seen=st.got.length;
+        h+=toastHtml(st)+dockHtml(st)+(S.sheet?sheetHtml(st,helpH):'');
+      }else{
+        S.sheet=null;
+        left=`${fpCard(st,true)}<section class="stack"><h2>Ne yapacaksın?</h2>${actHtml(st)}</section>`;
+        side=`${lastHtml(st)}<section class="panel">${boardHtml(st)}</section>${helpH}<section class="panel">${logHtml(st)}</section>`;
+      }
+      if(ph==='compel')modal=compelHtml(st);
+      else if(ph==='report')modal=reportHtml(st);
+      else if(ph==='report_result')modal=reportResultHtml(st);
+      else if(st.brief)modal=briefHtml(st);
+    }else if(ph==='fire'){
+      h+=resourcesHtml(st)+radioBox('f_fire')+fireHtml(st)+`<details><summary>Topladığın ipuçları (${st.got.length})</summary><div class="cards" style="margin-top:10px">${st.got.map(id=>clueCard(st,id,false)).join('')}</div></details>`;
+    }else if(ph==='post'){h+=postHtml(st);}
+    else if(ph==='narr'){h+=narrMain(st);left=choicesPanel(st);side=narrSide(st);}
+    else if(ph==='evid'){h+=evidMain(st);left=evidLeft(st);side=evidSide(st);}
+    else if(ph==='result'){h+=resultMain(st);left=choicesPanel(st);side=resultSide(st);}
+  }
+  const oldSb=document.querySelector('.sheet-body'),sbTop=oldSb?oldSb.scrollTop:0;
+  document.getElementById('main').innerHTML=h;
+  {const nb=document.querySelector('.sheet-body');if(nb&&oldSb&&!S.sheetNew)nb.scrollTop=sbTop;
+   const sh=document.getElementById('sheet');if(sh&&S.sheetNew)sh.focus({preventScroll:true});S.sheetNew=false;}
+  const al=document.getElementById('aside-l'),as=document.getElementById('aside');
+  al.innerHTML=left;al.hidden=!left;
+  as.innerHTML=side;as.hidden=!side;
+  /* modal: arka plan etkileşime kapanır (inert), kaydırma kilitlenir, odak iletişim kutusuna gider */
+  const prevKind=$modal.dataset.kind||'',ae=document.activeElement;
+  let fk=null;
+  if(ae&&$modal.contains(ae)){fk=ae.dataset.do?'[data-do="'+ae.dataset.do+'"]':ae.dataset.f?'[data-f="'+ae.dataset.f+'"][value="'+ae.value+'"]':null;}
+  const bodyEl=$modal.querySelector('.modal-body'),bodyTop=bodyEl?bodyEl.scrollTop:0;
+  $modal.innerHTML=modal;
+  const dlg=$modal.querySelector('.modal'),kind=dlg?dlg.getAttribute('aria-labelledby'):'',same=!!kind&&kind===prevKind;
+  if(kind)$modal.dataset.kind=kind;else delete $modal.dataset.kind;
+  $modal.classList.toggle('still',same); /* aynı modal yenilenirken giriş animasyonu tekrar oynamaz */
+  $app.inert=!!modal;
+  document.body.classList.toggle('modal-open',!!modal);
+  if(dlg){
+    const nb=$modal.querySelector('.modal-body');
+    if(nb&&same)nb.scrollTop=bodyTop;
+    const t=(same&&fk&&$modal.querySelector(fk))||(!same&&dlg.querySelector('[data-autofocus]'))||dlg;t.focus({preventScroll:true});
+  }
+  $app.classList.toggle('has-l',!!left);
+  $app.classList.toggle('has-r',!!side);
+  startOdo(st);
+  startLcd(st);
+  Snd.setDuck(!!modal);
+  musicScene();syncFab();
+  $app.classList.toggle('busy',Fx.busy);
+  {const m=document.querySelector('.mission[data-shrink]');
+   if(m&&st){const go=()=>{if(m.isConnected){m.classList.add('mini');st.missDone=true;}};if(REDUCED())go();else requestAnimationFrame(()=>requestAnimationFrame(go));}}
+  document.body.classList.toggle('has-dock',!!document.querySelector('.dock'));
+  document.body.dataset.screen=S.screen;
+  document.body.classList.toggle('has-bind',!!(S.st&&S.screen==='case'&&S.st.phase==='evid'));
+  {const g=st&&S.screen==='case'?(st.phase==='act'||st.phase==='compel'||st.phase==='report'||st.phase==='report_result'?'act':st.phase):'';
+   const vk=S.screen+':'+(st&&S.screen==='case'?st.d.n:'')+':'+g;
+   if(vk!==S.vk){S.vk=vk;try{window.scrollTo(0,0);}catch(e){}}}
+  pressure();
+  if(Fx.work)Fx.startSpin();
+  Radio.arrive(radioId(st));
+  Fx.apply();
+  if(st&&document.querySelector('.m-rng')){const cur=st.odoCur===undefined?st.odoTo:st.odoCur;if(cur!==undefined)Snd.setLevel(levelOf(cur));}
+  else Snd.stop();
+  const hand=document.querySelector('.hand');
+  if(hand&&st&&st.handTo!==undefined){
+    const to=st.handTo;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{hand.style.transform='rotate('+to+'deg)';st.handShown=to;}));
+  }
+}
+
+/* ───────── Olaylar ───────── */
+const H={
+  start(){
+    if(S.screen!=='intro')return;
+    const n=document.getElementById('nick');S.name=n?n.value.trim().slice(0,40):'';
+    S.sid=newId();S.t0=performance.now();S.events=[];ev('session_start',{hint:S.hint,name:S.name});
+    startCase(1);
+  },
+  act(d){if(S.st&&actionState(S.st,d.a).ok){S.sheet=null;Fx.start(d.a,()=>doAction(d.a));}},
+  actKg(d){if(S.st&&actionState(S.st,d.a).ok){S.sheet=null;Fx.start(d.a,()=>doAction(d.a,true));}},
+  wait(){S.sheet=null;Fx.start('wait',doWait);},
+  openSheet(d){S.sheet=d.s;S.sheetNew=true;render();},
+  closeSheet(){S.sheet=null;render();},
+  toastOpen(){const st=S.st;if(!st)return;st.toastOff=toastKey(st);S.sheet='clues';S.sheetNew=true;render();},
+  toggleSound(){Snd.toggle();render();},
+  openBrief(){const st=S.st;if(!st)return;st.brief=true;ev('brief_open',{});render();},
+  closeBrief(){const st=S.st;if(!st||!st.brief)return;st.brief=false;ev('brief_close',{});render();},
+  openReport(){const st=S.st;S.sheet=null;st.draft={step:1,cards:[],tone:'yumusak',inv:{kural:false,sadik:false}};st.phase='report';render();},
+  repNext(){const st=S.st;if(st.draft.step<3)st.draft.step++;render();},
+  repBack(){const st=S.st;if(st.draft.step>1)st.draft.step--;render();},
+  cancelReport(){S.st.phase='act';render();},
+  doReport(){resolveReport();render();},
+  afterReport(){const st=S.st;st.tick++;afterAdvance();render();window.scrollTo({top:0});},
+  compelYes(){const st=S.st;st.fp++;st.locked=true;st.compelDone=true;ev('compel',{aspect:st.d.compel.asp,accepted:true});st.log.push('<b>Hamle '+st.tick+'</b> · Compel kabul edildi · +1 FP, rapor kilitlendi');st.last={hamle:st.tick,action:'wait',text:'Compel kabul edildi: +1 FP kazandın, artık rapor veremezsin.',newIds:[],r0:rangeAt(st.tick),r1:rangeAt(st.tick)};st.phase='act';render();},
+  compelNo(){const st=S.st;if(st.fp<1)return;st.fp--;if(st.fp<1)st.armed=false;st.compelDone=true;ev('compel',{aspect:st.d.compel.asp,accepted:false});st.log.push('<b>Hamle '+st.tick+'</b> · Compel reddedildi · −1 FP');st.last={hamle:st.tick,action:'wait',text:'Compel reddedildi: 1 FP ödedin. Rapor hakkın duruyor.',newIds:[],r0:rangeAt(st.tick),r1:rangeAt(st.tick)};st.phase='act';render();},
+  fireGo(){
+    const st=S.st,r=st.fire.resp;if(!r)return;
+    ev('order_response',{resp:r});
+    st.missed=false;st.sabRoll=null;
+    if(r==='sabotaj'){
+      /* Yanlış çözümün tutması zar işi: 4 zar + beceri 2, zorluk 2 (yaklaşık %38 başarı). Başarırsan ilk torpido ıskalar ama tespit riski artar. */
+      const dice=roll4dF(),roll=dice.reduce((a,b)=>a+b,0),diff=2,shifts=roll+2-diff,out=outcome(shifts);
+      st.missed=shifts>=1;
+      const chance=st.missed?0.8:0.5;
+      st.sabRoll={dice,roll,diff,shifts,outcome:out,missed:st.missed,chance};
+      st.sabotage=true;st.detected=Math.random()<chance;
+      ev('sabotage_check',{dice,roll,difficulty:diff,shifts,outcome:out,missed:st.missed,detectChance:chance,detected:st.detected});
+    }
+    st.escaped=st.d.n===2&&st.reported&&r==='itiraz';
+    st.phase='post';render();window.scrollTo({top:0});
+  },
+  postGo(){
+    const st=S.st,p=st.post;
+    if(!(st.escaped||p.second)||!p.rescue||!p.ktb)return;
+    st.sunk=st.d.n===1?(!st.missed||p.second==='evet'):(!st.escaped&&p.second==='evet');
+    ev('post_fire',{second:p.second,rescue:p.rescue,ktb:p.ktb,escaped:st.escaped,sunk:st.sunk});
+    st.narr=narrLines(st);st.phase='narr';render();window.scrollTo({top:0});
+  },
+  toEvid(){
+    const st=S.st;st.cards=buildCards(st);
+    if(noDesk(st)){st.skipped=true;ev('evid_skipped',{});H.finishEvid();return;}
+    st.phase='evid';render();window.scrollTo({top:0});
+  },
+  selCard(d){
+    const st=S.st,i=st.sel.indexOf(d.id);
+    if(i>=0) st.sel.splice(i,1);else{if(st.sel.length>=2)st.sel[1]=d.id;else st.sel.push(d.id);}
+    st.lastFresh=false;render();
+  },
+  fbClose(){const st=S.st;st.fbOff=String(st.attempts.length);render();},
+  clearSel(){S.st.sel=[];S.st.lastFresh=false;render();},
+  link(){
+    const st=S.st;if(st.sel.length!==2||st.attempts.length>=ATTEMPTS)return;
+    const [a,b]=st.sel,k=pairKey(a,b),l=linkFor(st,a,b);
+    const already=st.proven.indexOf(k)>=0;
+    let ok=false,msg;
+    if(l&&!already){ok=true;msg=l.x;st.proven.push(k);st.pinfo[k]={x:l.x,captain:!!l.captain};}
+    else if(already){msg='Bu bağlantıyı zaten kurdun.';}
+    else{msg=missMsg(st,a,b);st.invalid++;}
+    st.attempts.push({a,b,ok,msg});st.lastLink={ok,msg,a,b};st.lastFresh=true;ev('link',{a,b,ok});
+    st.sel=[];render();
+  },
+  finishEvid(){
+    const st=S.st;st.result=score(st);ev('case_end',{result:st.result});
+    S.cases[st.d.n]=st;st.phase='result';saveSession();render();window.scrollTo({top:0});
+  },
+  nextCase(){startCase(2);window.scrollTo({top:0});},
+  toSurvey(){S.screen='survey';S.survey={rate:{},txt:{}};render();window.scrollTo({top:0});},
+  submitSurvey(){
+    ev('survey',S.survey);S.screen='done';S.saveMsg='';saveSession();render();window.scrollTo({top:0});
+  },
+  retrySave(){S.saveMsg='';render();saveSession();}
+};
+const onClick=e=>{
+  const b=e.target.closest('[data-do]');
+  if(!b||b.disabled)return;
+  const fn=H[b.dataset.do];if(fn)fn(b.dataset);
+};
+$app.addEventListener('click',onClick);
+try{window.matchMedia('(max-width:899px)').addEventListener('change',()=>render());}catch(e){}
+document.getElementById('sndFab').addEventListener('click',()=>H.toggleSound());
+$modal.addEventListener('click',onClick);
+/* toast: sola/sağa kaydırarak kapat */
+(function toastSwipe(){
+  let d=null;
+  $app.addEventListener('touchstart',e=>{
+    const t=e.target.closest&&e.target.closest('.toast,.panel.bind .fb');
+    if(!t||e.touches.length!==1){d=null;return;}
+    d={t,k:t.dataset.k,x0:e.touches[0].clientX,y0:e.touches[0].clientY,t0:e.timeStamp,dx:0,on:false,blocked:false,w:t.offsetWidth};
+  },{passive:true});
+  $app.addEventListener('touchmove',e=>{
+    if(!d||!d.t.isConnected)return;
+    const dx=e.touches[0].clientX-d.x0,dy=e.touches[0].clientY-d.y0;
+    if(!d.on){
+      if(d.blocked)return;
+      if(Math.abs(dy)>10&&Math.abs(dy)>Math.abs(dx)){d.blocked=true;return;}
+      if(Math.abs(dx)<8)return;
+      d.on=true;d.t.style.transition='none';d.t.classList.remove('enter');
+    }
+    e.preventDefault();d.dx=dx;
+    d.t.style.transform='translateX('+dx+'px)';d.t.style.opacity=String(Math.max(0,1-Math.abs(dx)/d.w*.9));
+  },{passive:false});
+  const end=e=>{
+    if(!d)return;const x=d;d=null;
+    if(!x.on||!x.t.isConnected)return;
+    const v=Math.abs(x.dx)/Math.max(1,e.timeStamp-x.t0),dur=REDUCED()?0:.18;
+    if(Math.abs(x.dx)>x.w*.35||(v>.6&&Math.abs(x.dx)>40)){
+      x.t.style.transition='transform '+dur+'s ease-out,opacity '+dur+'s';
+      x.t.style.transform='translateX('+(x.dx>0?'120%':'-120%')+')';x.t.style.opacity='0';
+      setTimeout(()=>{if(S.st){if(x.t.classList.contains('fb'))S.st.fbOff=x.k;else S.st.toastOff=x.k;render();}},dur*1000);
+    }else{
+      x.t.style.transition=REDUCED()?'none':'transform .2s ease-out,opacity .2s';x.t.style.transform='';x.t.style.opacity='';
+    }
+  };
+  $app.addEventListener('touchend',end);$app.addEventListener('touchcancel',end);
+})();
+/* alt sayfa: başlıktan ya da (en üstteyken) içerikten aşağı sürükleyerek kapat */
+(function sheetDrag(){
+  let d=null;
+  $app.addEventListener('touchstart',e=>{
+    const sh=e.target.closest&&e.target.closest('.sheet');
+    if(!sh||e.touches.length!==1){d=null;return;}
+    const body=sh.querySelector('.sheet-body'),head=!!e.target.closest('header');
+    d={sh,body,y0:e.touches[0].clientY,t0:e.timeStamp,dy:0,on:false,fromBody:!head&&!!body&&body.contains(e.target),h:sh.offsetHeight,back:document.querySelector('.sheet-back'),blocked:false};
+    if(d.fromBody&&body.scrollTop>0)d.blocked=true;
+  },{passive:true});
+  $app.addEventListener('touchmove',e=>{
+    if(!d||!d.sh.isConnected)return;
+    const dy=e.touches[0].clientY-d.y0;
+    if(!d.on){
+      if(d.blocked)return;
+      if(d.fromBody){
+        if(d.body.scrollTop>0||dy<-6){d.blocked=true;return;}
+        if(dy<=6)return;
+      }else if(Math.abs(dy)<6)return;
+      d.on=true;d.sh.style.transition='none';
+    }
+    e.preventDefault();
+    d.dy=Math.max(0,dy);
+    d.sh.style.transform='translateY('+d.dy+'px)';
+    if(d.back)d.back.style.opacity=String(Math.max(0,1-d.dy/d.h));
+  },{passive:false});
+  const end=e=>{
+    if(!d)return;const x=d;d=null;
+    if(!x.on||!x.sh.isConnected)return;
+    const v=x.dy/Math.max(1,e.timeStamp-x.t0),dur=REDUCED()?0:.18;
+    if(x.dy>x.h*.3||(v>.6&&x.dy>40)){
+      x.sh.style.transition='transform '+dur+'s ease-out';x.sh.style.transform='translateY(100%)';
+      if(x.back){x.back.style.transition='opacity '+dur+'s';x.back.style.opacity='0';}
+      setTimeout(()=>{if(S.sheet)H.closeSheet();},dur*1000);
+    }else{
+      x.sh.style.transition=REDUCED()?'none':'transform .2s ease-out';x.sh.style.transform='';
+      if(x.back){x.back.style.transition=REDUCED()?'none':'opacity .2s';x.back.style.opacity='';}
+    }
+  };
+  $app.addEventListener('touchend',end);$app.addEventListener('touchcancel',end);
+})();
+/* odak tuzağı: Tab yalnız iletişim kutusunun içinde döner */
+document.addEventListener('keydown',e=>{
+  const dlg=$modal.querySelector('.modal');
+  if(!dlg&&S.sheet&&e.key==='Escape'){e.preventDefault();H.closeSheet();return;}
+  if(!dlg)return;
+  if(e.key==='Escape'){const fn=H[dlg.dataset.esc];if(fn){e.preventDefault();fn({});}return;}
+  if(e.key!=='Tab')return;
+  const f=[...dlg.querySelectorAll('button:not(:disabled),input:not(:disabled),textarea:not(:disabled),select:not(:disabled)')];
+  if(!f.length){e.preventDefault();dlg.focus();return;}
+  const first=f[0],last=f[f.length-1],cur=document.activeElement;
+  if(!dlg.contains(cur)){e.preventDefault();(e.shiftKey?last:first).focus();}
+  else if(e.shiftKey&&(cur===first||cur===dlg)){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&cur===last){e.preventDefault();first.focus();}
+});
+$app.addEventListener('submit',e=>{
+  const f=e.target.closest('form[data-form]');
+  if(!f)return;
+  e.preventDefault();
+  const fn=H[f.dataset.form];if(fn)fn();
+});
+const onChange=e=>{
+  const t=e.target,f=t.dataset.f,st=S.st;
+  if(!f)return;
+  if(f==='card'){const d=st.draft,i=d.cards.indexOf(t.value);if(t.checked&&i<0)d.cards.push(t.value);if(!t.checked&&i>=0)d.cards.splice(i,1);render();}
+  else if(f==='tone'){st.draft.tone=t.value;if(t.value!=='yumusak')st.draft.inv.sadik=false;render();}
+  else if(f==='inv'){st.draft.inv[t.value]=t.checked;render();}
+  else if(f==='resp'){st.fire.resp=t.value;render();}
+  else if(f==='second'||f==='rescue'||f==='ktb'){st.post[f]=t.value;render();}
+  else if(f==='rate'){S.survey.rate[t.dataset.k]=Number(t.value);}
+};
+$app.addEventListener('change',onChange);
+$modal.addEventListener('change',onChange);
+$app.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.dataset.f==='txt'){S.survey.txt[t.dataset.k]=t.value;}
+  else if(t.id==='nick'){const tg=document.getElementById('tagName');if(tg)tg.textContent=t.value.trim()||'Adsız';}
+});
+
+/* ───────── Başlangıç ───────── */
+(function init(){
+  const h=(location.hash||'').replace('#','');
+  const tk=h.split(',');
+  S.hint=tk.indexOf('nohint')>=0?false:tk.indexOf('hint')>=0?true:Math.random()<0.5;
+  render();
+  try{const n=document.getElementById('nick');if(n&&window.matchMedia('(pointer:fine)').matches)n.focus({preventScroll:true});}catch(e){}
+  window.__XB={Fx,Radio,pairsFor,noDesk,reportOdds,linkFor,Mus,Snd,Crew,S,CASES,H,stageInfo,actionState,score,rangeAt,effRel,label};
+})();
+})();
+</script>
