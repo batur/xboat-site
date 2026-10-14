@@ -35,7 +35,11 @@ async function saveSession(request, env) {
 
 async function exportAll(request, env) {
   const key = new URL(request.url).searchParams.get('key') || request.headers.get('x-admin-key') || '';
-  if (!env.ADMIN_KEY || key !== env.ADMIN_KEY) return json({ ok: false, error: 'unauthorized' }, 401);
+  if (!env.ADMIN_KEY || key !== env.ADMIN_KEY) {
+    // GEÇİCİ TANILAMA: anahtarı açığa vurmaz; işi bitince kaldırılacak
+    const dbg = new URL(request.url).searchParams.get('debug') ? { keySet: !!env.ADMIN_KEY, gotLen: key.length, expectedLen: env.ADMIN_KEY ? String(env.ADMIN_KEY).length : 0 } : {};
+    return json({ ok: false, error: 'unauthorized', ...dbg }, 401);
+  }
   await ensureTable(env);
   const { results } = await env.DB.prepare('SELECT sid,name,started_at,updated_at,data FROM sessions ORDER BY updated_at DESC').all();
   return json({ ok: true, count: results.length, sessions: results.map(r => ({ ...r, data: JSON.parse(r.data) })) });
