@@ -2,7 +2,7 @@
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0a1114"></head><body style="margin:0">
 <title>X-Boat Tanımlama Testi</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Special+Elite&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap">
 <style>:root{
   /* akışkan yazı ölçeği: 320 px genişlikte alt sınır, 900 px ve üstünde masaüstü değeri */
   --f11_5:clamp(0.656250rem,calc(0.621767rem + 0.172414vw),0.718750rem);
@@ -28,35 +28,23 @@
   --f-tick:clamp(0.875000rem,calc(0.737069rem + 0.689655vw),1.125000rem);
 }
 
-/* Düzen: sol aside eylemler, orta main durum ve periskop, sağ aside ipuçları.
-   Palet: denizci haritası (gri-yeşil kâğıt), pirinç aletler, mürekkep siyahı, kırmızı damga.
-   Tipografi: Stardos Stencil (sandık yazısı) başlıklar, Special Elite (daktilo) belgeler, Plex Sans gövde, Plex Mono veri. */
+/* Tema: Obra Dinn x Papers Please. Karanlık denizaltı, tek lamba, piksel yazı, sert kenar. Kâğıt kartlar masada kalır. */
+@font-face{font-family:'Pixelify Sans';font-weight:700;font-display:swap;src:url(fonts/pixelify-sans-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122}
+@font-face{font-family:'Pixelify Sans';font-weight:400;font-display:swap;src:url(fonts/pixelify-sans-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Pixelify Sans';font-weight:400 700;font-display:swap;src:url(fonts/pixelify-sans-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+02E5-02EB,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'VT323';font-weight:400;font-display:swap;size-adjust:118%;src:url(fonts/vt323-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'VT323';font-weight:400;font-display:swap;size-adjust:118%;src:url(fonts/vt323-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+02E5-02EB,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 :root{
-  --bg:#d5d9c8; --grid:#c7ccb9; --surface:#e3e6d6; --ink:#151c19; --muted:#4a554e; --line:#9aa190; --chip:#cbd1bd;
-  --accent:#7a5612; --accent-ink:#fbf3dc; --brass-hi:#dcb85e; --brass-dk:#4d3607;
-  --steel:#2d4955; --warn:#8b2a22; --ok:#35603a; --amber:#7a4f08;
-  --card:#ece3c6; --card-ink:#1e1b13; --card-line:#bdb28b;
-  --info:#1d4f73; --info-bg:#dae7ee; --info-line:#8fb2c7;
-  --font-ui:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --font-doc:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
-  --font-display:'Stardos Stencil','Arial Narrow',Impact,sans-serif;
+  color-scheme:dark;
+  --bg:#080e11; --grid:#0c1519; --surface:#0f1a1e; --ink:#cfc7a8; --muted:#8a9890; --line:#2e4147; --chip:#162428;
+  --accent:#c79a3c; --accent-ink:#140e03; --brass-hi:#e6c46a; --brass-dk:#5a4210;
+  --steel:#6fa3b5; --warn:#d3553f; --ok:#7fae7c; --amber:#e0a84a;
+  --card:#d9d1b2; --card-ink:#1d1a12; --card-line:#a79d78;
+  --info:#8cc3e3; --info-bg:#0e2129; --info-line:#2f5a6e;
+  --font-ui:'VT323','Courier New',ui-monospace,monospace;
+  --font-doc:'VT323','Courier New',ui-monospace,monospace;
+  --font-display:'Pixelify Sans','VT323',monospace;
   --font-type:'Special Elite','Courier New',Courier,monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0a1114; --grid:#0f1a1e; --surface:#121c20; --ink:#d9ddcd; --muted:#8e9c93; --line:#2b3b40; --chip:#1b2a2f;
-    --accent:#d4a947; --accent-ink:#1a1305; --brass-hi:#f0d98a; --brass-dk:#6a4d0f;
-    --steel:#76a6b5; --warn:#e2705e; --ok:#86bb84; --amber:#e0b050;
-    --card:#d9d1b2; --card-ink:#1d1a12; --card-line:#b2a87e; color-scheme:dark;
-    --info:#8cc3e3; --info-bg:#11252e; --info-line:#2f5a6e;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0a1114; --grid:#0f1a1e; --surface:#121c20; --ink:#d9ddcd; --muted:#8e9c93; --line:#2b3b40; --chip:#1b2a2f;
-  --accent:#d4a947; --accent-ink:#1a1305; --brass-hi:#f0d98a; --brass-dk:#6a4d0f;
-  --steel:#76a6b5; --warn:#e2705e; --ok:#86bb84; --amber:#e0b050;
-  --card:#d9d1b2; --card-ink:#1d1a12; --card-line:#b2a87e; color-scheme:dark;
-  --info:#8cc3e3; --info-bg:#11252e; --info-line:#2f5a6e;
 }
 *{box-sizing:border-box}
 body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:36px 36px;color:var(--ink);font:var(--f15)/1.5 var(--font-ui);
@@ -777,6 +765,40 @@ body.alert2 .scope{animation-duration:.45s}
   .panel.bind.done>.eyebrow{display:block}
   .panel.bind.done .big{width:100%;min-height:48px}
 }
+
+/* ===== Piksel tema geçişi ===== */
+svg.dial,svg.hydro{shape-rendering:crispEdges}
+svg.dial *,svg.hydro *{transition:none!important}
+
+html{-webkit-font-smoothing:none;font-smooth:never}
+body{background-image:linear-gradient(rgba(0,0,0,.18) 1px,transparent 1px),radial-gradient(ellipse at 50% 30%,#0f1b20 0%,var(--bg) 70%);background-size:100% 3px,100% 100%;font-size:calc(var(--f15)*1.12);line-height:1.35;letter-spacing:.2px}
+body{--press:0}
+body::before{content:"";position:fixed;inset:0;z-index:49;pointer-events:none;background:radial-gradient(ellipse at center,transparent calc(60% - var(--press)*28%),rgba(0,0,0,calc(.5 + var(--press)*.35)) 100%)}
+.pxs img{filter:brightness(calc(1 - var(--press)*.3)) contrast(calc(1 + var(--press)*.35))}
+*:not(input[type=radio]):not(input[type=checkbox]){border-radius:0!important}
+h1,h2,h3,.eyebrow,button,.tag{font-family:var(--font-display);letter-spacing:.3px}
+h1,h2,h3{font-weight:700;text-transform:none}
+button{border:2px solid var(--line);background:var(--chip);box-shadow:2px 2px 0 #000;transition:none;font-weight:400}
+button:hover:not(:disabled){border-color:var(--accent);background:#1d3036}
+button:active:not(:disabled){transform:translate(2px,2px);box-shadow:none}
+button.card,button.card:hover:not(:disabled){background-color:var(--card);color:var(--card-ink)}
+button.card:hover:not(:disabled){border-color:var(--accent);transform:translate(-1px,-1px)}
+button.primary{background:var(--accent);border-color:var(--brass-hi);color:var(--accent-ink);font-weight:700}
+button.primary:hover:not(:disabled){background:var(--brass-hi)}
+input[type=text],textarea{border:2px solid var(--line);background:#0a1316}
+.panel{border:2px solid var(--line);box-shadow:4px 4px 0 #000}
+.card{box-shadow:3px 3px 0 #000;border-width:2px}
+.tag{border-width:2px}
+.opt input{border-radius:0!important}
+.pxs{position:relative;width:198px;max-width:100%;aspect-ratio:1;margin:0 auto;background:#05090b;box-shadow:4px 4px 0 #000}
+.pxs img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;display:block}
+.pxs .pb{animation:pxflip 1.6s steps(1) infinite}
+@keyframes pxflip{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+.pxs .pb{opacity:0}
+body.alert .pxs img{filter:sepia(1) saturate(5) hue-rotate(-35deg) brightness(.9)}
+@container mission (max-width:520px){.pxs{width:132px}}
+@media (max-width:899px){.pxs{width:132px}}
+@media (prefers-reduced-motion:reduce){.pxs .pb{animation:none;opacity:0}}
 </style>
 
 <div id="app"><aside id="aside-l" aria-label="Eylemler" hidden></aside><main id="main"></main><aside id="aside" aria-label="İpuçların ve aspect’lerin" hidden></aside></div>
@@ -878,18 +900,18 @@ const SHIPS={
 /* animasyon fazı duvar saatine bağlı: yeniden çizimde (render) hareket baştan başlamaz, kaldığı yerden sürer */
 const animPhase=p=>'animation-duration:'+p+'s;animation-delay:-'+(((Date.now()/1000)%p)).toFixed(2)+'s';
 function scopeWave(y,amp,w){let d='M'+(-2*w)+' '+y;for(let x=-2*w;x<=220+w;x+=w)d+=' q'+(w/2)+' '+(-amp)+' '+w+' 0';return d+' V240 H'+(-2*w)+'Z';}
-function scopeHtml(n,range,vis){
+function scopeSvg(n,range,vis,fr){
   const night=n===2;
   const s=Math.max(.35,Math.min(1.3,.35+.85*(4200-range)/3000));
-  const sky=night?['#04080b','#1b2a32']:['#27384a','#c88b52'];
-  const sea=night?'#060b0e':'#16262d',ship=night?'#020405':'#090f12';
+  const sky=night?['#0a1217','#3a5560']:['#3a5468','#e0b078'];
+  const sea=night?'#0d1a1f':'#2a4a54',ship=night?'#000':'#04070a';
   const ty=120+(s-.35)*10;
   let stars='';
   if(night)[[30,30],[70,55],[95,25],[130,45],[160,28],[185,60],[50,80],[150,85]].forEach(a=>{stars+='<circle cx="'+a[0]+'" cy="'+a[1]+'" r="1" fill="#cfd8d4" opacity=".7"/>';});
   let ticks='';for(let x=40;x<=180;x+=14)ticks+='M'+x+' 117v6';
   const haze=Math.min(.4,(1-vis)*1.2);
-  return '<figure class="scope"><svg viewBox="0 0 220 220" role="img" aria-label="Periskop görüntüsü, hedef '+range+' metrede"><defs><clipPath id="scl"><circle cx="110" cy="110" r="100"/></clipPath><linearGradient id="scs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+sky[0]+'"/><stop offset="1" stop-color="'+sky[1]+'"/></linearGradient></defs>'
-   +'<g clip-path="url(#scl)"><g class="sc-swell" style="'+animPhase(7.3)+'"><g class="sc-chop" style="'+animPhase(2.9)+'"><rect width="220" height="220" fill="url(#scs)"/>'+stars
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220"><defs><clipPath id="scl"><circle cx="110" cy="110" r="100"/></clipPath><linearGradient id="scs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+sky[0]+'"/><stop offset="1" stop-color="'+sky[1]+'"/></linearGradient></defs>'
+   +'<g clip-path="url(#scl)"><g transform="translate(0 '+(fr?3:0)+')"><g transform="translate(0 '+(fr?-3:0)+')"><rect width="220" height="220" fill="url(#scs)"/>'+stars
    +(night?'':'<ellipse cx="60" cy="118" rx="80" ry="16" fill="#f0bb80" opacity=".35"/>')
    +'<rect y="120" width="220" height="100" fill="'+sea+'"/>'
    +'<g class="sc-gl" style="'+animPhase(5.1)+'"><path d="M20 140h30M90 150h40M150 135h36" stroke="#8aa0a6" stroke-opacity=".2" stroke-width="1.5"/></g>'
@@ -899,8 +921,38 @@ function scopeHtml(n,range,vis){
    +'<path class="sc-w" style="--w:40px;'+animPhase(2.6)+'" d="'+scopeWave(ty+5,6,40)+'" fill="'+sea+'" stroke="#9fb3b3" stroke-opacity=".22" stroke-width="1"/>'
    +'<rect y="70" width="220" height="60" fill="'+sky[1]+'" opacity="'+haze.toFixed(2)+'"/></g></g>'
    +'<path d="M10 120H210" stroke="#ecdfa8" stroke-opacity=".7" stroke-width="1"/><path d="M110 10V210" stroke="#ecdfa8" stroke-opacity=".3" stroke-width="1"/><path d="'+ticks+'" stroke="#ecdfa8" stroke-opacity=".7" stroke-width="1"/></g>'
-   +'<circle cx="110" cy="110" r="100" fill="none" stroke="#0b1013" stroke-width="9"/><circle cx="110" cy="110" r="105" fill="none" stroke="#b08a3a" stroke-width="1.5"/></svg>'
-   +'</figure>';
+   +'<circle cx="110" cy="110" r="100" fill="none" stroke="#0b1013" stroke-width="9"/></svg>';
+}
+/* piksel periskop: SVG -> 66x66 -> 4 tonlu Bayer dither -> önbellek (iki kare, CSS steps ile oynar) */
+const PX={},BAY=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
+function scopePal(night,alert){return night?[[5,9,11],[16,30,34],[44,78,86],[120,160,160]]:[[8,14,17],[26,48,54],[72,118,126],[207,199,168]];}
+function pixRender(svg,night,cb){
+  const im=new Image();
+  im.onload=()=>{try{
+    const N=66,c=document.createElement('canvas');c.width=c.height=N;const x=c.getContext('2d',{willReadFrequently:true});
+    x.imageSmoothingEnabled=true;x.drawImage(im,0,0,N,N);
+    const d=x.getImageData(0,0,N,N),px=d.data,pal=scopePal(night);
+    for(let j=0;j<N;j++)for(let i=0;i<N;i++){
+      const o=(j*N+i)*4,dx=i+.5-N/2,dy=j+.5-N/2,r=Math.sqrt(dx*dx+dy*dy);
+      if(r>N/2){px[o+3]=0;continue}
+      if(r>N/2-2){const t=r>N/2-1?[11,16,19]:[176,138,58];px[o]=t[0];px[o+1]=t[1];px[o+2]=t[2];px[o+3]=255;continue}
+      let l=(px[o]*.3+px[o+1]*.59+px[o+2]*.11)/255;
+      l=Math.min(1,Math.max(0,(l-.04)*1.35));
+      const v=l*3+(BAY[(j&3)*4+(i&3)]/16-.5)*.9;
+      const k=Math.max(0,Math.min(3,Math.round(v))),t=pal[k];
+      px[o]=t[0];px[o+1]=t[1];px[o+2]=t[2];px[o+3]=255;
+    }
+    x.putImageData(d,0,0);cb(c.toDataURL('image/png'));
+  }catch(e){}};
+  im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+function scopeHtml(n,range,vis){
+  const k=n+'|'+Math.round(range/40)+'|'+vis.toFixed(2),night=n===2;
+  let e=PX[k];
+  if(!e){e=PX[k]={a:'',b:''};
+    pixRender(scopeSvg(n,range,vis,0),night,u=>{e.a=u;document.querySelectorAll('.scope [data-k="'+k+'"].pa').forEach(i=>i.src=u)});
+    pixRender(scopeSvg(n,range,vis,1),night,u=>{e.b=u;document.querySelectorAll('.scope [data-k="'+k+'"].pb').forEach(i=>i.src=u)});}
+  return '<figure class="scope"><div class="pxs" role="img" aria-label="Periskop görüntüsü, hedef '+range+' metrede"><img class="pa" data-k="'+k+'" alt="" src="'+e.a+'"><img class="pb" data-k="'+k+'" alt="" src="'+e.b+'"></div></figure>';
 }
 function waveD(y,amp,w){let d='M0 '+y;for(let x=0;x<=960+2*w;x+=w)d+=' q'+(w/2)+' '+(-amp)+' '+w+' 0';return d+' V240 H0Z';}
 function heroHtml(){
@@ -1556,6 +1608,8 @@ function pressure(){
     const rem=st.d.fireTick-st.tick;
     lv=rem<=1?2:rem<=2?1:0;
   }
+  let pr=0;if(S.screen==='case'&&st&&st.d&&st.phase!=='evid'&&st.phase!=='result')pr=Math.max(0,Math.min(1,(st.tick-1)/Math.max(1,st.d.fireTick-1)));
+  document.body.style.setProperty('--press',pr.toFixed(2));
   document.body.classList.toggle('alert',lv>=1);
   document.body.classList.toggle('alert2',lv>=2);
   Snd.setHeart(lv===2?92:lv===1?64:0);
