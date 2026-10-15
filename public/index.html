@@ -2,7 +2,6 @@
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0a1114"></head><body style="margin:0">
 <title>X-Boat Tanımlama Testi</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap">
 <style>:root{
   /* akışkan yazı ölçeği: 320 px genişlikte alt sınır, 900 px ve üstünde masaüstü değeri */
   --f11_5:clamp(0.656250rem,calc(0.621767rem + 0.172414vw),0.718750rem);
@@ -44,7 +43,7 @@
   --font-ui:'VT323','Courier New',ui-monospace,monospace;
   --font-doc:'VT323','Courier New',ui-monospace,monospace;
   --font-display:'Pixelify Sans','VT323',monospace;
-  --font-type:'Special Elite','Courier New',Courier,monospace;
+  --font-type:'VT323','Courier New',Courier,monospace;
 }
 *{box-sizing:border-box}
 body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:36px 36px;color:var(--ink);font:var(--f15)/1.5 var(--font-ui);
@@ -806,6 +805,19 @@ body.alert .pxs img{filter:sepia(1) saturate(5) hue-rotate(-35deg) brightness(.9
 @container mission (max-width:520px){.pxs{width:132px}}
 @media (max-width:899px){.pxs{width:132px}}
 @media (prefers-reduced-motion:reduce){.pxs .pb{animation:none;opacity:0}}
+/* ===== Piksel çerçeveler (9 dilim, 2 px piksel) ===== */
+.panel,.meter,.help:not(.info),.notice,.dossier,.tile,.dec,.modal,.sheet,.radio,.last,.asp,.slots,.fb,.hero{border:4px solid transparent!important;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAQElEQVR4nGNkYGBgsA1P+M8ABYdXLmBkhAmc27ONwcjFi4GBgYGBCSbAws7BcG7PNoSgkYsXw5+fP+AqGbGZCQCN1RX7aaVYuAAAAABJRU5ErkJggg==) 2 / 4px stretch!important;background-clip:padding-box!important;box-shadow:none!important}
+.help.info,.cap-nudge{border:4px solid transparent!important;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAQElEQVR4nGNkYGBgMM1q+s8ABaen1TEywgSurp7JoB2azsDAwMDABBNg4eFjuLp6JkJQOzSd4c+XT3CVjNjMBACaMhYorYYZZAAAAABJRU5ErkJggg==) 2 / 4px stretch!important;background-clip:padding-box!important;box-shadow:none!important}
+.card{border:4px solid transparent!important;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAPElEQVR4nGNkYGBgkBIX+M8ABc9efmBkgglcObeJAaaACSbw+s0HuASDlLjAfylxgf/vnh76D2MzYjMTAHjyHN6o9qP5AAAAAElFTkSuQmCC) 2 / 4px stretch!important;background-clip:padding-box!important;box-shadow:none!important}
+.card.sel,.card.new,.card.linked{border:4px solid transparent!important;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAQElEQVR4nGNkYGBgOD7L5j8DFFimHWFkhAnoeqQwXN4xh4GBgYGBCSbw9L0Qg65HCkLw8o45DNKC7+AqGbGZCQC6ShakQ6aNdgAAAABJRU5ErkJggg==) 2 / 4px stretch!important;background-clip:padding-box!important;box-shadow:none!important}
+button:not(.act):not(.card):not(.snd):not(.primary):not(.snd-fab):not(.kg){border:4px solid transparent!important;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAQElEQVR4nGNkYGBg8Eor+M8ABdtmTWBkhAmc2LWVwcLNm4GBgYGBCSbAwsLMcGLXVoSghZs3w58/f+EqGbGZCQCdxBYn/x2uWAAAAABJRU5ErkJggg==) 2 / 4px stretch!important;background-clip:padding-box!important;box-shadow:none!important}
+button.primary{border:4px solid transparent!important;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAQUlEQVR4nGNkYGBgiHIS+M8ABcv2fWBkggn0NEUxwBQwwQQeXrsEl2BiYGBgKKlbxiCvpcdQUreMgYGBgYERm5kAeqgVx2m1Bo8AAAAASUVORK5CYII=) 2 / 4px stretch!important;background-clip:padding-box!important;box-shadow:none!important}
+input[type=text],textarea{border:4px solid transparent!important;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAQElEQVR4nGNkYGBgsA1P+M8ABYdXLmBkhAmc2LSawcIvlIGBgYGBCSbAysXNcGLTaoSghV8ow+9vX+EqGbGZCQCJjhX7f1a6vQAAAABJRU5ErkJggg==) 2 / 4px stretch!important;background-clip:padding-box!important;box-shadow:none!important}
+.card{background-image:none!important}
+.help.info,.cap-nudge{box-shadow:none!important}
+button.card:hover:not(:disabled){transform:translate(-1px,-1px)}
+button:active:not(:disabled){transform:translate(2px,2px)}
+.clock-body{flex-wrap:nowrap!important}
 </style>
 
 <div id="app"><aside id="aside-l" aria-label="Eylemler" hidden></aside><main id="main"></main><aside id="aside" aria-label="İpuçların ve aspect’lerin" hidden></aside></div>
