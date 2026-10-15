@@ -371,7 +371,7 @@ button.primary.big{padding:12px 22px;font-size:var(--f16);min-height:46px}
 .m-rng .k{justify-content:center}
 
 /* büyük kadranlar: kartın içine sığan en büyük boyut */
-:root{--dial-size:196px;--hydro-size:232px}
+:root{--dial-size:192px;--hydro-size:224px}
 .clock{padding:6px 8px 7px;gap:3px}
 .clock-body{gap:4px;min-height:0}
 .clock .dial{width:var(--dial-size);height:var(--dial-size);flex:none}
@@ -614,7 +614,7 @@ body.alert2 .scope{animation-duration:.45s}
   .m-rng .k,.clock .k{font-size:9.5px;letter-spacing:.06em;padding:0 26px;text-align:center}
 }
 @media (max-width:640px){
-  :root{--dial-size:112px;--hydro-size:128px}
+  :root{--dial-size:96px;--hydro-size:112px}
   .mission .quote{font-size:var(--f17)}
   .clock{padding:6px 4px 8px}
   .clock-body{flex-direction:column;justify-content:center;align-items:center;gap:6px}
@@ -656,7 +656,7 @@ body.alert2 .scope{animation-duration:.45s}
 }
 /* alçak ekran (kısa telefon / yatay): dikey alan tasarrufu */
 @media (max-width:899px) and (max-height:700px){
-  :root{--dial-size:92px;--hydro-size:104px}
+  :root{--dial-size:96px;--hydro-size:112px}
   .scope svg{max-width:clamp(84px,34cqw,132px)}
   .mission-grid{grid-template-columns:minmax(0,1fr) clamp(84px,34cqw,132px)}
   .dk{min-height:42px;padding-top:6px;padding-bottom:6px}
@@ -767,8 +767,15 @@ body.alert2 .scope{animation-duration:.45s}
 }
 
 /* ===== Piksel tema geçişi ===== */
-svg.dial,svg.hydro{shape-rendering:crispEdges}
-svg.dial *,svg.hydro *{transition:none!important}
+.dial,.hydro{image-rendering:pixelated;display:block}
+.dial .seg{stroke-width:12px}
+.dial .hand path{stroke-width:4px!important;stroke-linecap:butt!important}
+.dial .hand{transition:transform .7s steps(8,end)}
+.hydro path[stroke-linecap]{stroke-width:3px!important;stroke-linecap:butt!important}
+.hydro circle,.dial circle{stroke-width:3px}
+.hydro text{font-family:var(--font-display)!important;font-size:9px}
+.lcd,.odo i{border-width:2px;box-shadow:2px 2px 0 #000;font-family:var(--font-display)}
+.meter .odo .strip b{font-family:var(--font-display)}
 
 html{-webkit-font-smoothing:none;font-smooth:never}
 body{background-image:linear-gradient(rgba(0,0,0,.18) 1px,transparent 1px),radial-gradient(ellipse at 50% 30%,#0f1b20 0%,var(--bg) 70%);background-size:100% 3px,100% 100%;font-size:calc(var(--f15)*1.12);line-height:1.35;letter-spacing:.2px}
@@ -1282,11 +1289,7 @@ function clockHtml(st){
   st.lcdTo=sec;
   const top=pt(0,R+13);
   return '<div class="meter clock'+(urgent?' urgent':'')+'" tabindex="0"><span class="k">'+ico('wait')+'Ateşe kalan süre</span>'
-   +'<div class="clock-body"><svg class="dial" viewBox="0 0 140 140" role="img" aria-label="Geri sayım saati: '+fmtTime(sec)+' kaldı"><circle cx="70" cy="70" r="67" fill="var(--dial)" stroke="var(--brass-dk)" stroke-width="2"/><circle cx="70" cy="70" r="64" fill="none" stroke="var(--brass-hi)" stroke-opacity=".6" stroke-width="1"/>'
-   +segs+'<path d="'+marks+'" stroke="var(--dial-ink)" stroke-opacity=".5" stroke-width="1" fill="none"/>'
-   +'<path d="M'+top[0]+' '+(Number(top[1])+2)+'l-4.5 -8h9z" fill="var(--warn)"/>'
-   +'<g class="hand" style="transform:rotate('+st.handShown+'deg)"><path d="M70 82V22" stroke="var(--dial-ink)" stroke-width="2" stroke-linecap="round"/><path d="M70 82V86" stroke="var(--dial-ink)" stroke-width="4" stroke-linecap="round"/></g>'
-   +'<circle cx="70" cy="70" r="4.5" fill="var(--brass-hi)" stroke="var(--brass-dk)"/></svg>'
+   +'<div class="clock-body"><canvas class="dial pxd" width="96" height="96" role="img" aria-label="Geri sayım saati: '+fmtTime(sec)+' kaldı" data-n="'+N+'" data-sp="'+spent+'" data-lv="'+(live?1:0)+'" data-u="'+(urgent?1:0)+'" data-hand="'+Math.round(st.handShown)+'" data-to="'+Math.round(to)+'"></canvas>'
    +'<div class="clock-txt"><b class="lcd" aria-live="off">'+fmtTime(Math.max(0,Math.round(lcdShown)))+'</b><span class="sub">'+(remain>0?remain+' hamle kaldı. Her hamle '+SEC+' saniye. Süre bitince kaptan ateş eder.':'Süre doldu. Kaptan ateş etti.')+'</span></div></div></div>';
 }
 
@@ -1648,8 +1651,7 @@ document.addEventListener('visibilitychange',()=>{Crew.sync();if(!Snd.ctx)return
 function paintOdo(v){
   document.querySelectorAll('.odo .strip').forEach(el=>{el.style.transform=stripY(v,Number(el.dataset.k));});
   const l=levelOf(v);
-  const lobe=document.getElementById('hlobe');if(lobe)lobe.setAttribute('d',lobePath(l));
-  const hy=document.getElementById('hydro');if(hy)hy.style.setProperty('--j',jitOf(l));
+  const hy=document.getElementById('hydro');if(hy){hy.dataset.l=l;hy.dataset.j=jitOf(l);}
   if(hy)Snd.setLevel(l);
   const n=Math.round(l*8);
   document.querySelectorAll('.lvl-bars i').forEach((e,i)=>e.classList.toggle('on',i<n));
@@ -1696,11 +1698,7 @@ function rangeCard(st){
   const bars=Array.from({length:8},(_,i)=>'<i'+(i<n?' class="on"':'')+'></i>').join('');
   return '<div class="meter m-rng" tabindex="0"><span class="k">'+ico('hphone')+'Hidrofon · tahmini mesafe</span>'
    +(Snd.AC?'<button type="button" class="snd'+(Snd.on?'':' off')+'" data-do="toggleSound" aria-pressed="'+Snd.on+'" aria-label="Ses (pervane ve müzik): '+(Snd.on?'açık. Kapatmak için tıkla':'kapalı. Açmak için tıkla')+'" title="Ses (pervane ve müzik) '+(Snd.on?'açık':'kapalı')+'">'+ico(Snd.on?'spk':'spkoff','sm')+'</button>':'')+'<div class="rng-body">'
-   +'<svg class="hydro" id="hydro" style="--j:'+jitOf(l)+'" viewBox="0 0 120 120" role="img" aria-label="Hidrofon kadranı: hedef yönü '+br+' derece"><circle cx="60" cy="60" r="58" fill="var(--dial)" stroke="var(--brass-dk)" stroke-width="2"/><circle cx="60" cy="60" r="50" fill="none" stroke="var(--dial-ink)" stroke-opacity=".25" stroke-width=".8"/>'
-   +'<path d="'+ticks+'" stroke="var(--dial-ink)" stroke-opacity=".6" stroke-width=".9" fill="none"/>'
-   +'<g font-size="7" fill="var(--dial-ink)" opacity=".8" text-anchor="middle" font-family="IBM Plex Mono,monospace"><text x="60" y="38">0</text><text x="85" y="63">90</text><text x="60" y="88">180</text><text x="35" y="63">270</text></g>'
-   +'<g transform="rotate('+br+' 60 60)"><g class="jit-a" style="'+animPhase(3.1)+'"><g class="jit-b" style="'+animPhase(.62)+'"><path id="hlobe" d="'+lobePath(l)+'" fill="var(--brass-hi)" opacity=".3"/><path d="M60 60V12" stroke="var(--brass-hi)" stroke-width="1.6" stroke-linecap="round"/><path d="M60 6l-3.6 7.5h7.2z" fill="var(--brass-hi)"/></g></g></g>'
-   +'<circle cx="60" cy="60" r="9" fill="none" stroke="var(--brass-hi)" stroke-opacity=".6" stroke-width="1"/><circle cx="60" cy="60" r="3.6" fill="var(--brass-hi)" stroke="var(--brass-dk)" stroke-width=".8"/></svg>'
+   +'<canvas class="hydro pxd" id="hydro" width="112" height="112" role="img" aria-label="Hidrofon kadranı: hedef yönü '+br+' derece" data-l="'+l+'" data-br="'+br+'" data-j="'+jitOf(l)+'"></canvas>'
    +'<div class="odo-wrap"><span class="eyebrow">Yön '+brg+'°</span><div class="odo" role="img" aria-label="'+target+' metre">'+digitsHtml(rng)+'<span class="u">m</span></div>'
    +'<div class="lvl" role="img" aria-label="Pervane sesi şiddeti"><span class="lvl-k">Ses</span><span class="lvl-bars">'+bars+'</span></div>'
    +'<span class="sub">Mesafe pervane sesinden kestirilir. Hedef yaklaştıkça ses güçlenir. Her hamlede 300 m kapanır. Sağ üstteki düğme pervane sesini açar ya da kapatır.</span></div></div></div>';
@@ -2185,12 +2183,82 @@ function render(){
   Fx.apply();
   if(st&&document.querySelector('.m-rng')){const cur=st.odoCur===undefined?st.odoTo:st.odoCur;if(cur!==undefined)Snd.setLevel(levelOf(cur));}
   else Snd.stop();
-  const hand=document.querySelector('.hand');
-  if(hand&&st&&st.handTo!==undefined){
-    const to=st.handTo;
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{hand.style.transform='rotate('+to+'deg)';st.handShown=to;}));
-  }
+  if(st&&st.handTo!==undefined)st.handShown=st.handTo;
+  stepDials();
 }
+
+/* ───────── Piksel kadranlar: ızgaraya elle çizilir (canvas), tam sayı katıyla büyütülür ───────── */
+const DP={bg:[22,32,35],rim:[70,52,14],rimhi:[150,118,48],dim:[40,54,58],hi:[230,196,106],bone:[207,199,168],red:[211,85,63],mark:[104,116,108],lobe:[104,88,48],ink:[207,199,168]};
+const GL={0:'111101101101111',1:'010110010010111',2:'111001111100111',3:'111001111001111',4:'101101111001001',5:'111100111001111',6:'111100111101111',7:'111001001010010',8:'111101111101111',9:'111101111001111'};
+function pxMake(cv,base){const N=cv.width,k=N/base,x=cv.getContext('2d'),im=x.createImageData(N,N),d=im.data;
+  return {N,k,set(i,j,c){i=Math.round(i);j=Math.round(j);if(i<0||j<0||i>=N||j>=N)return;const o=(j*N+i)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=255;},
+   line(a,r0,r1,col,th){const sa=Math.sin(a*Math.PI/180),ca=Math.cos(a*Math.PI/180),h=N/2,st=.35;for(let t=r0*k;t<=r1*k;t+=st){const px=h+t*sa-.5,py=h-t*ca-.5;this.set(px,py,col);for(let q=1;q<th*k;q++){if(Math.abs(sa)<Math.abs(ca))this.set(px+q,py,col);else this.set(px,py+q,col);}}},
+   text(str,cx,cy,col,sc){sc=sc||k;const w=(str.length*4-1)*sc,x0=Math.round(cx*k-w/2),y0=Math.round(cy*k-2.5*sc);for(let q=0;q<str.length;q++){const g=GL[str[q]];for(let p=0;p<15;p++)if(g[p]==='1')for(let u=0;u<sc;u++)for(let v=0;v<sc;v++)this.set(x0+(q*4+p%3)*sc+u,y0+Math.floor(p/3)*sc+v,col);}},
+   done(){x.putImageData(im,0,0);}};
+}
+function drawClock(cv){
+  const P=pxMake(cv,48),N=P.N,k=P.k,h=N/2,n=+cv.dataset.n,sp=+cv.dataset.sp,lv=cv.dataset.lv==='1',ur=cv.dataset.u==='1',hand=+cv.dataset.hand,w=360/n;
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){
+    const dx=i+.5-h,dy=j+.5-h,r=Math.sqrt(dx*dx+dy*dy);
+    if(r>h)continue;
+    let col=DP.bg;
+    if(r>h-1.6*k)col=DP.rim;else if(r>h-2.6*k)col=DP.rimhi;
+    else if(r>14.2*k&&r<19.2*k){
+      let a=Math.atan2(dx,-dy)*180/Math.PI;if(a<0)a+=360;
+      const q=Math.floor(a/w),loc=a-q*w;
+      if(loc*Math.PI/180*r>.9*k&&(w-loc)*Math.PI/180*r>.9*k)col=q<sp?DP.hi:(q===sp&&lv)?(ur?DP.red:DP.bone):DP.dim;
+    }
+    P.set(i,j,col);
+  }
+  for(let q=0;q<n;q++)P.line(q*w,11.3,12.4,DP.mark,.5);
+  for(let u=0;u<2*k;u++)for(let v=0;v<2*k;v++)P.set(h-k+u,3.5*k+v,DP.red);
+  P.line(hand,-4,15,DP.bone,1);
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){const dx=i+.5-h,dy=j+.5-h,r=Math.sqrt(dx*dx+dy*dy);if(r<2.6*k)P.set(i,j,r>1.6*k?DP.rim:DP.hi);}
+  P.done();
+}
+const JIT=[0,1.2,-.8,.6,-1.4,.9,0,-1.1,.7,-.5];let jitN=0;
+function drawHydro(cv){
+  const P=pxMake(cv,56),N=P.N,k=P.k,h=N/2,l=+cv.dataset.l,br=+cv.dataset.br,j0=+cv.dataset.j||1,ang=br+JIT[jitN%JIT.length]*j0*1.6;
+  const lr=(10+13*l)*k,ha=15+9*l,ph=(jitN>>1)&1,sa=Math.sin(ang*Math.PI/180),ca=Math.cos(ang*Math.PI/180),tg=isM()?2:1;
+  const LB=[150,124,58];
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){
+    const dx=i+.5-h,dy=j+.5-h,r=Math.sqrt(dx*dx+dy*dy);
+    if(r>h)continue;
+    let col=DP.bg;
+    if(r>h-1.6*k)col=DP.rim;else if(r>h-2.6*k)col=DP.rimhi;
+    else{
+      if(r>17*k&&r<23.2*k){ /* tikler: 10° nokta, 30° kısa çubuk, ana yönler uzun çubuk */
+        let a=Math.atan2(dx,-dy)*180/Math.PI;if(a<0)a+=360;
+        const a0=Math.round(a/10)*10,dv=Math.abs(r*Math.sin((a-a0)*Math.PI/180)),n0=Math.round(a0/10)%36,card=n0%9===0,lg=n0%3===0;
+        if(card){if(dv<=1.1*k&&r>17.6*k&&r<22.8*k)col=DP.bone;}
+        else if(lg){if(dv<=.9*k&&r>19.6*k&&r<22.8*k)col=DP.mark;}
+        else if(dv<=.9*k&&r>21*k&&r<22.8*k)col=DP.dim;
+      }
+      if(r<lr&&r>2.5*k){let a=Math.atan2(dx,-dy)*180/Math.PI-ang;a=((a+540)%360)-180;const aa=Math.abs(a);
+        if(aa<ha){const de=r*Math.sin((ha-aa)*Math.PI/180);col=de<1.1*k?LB:((((i/k|0)+(j/k|0)+ph)&1)?[104,88,46]:[62,54,32]);}}
+    }
+    P.set(i,j,col);
+  }
+  if(!isM()){P.text('0',h/k,h/k-12,DP.ink,tg);P.text('90',h/k+12,h/k,DP.ink,tg);P.text('180',h/k,h/k+12,DP.ink,tg);P.text('270',h/k-12,h/k,DP.ink,tg);}
+  /* ibre: gövde + dolu üçgen uç */
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){
+    const dx=i+.5-h,dy=j+.5-h,u=dx*sa-dy*ca,v=dx*ca+dy*sa;
+    if(u>=0&&u<=15.5*k&&Math.abs(v)<=.8*k)P.set(i,j,DP.hi);
+    else if(u>15*k&&u<=22*k&&Math.abs(v)<=(22*k-u)/(7*k)*3.2*k)P.set(i,j,DP.hi);
+  }
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){const dx=i+.5-h,dy=j+.5-h,r=Math.sqrt(dx*dx+dy*dy);if(r<3*k)P.set(i,j,r>2*k?DP.rim:DP.hi);}
+  P.done();
+}
+function stepDials(){
+  jitN++;
+  document.querySelectorAll('canvas.dial.pxd').forEach(cv=>{
+    let c=+cv.dataset.hand,t=+cv.dataset.to;
+    if(c!==t){const d=t-c;c=Math.abs(d)<=3?t:c+Math.round(d*.35/3)*3||c+Math.sign(d)*3;if(REDUCED())c=t;cv.dataset.hand=c;}
+    drawClock(cv);
+  });
+  document.querySelectorAll('canvas.hydro.pxd').forEach(drawHydro);
+}
+setInterval(stepDials,150);
 
 /* ───────── Olaylar ───────── */
 const H={
