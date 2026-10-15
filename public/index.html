@@ -818,6 +818,40 @@ input[type=text],textarea{border:4px solid transparent!important;border-image:ur
 button.card:hover:not(:disabled){transform:translate(-1px,-1px)}
 button:active:not(:disabled){transform:translate(2px,2px)}
 .clock-body{flex-wrap:nowrap!important}
+/* ===== Enigma rotorları ve işlem çubuğu: piksel ===== */
+.enigma{gap:4px}
+.enigma .rot{width:36px;height:48px;border:4px solid transparent!important;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAQElEQVR4nGNkYGBgyPLl/88ABdM2f2RkhAnM3vOHIdWFhYGBgYGBCSYgJiPLMHvPH4RgqgsLw6snj+EqGbGZCQCDnRXNzsjHMQAAAABJRU5ErkJggg==) 2 / 4px stretch!important;background:linear-gradient(#0d1417 0 25%,transparent 25% 75%,#0d1417 75%) padding-box,#1b2528!important;background-clip:padding-box!important;box-shadow:none!important;font:700 var(--f22)/1 var(--font-display);color:var(--dial-ink);text-shadow:2px 2px 0 #000;image-rendering:pixelated}
+.enigma .rot.set{border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAQUlEQVR4nGNkYGBgeHYk6z8DFEjZTGNkggmU1C1jgClgggkcfCwBl2BiYGBg6GmKYrCXfcHQ0xTFwMDAwMCIzUwAcYYYx4QfEQIAAAAASUVORK5CYII=) 2 / 4px stretch!important;color:var(--brass-hi)}
+.last.working .wbar{height:10px;border:2px solid var(--line);background:#05090b}
+.last.working .wbar i{background:repeating-linear-gradient(90deg,var(--accent) 0 6px,transparent 6px 8px);animation-timing-function:steps(24,end)}
+/* ===== Masadaki kâğıt hissi: hafif yamuk ve üst üste binen kartlar ===== */
+.act-card:nth-child(6n+1){--r:-0.7deg;--x:1px;--y:0px}
+.act-card:nth-child(6n+2){--r:0.5deg;--x:-1px;--y:-2px}
+.act-card:nth-child(6n+3){--r:-0.3deg;--x:2px;--y:1px}
+.act-card:nth-child(6n+4){--r:0.8deg;--x:-2px;--y:-3px}
+.act-card:nth-child(6n+5){--r:-0.6deg;--x:0px;--y:1px}
+.act-card:nth-child(6n+0){--r:0.4deg;--x:-1px;--y:-2px}
+.cards>.card:nth-child(6n+1){--r:-0.7deg;--x:1px;--y:0px}
+.cards>.card:nth-child(6n+2){--r:0.5deg;--x:-1px;--y:-2px}
+.cards>.card:nth-child(6n+3){--r:-0.3deg;--x:2px;--y:1px}
+.cards>.card:nth-child(6n+4){--r:0.8deg;--x:-2px;--y:-3px}
+.cards>.card:nth-child(6n+5){--r:-0.6deg;--x:0px;--y:1px}
+.cards>.card:nth-child(6n+0){--r:0.4deg;--x:-1px;--y:-2px}
+.evid-cards>.card:nth-child(6n+1){--r:-0.7deg;--x:1px;--y:0px}
+.evid-cards>.card:nth-child(6n+2){--r:0.5deg;--x:-1px;--y:-2px}
+.evid-cards>.card:nth-child(6n+3){--r:-0.3deg;--x:2px;--y:1px}
+.evid-cards>.card:nth-child(6n+4){--r:0.8deg;--x:-2px;--y:-3px}
+.evid-cards>.card:nth-child(6n+5){--r:-0.6deg;--x:0px;--y:1px}
+.evid-cards>.card:nth-child(6n+0){--r:0.4deg;--x:-1px;--y:-2px}
+.act-card,.cards>.card,.evid-cards>.card{transform:translate(var(--x,0),var(--y,0)) rotate(var(--r,0deg));transition:transform .12s steps(3)}
+.act-card{margin-bottom:-4px}
+.cards>.card{margin-bottom:-3px}
+.evid-cards>.card{margin-bottom:12px!important}
+.act-card:has(.act:hover:not(:disabled)),.act-card:has(.act-foot:hover),.act-card:has(.act-foot:focus-within){transform:translate(0,-2px) rotate(0deg);z-index:20}
+.cards>.card:hover,.evid-cards>.card:hover:not(:disabled),.evid-cards>.card.sel{transform:translate(0,-3px) rotate(0deg)!important;z-index:6}
+.evid-cards>.card.sel{z-index:7}
+.cards>.card.new{z-index:4}
+@media (prefers-reduced-motion:reduce){.act-card,.cards>.card,.evid-cards>.card{transition:none}}
 </style>
 
 <div id="app"><aside id="aside-l" aria-label="Eylemler" hidden></aside><main id="main"></main><aside id="aside" aria-label="İpuçların ve aspect’lerin" hidden></aside></div>
