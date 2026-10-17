@@ -1,0 +1,4014 @@
+{
+  "ok": true,
+  "count": 10,
+  "sessions": [
+    {
+      "sid": "smv991sq18ehj4",
+      "name": "",
+      "started_at": "2026-10-15T08:00:58.543Z",
+      "updated_at": "2026-10-15T08:26:46.790Z",
+      "data": {
+        "sid": "smv991sq18ehj4",
+        "name": "",
+        "hint": true,
+        "startedAt": "2026-10-15T08:00:58.543Z",
+        "cases": {
+          "1": {
+            "got": ["R1", "S1", "M1"],
+            "reported": true,
+            "report": {
+              "cards": ["S1"],
+              "tone": "israrli",
+              "tm": -1,
+              "inv": [],
+              "dice": [1, -1, -1, 1],
+              "roll": 0,
+              "diff": 3,
+              "against": 0,
+              "shifts": -1,
+              "outcome": "FAIL"
+            },
+            "fire": { "resp": "itiraz" },
+            "post": { "second": "hayir", "rescue": "orta", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E3",
+                "b": "E8",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E4",
+                "b": "E5",
+                "ok": false,
+                "msg": "İkisi aynı yöne işaret ediyor: birbirini doğruluyor, çelişmiyor."
+              },
+              {
+                "a": "E1",
+                "b": "E6",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bayrak: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E1",
+                "b": "E7",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E3|E8", "E1|E6", "E1|E7"],
+            "invalid": 1,
+            "result": {
+              "proven": 3,
+              "total": 7,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 2,
+              "sicil": "Suç Ortağı",
+              "notes": []
+            },
+            "fpEnd": 1
+          },
+          "2": {
+            "got": ["B1", "R1", "R2", "S1", "S2"],
+            "reported": true,
+            "report": {
+              "cards": ["R1"],
+              "tone": "yumusak",
+              "tm": 0,
+              "inv": ["kural"],
+              "dice": [-1, -1, 1, -1],
+              "roll": -2,
+              "diff": 4,
+              "against": 0,
+              "shifts": -2,
+              "outcome": "FAIL"
+            },
+            "fire": { "resp": "hesapla" },
+            "post": { "second": "evet", "rescue": "orta", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [],
+            "skippedEvid": true,
+            "proven": [],
+            "invalid": 0,
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 0,
+              "cred": 3,
+              "sicil": null,
+              "notes": []
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": {
+          "rate": {
+            "tension": 2,
+            "basis": 2,
+            "replay": 4,
+            "clarity": 2,
+            "fate": 5
+          },
+          "txt": {
+            "tense": "9. hamleye geçerken ses ve görüntü efektlerinin devreye girdiği anlar gergindi, sonuç anları da adım adım açılınca gerilim hissettim.",
+            "hard": "Soruşturma masasında alınan kararlar",
+            "confusing": "Tam olarak neleri yaptığımı ve ne yapmam gerektiğini çözümleyemedim, iki vaka sonunda;\n- İpuçları toplayacağımı\n- Etki olarak rapor yazabileceğimi\n- Yanlış bir karara yol açtıysam soruşturma masasının açılacağını\nancak anlayabildim. ",
+            "change": "Kuralların tek bir sekmede teker teker yazması hepsini çözümlememi zorlaştırdı, tutorial gibi uygulamalı veya demo introsu ekleyebilirdim"
+          }
+        },
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": true,
+            "name": ""
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 96065, "case": 1, "tick": 1, "type": "brief_close" },
+          { "ms": 247605, "case": 1, "tick": 1, "type": "clue", "id": "R1" },
+          {
+            "ms": 247605,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 344562,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          { "ms": 362283, "case": 1, "tick": 3, "type": "clue", "id": "S1" },
+          {
+            "ms": 362283,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 419968,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          {
+            "ms": 419968,
+            "case": 1,
+            "tick": 5,
+            "type": "compel_offer",
+            "aspect": "sadik"
+          },
+          {
+            "ms": 440822,
+            "case": 1,
+            "tick": 5,
+            "type": "compel",
+            "aspect": "sadik",
+            "accepted": false
+          },
+          {
+            "ms": 476945,
+            "case": 1,
+            "tick": 5,
+            "type": "report",
+            "cards": ["S1"],
+            "tone": "israrli",
+            "toneMod": -1,
+            "invoked": [],
+            "dice": [1, -1, -1, 1],
+            "roll": 0,
+            "difficulty": 3,
+            "against": 0,
+            "shifts": -1,
+            "outcome": "FAIL"
+          },
+          {
+            "ms": 524319,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "mark",
+            "notes": []
+          },
+          {
+            "ms": 530182,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "mark",
+            "notes": []
+          },
+          { "ms": 541512, "case": 1, "tick": 8, "type": "clue", "id": "M1" },
+          {
+            "ms": 541512,
+            "case": 1,
+            "tick": 8,
+            "type": "action",
+            "action": "mark",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 574800,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "itiraz"
+          },
+          {
+            "ms": 602076,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "hayir",
+            "rescue": "orta",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          {
+            "ms": 712655,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E3",
+            "b": "E8",
+            "ok": true
+          },
+          {
+            "ms": 722431,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E4",
+            "b": "E5",
+            "ok": false
+          },
+          {
+            "ms": 732787,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E1",
+            "b": "E6",
+            "ok": true
+          },
+          {
+            "ms": 763178,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E1",
+            "b": "E7",
+            "ok": true
+          },
+          {
+            "ms": 766745,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 3,
+              "total": 7,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 2,
+              "sicil": "Suç Ortağı",
+              "notes": []
+            }
+          },
+          {
+            "ms": 812627,
+            "case": 2,
+            "tick": 1,
+            "type": "case_start",
+            "caseId": 2
+          },
+          {
+            "ms": 827808,
+            "case": 2,
+            "tick": 1,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          { "ms": 832199, "case": 2, "tick": 2, "type": "clue", "id": "B1" },
+          {
+            "ms": 832199,
+            "case": 2,
+            "tick": 2,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 844235, "case": 2, "tick": 3, "type": "clue", "id": "R1" },
+          {
+            "ms": 844235,
+            "case": 2,
+            "tick": 3,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 893686,
+            "case": 2,
+            "tick": 4,
+            "type": "report",
+            "cards": ["R1"],
+            "tone": "yumusak",
+            "toneMod": 0,
+            "invoked": ["kural"],
+            "dice": [-1, -1, 1, -1],
+            "roll": -2,
+            "difficulty": 4,
+            "against": 0,
+            "shifts": -2,
+            "outcome": "FAIL"
+          },
+          { "ms": 913712, "case": 2, "tick": 5, "type": "clue", "id": "R2" },
+          {
+            "ms": 913712,
+            "case": 2,
+            "tick": 5,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 919875,
+            "case": 2,
+            "tick": 6,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 919875, "case": 2, "tick": 6, "type": "clue", "id": "S1" },
+          {
+            "ms": 919875,
+            "case": 2,
+            "tick": 6,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 953553,
+            "case": 2,
+            "tick": 7,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          { "ms": 962150, "case": 2, "tick": 8, "type": "clue", "id": "S2" },
+          {
+            "ms": 962150,
+            "case": 2,
+            "tick": 8,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 980678,
+            "case": 2,
+            "tick": 9,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          {
+            "ms": 992863,
+            "case": 2,
+            "tick": 10,
+            "type": "order_response",
+            "resp": "hesapla"
+          },
+          {
+            "ms": 1001294,
+            "case": 2,
+            "tick": 10,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "orta",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          { "ms": 1011611, "case": 2, "tick": 10, "type": "evid_skipped" },
+          {
+            "ms": 1011611,
+            "case": 2,
+            "tick": 10,
+            "type": "case_end",
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 0,
+              "cred": 3,
+              "sicil": null,
+              "notes": []
+            }
+          },
+          {
+            "ms": 1547780,
+            "case": 2,
+            "tick": 10,
+            "type": "survey",
+            "rate": {
+              "tension": 2,
+              "basis": 2,
+              "replay": 4,
+              "clarity": 2,
+              "fate": 5
+            },
+            "txt": {
+              "tense": "9. hamleye geçerken ses ve görüntü efektlerinin devreye girdiği anlar gergindi, sonuç anları da adım adım açılınca gerilim hissettim.",
+              "hard": "Soruşturma masasında alınan kararlar",
+              "confusing": "Tam olarak neleri yaptığımı ve ne yapmam gerektiğini çözümleyemedim, iki vaka sonunda;\n- İpuçları toplayacağımı\n- Etki olarak rapor yazabileceğimi\n- Yanlış bir karara yol açtıysam soruşturma masasının açılacağını\nancak anlayabildim. ",
+              "change": "Kuralların tek bir sekmede teker teker yazması hepsini çözümlememi zorlaştırdı, tutorial gibi uygulamalı veya demo introsu ekleyebilirdim"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv97vbddg957g",
+      "name": "",
+      "started_at": "2026-10-15T07:27:56.497Z",
+      "updated_at": "2026-10-15T07:40:51.171Z",
+      "data": {
+        "sid": "smv97vbddg957g",
+        "name": "",
+        "hint": true,
+        "startedAt": "2026-10-15T07:27:56.497Z",
+        "cases": {
+          "1": {
+            "got": ["S1", "R1", "B2", "B1"],
+            "reported": true,
+            "report": {
+              "cards": ["S1", "R1"],
+              "tone": "israrli",
+              "tm": -1,
+              "inv": [],
+              "dice": [-1, -1, -1, 0],
+              "roll": -3,
+              "diff": 2,
+              "against": 1,
+              "shifts": -3,
+              "outcome": "FAIL"
+            },
+            "fire": { "resp": "sabotaj" },
+            "post": { "second": "hayir", "rescue": "yuksek", "ktb": "acik" },
+            "detected": true,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E8",
+                "b": "E2",
+                "ok": false,
+                "msg": "Bu iki kart birbirine zıt bir şey söylemiyor."
+              },
+              {
+                "a": "E9",
+                "b": "E2",
+                "ok": false,
+                "msg": "Bu iki kart birbirine zıt bir şey söylemiyor."
+              },
+              {
+                "a": "E1",
+                "b": "E7",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E5",
+                "b": "E8",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Dost geçişi uyarısı yayımlandı” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E1|E7", "E5|E8"],
+            "invalid": 2,
+            "result": {
+              "proven": 2,
+              "total": 6,
+              "need": 3,
+              "guilt": 2,
+              "bond": -1,
+              "cred": 1,
+              "sicil": "Günah Keçisi",
+              "notes": [
+                "Bilerek yanlış çözümün bir tanık tarafından fark edildi."
+              ]
+            },
+            "fpEnd": 0
+          },
+          "2": {
+            "got": ["R1", "S1", "B1", "B2"],
+            "reported": false,
+            "report": null,
+            "fire": { "resp": "hesapla" },
+            "post": { "second": "evet", "rescue": "yuksek", "ktb": "koru" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [],
+            "skippedEvid": true,
+            "proven": [],
+            "invalid": 0,
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 1,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": null,
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": true,
+            "name": ""
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 2514, "case": 1, "tick": 1, "type": "brief_close" },
+          {
+            "ms": 16886,
+            "case": 1,
+            "tick": 1,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 16886, "case": 1, "tick": 1, "type": "clue", "id": "S1" },
+          {
+            "ms": 16886,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 49858,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "wait"
+          },
+          { "ms": 78514, "case": 1, "tick": 3, "type": "clue", "id": "R1" },
+          {
+            "ms": 78514,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 99427,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 99427,
+            "case": 1,
+            "tick": 5,
+            "type": "compel_offer",
+            "aspect": "sadik"
+          },
+          {
+            "ms": 106001,
+            "case": 1,
+            "tick": 5,
+            "type": "compel",
+            "aspect": "sadik",
+            "accepted": false
+          },
+          {
+            "ms": 140107,
+            "case": 1,
+            "tick": 5,
+            "type": "report",
+            "cards": ["S1", "R1"],
+            "tone": "israrli",
+            "toneMod": -1,
+            "invoked": [],
+            "dice": [-1, -1, -1, 0],
+            "roll": -3,
+            "difficulty": 2,
+            "against": 1,
+            "shifts": -3,
+            "outcome": "FAIL"
+          },
+          {
+            "ms": 178518,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "mark",
+            "notes": []
+          },
+          { "ms": 208229, "case": 1, "tick": 7, "type": "clue", "id": "B2" },
+          {
+            "ms": 208229,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "beh",
+            "notes": ["anlık olay yakalandı"]
+          },
+          { "ms": 226465, "case": 1, "tick": 8, "type": "clue", "id": "B1" },
+          {
+            "ms": 226465,
+            "case": 1,
+            "tick": 8,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 254698,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "sabotaj"
+          },
+          {
+            "ms": 254698,
+            "case": 1,
+            "tick": 9,
+            "type": "sabotage_check",
+            "dice": [-1, 0, -1, 1],
+            "roll": -1,
+            "difficulty": 2,
+            "shifts": -1,
+            "outcome": "FAIL",
+            "missed": false,
+            "detectChance": 0.5,
+            "detected": true
+          },
+          {
+            "ms": 266054,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "hayir",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          {
+            "ms": 324097,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E8",
+            "b": "E2",
+            "ok": false
+          },
+          {
+            "ms": 340573,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E9",
+            "b": "E2",
+            "ok": false
+          },
+          {
+            "ms": 350008,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E1",
+            "b": "E7",
+            "ok": true
+          },
+          {
+            "ms": 362292,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E5",
+            "b": "E8",
+            "ok": true
+          },
+          {
+            "ms": 394150,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 2,
+              "total": 6,
+              "need": 3,
+              "guilt": 2,
+              "bond": -1,
+              "cred": 1,
+              "sicil": "Günah Keçisi",
+              "notes": [
+                "Bilerek yanlış çözümün bir tanık tarafından fark edildi."
+              ]
+            }
+          },
+          {
+            "ms": 413890,
+            "case": 2,
+            "tick": 1,
+            "type": "case_start",
+            "caseId": 2
+          },
+          {
+            "ms": 443187,
+            "case": 2,
+            "tick": 1,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          { "ms": 456375, "case": 2, "tick": 2, "type": "clue", "id": "R1" },
+          {
+            "ms": 456375,
+            "case": 2,
+            "tick": 2,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 467145, "case": 2, "tick": 3, "type": "clue", "id": "S1" },
+          {
+            "ms": 467145,
+            "case": 2,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 488104,
+            "case": 2,
+            "tick": 4,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 488104, "case": 2, "tick": 4, "type": "clue", "id": "B1" },
+          {
+            "ms": 488104,
+            "case": 2,
+            "tick": 4,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 637530, "case": 2, "tick": 5, "type": "clue", "id": "B2" },
+          {
+            "ms": 637530,
+            "case": 2,
+            "tick": 5,
+            "type": "action",
+            "action": "beh",
+            "notes": ["anlık olay yakalandı"]
+          },
+          {
+            "ms": 637531,
+            "case": 2,
+            "tick": 6,
+            "type": "compel_offer",
+            "aspect": "kural"
+          },
+          {
+            "ms": 658683,
+            "case": 2,
+            "tick": 6,
+            "type": "compel",
+            "aspect": "kural",
+            "accepted": false
+          },
+          {
+            "ms": 673327,
+            "case": 2,
+            "tick": 6,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          {
+            "ms": 679501,
+            "case": 2,
+            "tick": 7,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          {
+            "ms": 688026,
+            "case": 2,
+            "tick": 8,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          {
+            "ms": 729873,
+            "case": 2,
+            "tick": 9,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          {
+            "ms": 744728,
+            "case": 2,
+            "tick": 10,
+            "type": "order_response",
+            "resp": "hesapla"
+          },
+          {
+            "ms": 755041,
+            "case": 2,
+            "tick": 10,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "yuksek",
+            "ktb": "koru",
+            "escaped": false,
+            "sunk": true
+          },
+          { "ms": 774261, "case": 2, "tick": 10, "type": "evid_skipped" },
+          {
+            "ms": 774262,
+            "case": 2,
+            "tick": 10,
+            "type": "case_end",
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 1,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv97036rqhaz3",
+      "name": "",
+      "started_at": "2026-10-15T07:03:39.555Z",
+      "updated_at": "2026-10-15T07:27:48.150Z",
+      "data": {
+        "sid": "smv97036rqhaz3",
+        "name": "",
+        "hint": false,
+        "startedAt": "2026-10-15T07:03:39.555Z",
+        "cases": {
+          "1": {
+            "got": ["B1", "S1", "R1"],
+            "reported": true,
+            "report": {
+              "cards": ["S1", "B1"],
+              "tone": "itirazli",
+              "tm": -2,
+              "inv": [],
+              "dice": [0, 1, 0, 0],
+              "roll": 1,
+              "diff": 2,
+              "against": 0,
+              "shifts": 1,
+              "outcome": "SUCCESS"
+            },
+            "fire": { "resp": "sabotaj" },
+            "post": { "second": "evet", "rescue": "yuksek", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E8",
+                "b": "E5",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Dost geçişi uyarısı yayımlandı” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E3",
+                "b": "E8",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E2",
+                "b": "E8",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “KTB kaydı” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E1",
+                "b": "E7",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E5|E8", "E3|E8", "E2|E8", "E1|E7"],
+            "invalid": 0,
+            "result": {
+              "proven": 4,
+              "total": 7,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 3,
+              "sicil": "Suç Ortağı",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            },
+            "fpEnd": 0
+          },
+          "2": {
+            "got": ["B1", "S1"],
+            "reported": false,
+            "report": null,
+            "fire": { "resp": "hesapla" },
+            "post": { "second": "evet", "rescue": "orta", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [],
+            "skippedEvid": true,
+            "proven": [],
+            "invalid": 0,
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 0,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": {
+          "rate": {
+            "tension": 4,
+            "basis": 4,
+            "replay": 5,
+            "fate": 5,
+            "clarity": 2
+          },
+          "txt": {
+            "confusing": "rapor verme daha iyi açıklanabilir bence. erken ya da geç rapor vermenin sonuçları net açıklanmıyor"
+          }
+        },
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": false,
+            "name": ""
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 38462, "case": 1, "tick": 1, "type": "brief_close" },
+          {
+            "ms": 148993,
+            "case": 1,
+            "tick": 1,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 148993, "case": 1, "tick": 1, "type": "clue", "id": "B1" },
+          {
+            "ms": 148993,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 169890,
+            "case": 1,
+            "tick": 2,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 169890, "case": 1, "tick": 2, "type": "clue", "id": "S1" },
+          {
+            "ms": 169890,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 295517,
+            "case": 1,
+            "tick": 3,
+            "type": "report",
+            "cards": ["S1", "B1"],
+            "tone": "itirazli",
+            "toneMod": -2,
+            "invoked": [],
+            "dice": [0, 1, 0, 0],
+            "roll": 1,
+            "difficulty": 2,
+            "against": 0,
+            "shifts": 1,
+            "outcome": "SUCCESS"
+          },
+          { "ms": 385442, "case": 1, "tick": 4, "type": "brief_open" },
+          { "ms": 390164, "case": 1, "tick": 4, "type": "brief_close" },
+          {
+            "ms": 419497,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 438528,
+            "case": 1,
+            "tick": 5,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 459232,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "wait"
+          },
+          { "ms": 483586, "case": 1, "tick": 7, "type": "clue", "id": "R1" },
+          {
+            "ms": 483586,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 535338,
+            "case": 1,
+            "tick": 8,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 560131,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "sabotaj"
+          },
+          {
+            "ms": 560132,
+            "case": 1,
+            "tick": 9,
+            "type": "sabotage_check",
+            "dice": [0, 0, -1, -1],
+            "roll": -2,
+            "difficulty": 2,
+            "shifts": -2,
+            "outcome": "FAIL",
+            "missed": false,
+            "detectChance": 0.5,
+            "detected": false
+          },
+          {
+            "ms": 628338,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          {
+            "ms": 717705,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E8",
+            "b": "E5",
+            "ok": true
+          },
+          {
+            "ms": 741788,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E3",
+            "b": "E8",
+            "ok": true
+          },
+          {
+            "ms": 763331,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E2",
+            "b": "E8",
+            "ok": true
+          },
+          {
+            "ms": 777481,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E1",
+            "b": "E7",
+            "ok": true
+          },
+          {
+            "ms": 786324,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 4,
+              "total": 7,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 3,
+              "sicil": "Suç Ortağı",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            }
+          },
+          {
+            "ms": 875481,
+            "case": 2,
+            "tick": 1,
+            "type": "case_start",
+            "caseId": 2
+          },
+          {
+            "ms": 915842,
+            "case": 2,
+            "tick": 1,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 915842, "case": 2, "tick": 1, "type": "clue", "id": "B1" },
+          {
+            "ms": 915842,
+            "case": 2,
+            "tick": 1,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 930123,
+            "case": 2,
+            "tick": 2,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 930123, "case": 2, "tick": 2, "type": "clue", "id": "S1" },
+          {
+            "ms": 930123,
+            "case": 2,
+            "tick": 2,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 960162,
+            "case": 2,
+            "tick": 3,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 981337,
+            "case": 2,
+            "tick": 4,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 988230,
+            "case": 2,
+            "tick": 5,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 988231,
+            "case": 2,
+            "tick": 6,
+            "type": "compel_offer",
+            "aspect": "kural"
+          },
+          {
+            "ms": 1012744,
+            "case": 2,
+            "tick": 6,
+            "type": "compel",
+            "aspect": "kural",
+            "accepted": true
+          },
+          {
+            "ms": 1029395,
+            "case": 2,
+            "tick": 6,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          {
+            "ms": 1040788,
+            "case": 2,
+            "tick": 7,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          {
+            "ms": 1040788,
+            "case": 2,
+            "tick": 7,
+            "type": "action",
+            "action": "mark",
+            "notes": []
+          },
+          {
+            "ms": 1056954,
+            "case": 2,
+            "tick": 8,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1071199,
+            "case": 2,
+            "tick": 9,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1084201,
+            "case": 2,
+            "tick": 10,
+            "type": "order_response",
+            "resp": "hesapla"
+          },
+          {
+            "ms": 1110662,
+            "case": 2,
+            "tick": 10,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "orta",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          { "ms": 1127681, "case": 2, "tick": 10, "type": "evid_skipped" },
+          {
+            "ms": 1127681,
+            "case": 2,
+            "tick": 10,
+            "type": "case_end",
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 0,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            }
+          },
+          {
+            "ms": 1448044,
+            "case": 2,
+            "tick": 10,
+            "type": "survey",
+            "rate": {
+              "tension": 4,
+              "basis": 4,
+              "replay": 5,
+              "fate": 5,
+              "clarity": 2
+            },
+            "txt": {
+              "confusing": "rapor verme daha iyi açıklanabilir bence. erken ya da geç rapor vermenin sonuçları net açıklanmıyor"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv973t1ax77sk",
+      "name": "Yamtar",
+      "started_at": "2026-10-15T07:06:33.034Z",
+      "updated_at": "2026-10-15T07:17:52.324Z",
+      "data": {
+        "sid": "smv973t1ax77sk",
+        "name": "Yamtar",
+        "hint": false,
+        "startedAt": "2026-10-15T07:06:33.034Z",
+        "cases": {
+          "1": {
+            "got": ["S1", "S2"],
+            "reported": true,
+            "report": {
+              "cards": ["S1", "S2"],
+              "tone": "israrli",
+              "tm": -1,
+              "inv": [],
+              "dice": [-1, 0, 0, 1],
+              "roll": 0,
+              "diff": 3,
+              "against": 0,
+              "shifts": -1,
+              "outcome": "FAIL"
+            },
+            "fire": { "resp": "sabotaj" },
+            "post": { "second": "hayir", "rescue": "yuksek", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E2",
+                "b": "E3",
+                "ok": false,
+                "msg": "Bu iki kart birbirine zıt bir şey söylemiyor."
+              },
+              {
+                "a": "E7",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E8",
+                "b": "E3",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E2",
+                "b": "E8",
+                "ok": false,
+                "msg": "Bu iki kart birbirine zıt bir şey söylemiyor."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E1|E7", "E3|E8"],
+            "invalid": 2,
+            "result": {
+              "proven": 2,
+              "total": 6,
+              "need": 3,
+              "guilt": 1,
+              "bond": -1,
+              "cred": 1,
+              "sicil": "Günah Keçisi",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            },
+            "fpEnd": 0
+          },
+          "2": {
+            "got": ["S1", "S2"],
+            "reported": false,
+            "report": null,
+            "fire": { "resp": "hesapla" },
+            "post": { "second": "evet", "rescue": "dusuk", "ktb": "koru" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [],
+            "skippedEvid": true,
+            "proven": [],
+            "invalid": 0,
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 1,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": {
+          "rate": {
+            "tension": 3,
+            "basis": 4,
+            "replay": 4,
+            "fate": 3,
+            "clarity": 2
+          },
+          "txt": {
+            "tense": "fp bitirip compel yediğim an",
+            "hard": "ikinci geminin düşman olup olmadığını anlamak",
+            "confusing": "fp harcamak dışında başka bir çarem olmadığını anlamak kolay değildi",
+            "change": "oyunda 8 tur var ancak ben sadece 2 aksiyon alabiliyorum bunun dışında yapabileceğim bir şey yok. 1. subay olarak daha fazla mekaniğe sahip olabilirim. birilerine emir verebilir onlardan gelecek bilgilerle elimi güçlendirebilirim. "
+          }
+        },
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": false,
+            "name": "Yamtar"
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 3102, "case": 1, "tick": 1, "type": "brief_close" },
+          {
+            "ms": 6583,
+            "case": 1,
+            "tick": 1,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 6583, "case": 1, "tick": 1, "type": "clue", "id": "S1" },
+          {
+            "ms": 6583,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 17923,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 22985,
+            "case": 1,
+            "tick": 3,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 22985, "case": 1, "tick": 3, "type": "clue", "id": "S2" },
+          {
+            "ms": 22985,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 55466,
+            "case": 1,
+            "tick": 4,
+            "type": "report",
+            "cards": ["S1", "S2"],
+            "tone": "israrli",
+            "toneMod": -1,
+            "invoked": [],
+            "dice": [-1, 0, 0, 1],
+            "roll": 0,
+            "difficulty": 3,
+            "against": 0,
+            "shifts": -1,
+            "outcome": "FAIL"
+          },
+          {
+            "ms": 72945,
+            "case": 1,
+            "tick": 5,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 77124,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 80811,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 86700,
+            "case": 1,
+            "tick": 8,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 99785,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "sabotaj"
+          },
+          {
+            "ms": 99785,
+            "case": 1,
+            "tick": 9,
+            "type": "sabotage_check",
+            "dice": [1, 0, 0, -1],
+            "roll": 0,
+            "difficulty": 2,
+            "shifts": 0,
+            "outcome": "TIE",
+            "missed": false,
+            "detectChance": 0.5,
+            "detected": false
+          },
+          {
+            "ms": 180232,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "hayir",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          {
+            "ms": 207294,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E2",
+            "b": "E3",
+            "ok": false
+          },
+          {
+            "ms": 221002,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E7",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 227419,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E8",
+            "b": "E3",
+            "ok": true
+          },
+          {
+            "ms": 280733,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E2",
+            "b": "E8",
+            "ok": false
+          },
+          {
+            "ms": 288075,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 2,
+              "total": 6,
+              "need": 3,
+              "guilt": 1,
+              "bond": -1,
+              "cred": 1,
+              "sicil": "Günah Keçisi",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            }
+          },
+          {
+            "ms": 334935,
+            "case": 2,
+            "tick": 1,
+            "type": "case_start",
+            "caseId": 2
+          },
+          {
+            "ms": 341092,
+            "case": 2,
+            "tick": 1,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 341092, "case": 2, "tick": 1, "type": "clue", "id": "S1" },
+          {
+            "ms": 341092,
+            "case": 2,
+            "tick": 1,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 355995,
+            "case": 2,
+            "tick": 2,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 359528,
+            "case": 2,
+            "tick": 3,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 364972,
+            "case": 2,
+            "tick": 4,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 368846,
+            "case": 2,
+            "tick": 5,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          {
+            "ms": 368846,
+            "case": 2,
+            "tick": 5,
+            "type": "action",
+            "action": "mark",
+            "notes": []
+          },
+          {
+            "ms": 368847,
+            "case": 2,
+            "tick": 6,
+            "type": "compel_offer",
+            "aspect": "kural"
+          },
+          {
+            "ms": 390329,
+            "case": 2,
+            "tick": 6,
+            "type": "compel",
+            "aspect": "kural",
+            "accepted": true
+          },
+          {
+            "ms": 396213,
+            "case": 2,
+            "tick": 6,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 398725,
+            "case": 2,
+            "tick": 7,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 400985,
+            "case": 2,
+            "tick": 8,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 400985, "case": 2, "tick": 8, "type": "clue", "id": "S2" },
+          {
+            "ms": 400985,
+            "case": 2,
+            "tick": 8,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 409237,
+            "case": 2,
+            "tick": 9,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 413940,
+            "case": 2,
+            "tick": 10,
+            "type": "order_response",
+            "resp": "hesapla"
+          },
+          {
+            "ms": 424733,
+            "case": 2,
+            "tick": 10,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "dusuk",
+            "ktb": "koru",
+            "escaped": false,
+            "sunk": true
+          },
+          { "ms": 437168, "case": 2, "tick": 10, "type": "evid_skipped" },
+          {
+            "ms": 437168,
+            "case": 2,
+            "tick": 10,
+            "type": "case_end",
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 1,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            }
+          },
+          {
+            "ms": 679009,
+            "case": 2,
+            "tick": 10,
+            "type": "survey",
+            "rate": {
+              "tension": 3,
+              "basis": 4,
+              "replay": 4,
+              "fate": 3,
+              "clarity": 2
+            },
+            "txt": {
+              "tense": "fp bitirip compel yediğim an",
+              "hard": "ikinci geminin düşman olup olmadığını anlamak",
+              "confusing": "fp harcamak dışında başka bir çarem olmadığını anlamak kolay değildi",
+              "change": "oyunda 8 tur var ancak ben sadece 2 aksiyon alabiliyorum bunun dışında yapabileceğim bir şey yok. 1. subay olarak daha fazla mekaniğe sahip olabilirim. birilerine emir verebilir onlardan gelecek bilgilerle elimi güçlendirebilirim. "
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv961abygcuo1",
+      "name": "Yamtar",
+      "started_at": "2026-10-15T06:36:35.872Z",
+      "updated_at": "2026-10-15T07:05:24.911Z",
+      "data": {
+        "sid": "smv961abygcuo1",
+        "name": "Yamtar",
+        "hint": false,
+        "startedAt": "2026-10-15T06:36:35.872Z",
+        "cases": {
+          "1": {
+            "got": ["S1"],
+            "reported": true,
+            "report": {
+              "cards": ["S1"],
+              "tone": "yumusak",
+              "tm": 0,
+              "inv": [],
+              "dice": [-1, 1, 0, -1],
+              "roll": -1,
+              "diff": 4,
+              "against": 0,
+              "shifts": -3,
+              "outcome": "FAIL"
+            },
+            "fire": { "resp": "hesapla" },
+            "post": { "second": "evet", "rescue": "yuksek", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E8",
+                "b": "E3",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E2",
+                "b": "E4",
+                "ok": false,
+                "msg": "Bu iki kart birbirine zıt bir şey söylemiyor."
+              },
+              {
+                "a": "E5",
+                "b": "E4",
+                "ok": false,
+                "msg": "İkisi aynı yöne işaret ediyor: birbirini doğruluyor, çelişmiyor."
+              },
+              {
+                "a": "E5",
+                "b": "E7",
+                "ok": false,
+                "msg": "İkisi aynı yöne işaret ediyor: birbirini doğruluyor, çelişmiyor."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E3|E8"],
+            "invalid": 3,
+            "result": {
+              "proven": 1,
+              "total": 6,
+              "need": 3,
+              "guilt": 2,
+              "bond": -1,
+              "cred": 0,
+              "sicil": "Günah Keçisi",
+              "notes": []
+            },
+            "fpEnd": 0
+          },
+          "2": {
+            "got": ["S1", "B1", "S2"],
+            "reported": false,
+            "report": null,
+            "fire": { "resp": "hesapla" },
+            "post": { "second": "evet", "rescue": "dusuk", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [],
+            "skippedEvid": true,
+            "proven": [],
+            "invalid": 0,
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 0,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": null,
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": false,
+            "name": "Yamtar"
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 260939, "case": 1, "tick": 1, "type": "brief_close" },
+          { "ms": 300315, "case": 1, "tick": 1, "type": "brief_open" },
+          { "ms": 301875, "case": 1, "tick": 1, "type": "brief_close" },
+          {
+            "ms": 824744,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1161699,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1187122,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1234417,
+            "case": 1,
+            "tick": 4,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 1234417, "case": 1, "tick": 4, "type": "clue", "id": "S1" },
+          {
+            "ms": 1234417,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 1234418,
+            "case": 1,
+            "tick": 5,
+            "type": "compel_offer",
+            "aspect": "sadik"
+          },
+          {
+            "ms": 1252502,
+            "case": 1,
+            "tick": 5,
+            "type": "compel",
+            "aspect": "sadik",
+            "accepted": false
+          },
+          {
+            "ms": 1278521,
+            "case": 1,
+            "tick": 5,
+            "type": "report",
+            "cards": ["S1"],
+            "tone": "yumusak",
+            "toneMod": 0,
+            "invoked": [],
+            "dice": [-1, 1, 0, -1],
+            "roll": -1,
+            "difficulty": 4,
+            "against": 0,
+            "shifts": -3,
+            "outcome": "FAIL"
+          },
+          {
+            "ms": 1304421,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1315490,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1322693,
+            "case": 1,
+            "tick": 8,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          {
+            "ms": 1338640,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "hesapla"
+          },
+          {
+            "ms": 1349508,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          {
+            "ms": 1414963,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E8",
+            "b": "E3",
+            "ok": true
+          },
+          {
+            "ms": 1431467,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E2",
+            "b": "E4",
+            "ok": false
+          },
+          {
+            "ms": 1442214,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E5",
+            "b": "E4",
+            "ok": false
+          },
+          {
+            "ms": 1449603,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E5",
+            "b": "E7",
+            "ok": false
+          },
+          {
+            "ms": 1453178,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 1,
+              "total": 6,
+              "need": 3,
+              "guilt": 2,
+              "bond": -1,
+              "cred": 0,
+              "sicil": "Günah Keçisi",
+              "notes": []
+            }
+          },
+          {
+            "ms": 1488753,
+            "case": 2,
+            "tick": 1,
+            "type": "case_start",
+            "caseId": 2
+          },
+          {
+            "ms": 1504366,
+            "case": 2,
+            "tick": 1,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 1504366, "case": 2, "tick": 1, "type": "clue", "id": "S1" },
+          {
+            "ms": 1504366,
+            "case": 2,
+            "tick": 1,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 1524315,
+            "case": 2,
+            "tick": 2,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 1524315, "case": 2, "tick": 2, "type": "clue", "id": "B1" },
+          {
+            "ms": 1524315,
+            "case": 2,
+            "tick": 2,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 1543364,
+            "case": 2,
+            "tick": 3,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1563430,
+            "case": 2,
+            "tick": 4,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1568658,
+            "case": 2,
+            "tick": 5,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1568658,
+            "case": 2,
+            "tick": 6,
+            "type": "compel_offer",
+            "aspect": "kural"
+          },
+          {
+            "ms": 1579703,
+            "case": 2,
+            "tick": 6,
+            "type": "compel",
+            "aspect": "kural",
+            "accepted": true
+          },
+          {
+            "ms": 1587071,
+            "case": 2,
+            "tick": 6,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 1587071, "case": 2, "tick": 6, "type": "clue", "id": "S2" },
+          {
+            "ms": 1587071,
+            "case": 2,
+            "tick": 6,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 1597902,
+            "case": 2,
+            "tick": 7,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1607053,
+            "case": 2,
+            "tick": 8,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1622000,
+            "case": 2,
+            "tick": 9,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 1635110,
+            "case": 2,
+            "tick": 10,
+            "type": "order_response",
+            "resp": "hesapla"
+          },
+          {
+            "ms": 1641326,
+            "case": 2,
+            "tick": 10,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "dusuk",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          { "ms": 1728516, "case": 2, "tick": 10, "type": "evid_skipped" },
+          {
+            "ms": 1728516,
+            "case": 2,
+            "tick": 10,
+            "type": "case_end",
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 0,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv93yl5gaymt7",
+      "name": "",
+      "started_at": "2026-10-15T05:38:30.677Z",
+      "updated_at": "2026-10-15T05:40:15.555Z",
+      "data": {
+        "sid": "smv93yl5gaymt7",
+        "name": "",
+        "hint": true,
+        "startedAt": "2026-10-15T05:38:30.677Z",
+        "cases": {
+          "1": {
+            "got": ["R1", "R2", "S1", "B1", "B2", "S2"],
+            "reported": true,
+            "report": {
+              "cards": ["S2", "B2", "B1", "S1", "R2", "R1"],
+              "tone": "itirazli",
+              "tm": -2,
+              "inv": [],
+              "dice": [-1, -1, 1, -1],
+              "roll": -2,
+              "diff": 0,
+              "against": 3,
+              "shifts": 0,
+              "outcome": "TIE"
+            },
+            "fire": { "resp": "sabotaj" },
+            "post": { "second": "evet", "rescue": "yuksek", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E3",
+                "b": "E8",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E7",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E2",
+                "b": "E3",
+                "ok": false,
+                "msg": "Bu iki kart birbirine zıt bir şey söylemiyor."
+              },
+              {
+                "a": "E5",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Dost geçişi uyarısı yayımlandı” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E3|E8", "E1|E7", "E1|E5"],
+            "invalid": 1,
+            "result": {
+              "proven": 3,
+              "total": 6,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 2,
+              "sicil": "Suç Ortağı",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": null,
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": true,
+            "name": ""
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 1285, "case": 1, "tick": 1, "type": "brief_close" },
+          { "ms": 16377, "case": 1, "tick": 1, "type": "clue", "id": "R1" },
+          {
+            "ms": 16377,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 26612, "case": 1, "tick": 2, "type": "clue", "id": "R2" },
+          {
+            "ms": 26612,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 31977,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          { "ms": 36490, "case": 1, "tick": 4, "type": "clue", "id": "S1" },
+          {
+            "ms": 36490,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 36490,
+            "case": 1,
+            "tick": 5,
+            "type": "compel_offer",
+            "aspect": "sadik"
+          },
+          {
+            "ms": 38099,
+            "case": 1,
+            "tick": 5,
+            "type": "compel",
+            "aspect": "sadik",
+            "accepted": false
+          },
+          {
+            "ms": 44658,
+            "case": 1,
+            "tick": 5,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          {
+            "ms": 48212,
+            "case": 1,
+            "tick": 6,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 48212, "case": 1, "tick": 6, "type": "clue", "id": "B1" },
+          { "ms": 48212, "case": 1, "tick": 6, "type": "clue", "id": "B2" },
+          {
+            "ms": 48212,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu", "anlık olay yakalandı"]
+          },
+          { "ms": 55341, "case": 1, "tick": 7, "type": "clue", "id": "S2" },
+          {
+            "ms": 55341,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 69599,
+            "case": 1,
+            "tick": 8,
+            "type": "report",
+            "cards": ["S2", "B2", "B1", "S1", "R2", "R1"],
+            "tone": "itirazli",
+            "toneMod": -2,
+            "invoked": [],
+            "dice": [-1, -1, 1, -1],
+            "roll": -2,
+            "difficulty": 0,
+            "against": 3,
+            "shifts": 0,
+            "outcome": "TIE"
+          },
+          {
+            "ms": 76285,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "sabotaj"
+          },
+          {
+            "ms": 76285,
+            "case": 1,
+            "tick": 9,
+            "type": "sabotage_check",
+            "dice": [0, 1, -1, -1],
+            "roll": -1,
+            "difficulty": 2,
+            "shifts": -1,
+            "outcome": "FAIL",
+            "missed": false,
+            "detectChance": 0.5,
+            "detected": false
+          },
+          {
+            "ms": 80716,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          {
+            "ms": 88435,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E3",
+            "b": "E8",
+            "ok": true
+          },
+          {
+            "ms": 92834,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E7",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 96417,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E2",
+            "b": "E3",
+            "ok": false
+          },
+          {
+            "ms": 102418,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E5",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 104684,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 3,
+              "total": 6,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 2,
+              "sicil": "Suç Ortağı",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv93rh8wirvek",
+      "name": "",
+      "started_at": "2026-10-15T05:32:59.025Z",
+      "updated_at": "2026-10-15T05:34:53.151Z",
+      "data": {
+        "sid": "smv93rh8wirvek",
+        "name": "",
+        "hint": false,
+        "startedAt": "2026-10-15T05:32:59.025Z",
+        "cases": {
+          "1": {
+            "got": ["R1", "R2", "S1", "B1", "B2", "S2"],
+            "reported": true,
+            "report": {
+              "cards": ["R1", "R2", "S1", "B1", "B2", "S2"],
+              "tone": "itirazli",
+              "tm": -2,
+              "inv": [],
+              "dice": [-1, 1, 0, 0],
+              "roll": 0,
+              "diff": 0,
+              "against": 3,
+              "shifts": 2,
+              "outcome": "SUCCESS"
+            },
+            "fire": { "resp": "sabotaj" },
+            "post": { "second": "hayir", "rescue": "yuksek", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E1",
+                "b": "E7",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E3",
+                "b": "E8",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E5",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Dost geçişi uyarısı yayımlandı” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E4",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Dost geçişi bekleniyordu” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E1|E7", "E3|E8", "E1|E5", "E1|E4"],
+            "invalid": 0,
+            "result": {
+              "proven": 4,
+              "total": 7,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 3,
+              "sicil": "Suç Ortağı",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": null,
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": false,
+            "name": ""
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 1182, "case": 1, "tick": 1, "type": "brief_close" },
+          { "ms": 10575, "case": 1, "tick": 1, "type": "clue", "id": "R1" },
+          {
+            "ms": 10575,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 15478, "case": 1, "tick": 2, "type": "clue", "id": "R2" },
+          {
+            "ms": 15478,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 22875,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          { "ms": 27028, "case": 1, "tick": 4, "type": "clue", "id": "S1" },
+          {
+            "ms": 27028,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 27028,
+            "case": 1,
+            "tick": 5,
+            "type": "compel_offer",
+            "aspect": "sadik"
+          },
+          {
+            "ms": 28649,
+            "case": 1,
+            "tick": 5,
+            "type": "compel",
+            "aspect": "sadik",
+            "accepted": false
+          },
+          {
+            "ms": 43124,
+            "case": 1,
+            "tick": 5,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          {
+            "ms": 47045,
+            "case": 1,
+            "tick": 6,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 47045, "case": 1, "tick": 6, "type": "clue", "id": "B1" },
+          { "ms": 47045, "case": 1, "tick": 6, "type": "clue", "id": "B2" },
+          {
+            "ms": 47045,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu", "anlık olay yakalandı"]
+          },
+          { "ms": 50539, "case": 1, "tick": 7, "type": "clue", "id": "S2" },
+          {
+            "ms": 50539,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 64868,
+            "case": 1,
+            "tick": 8,
+            "type": "report",
+            "cards": ["R1", "R2", "S1", "B1", "B2", "S2"],
+            "tone": "itirazli",
+            "toneMod": -2,
+            "invoked": [],
+            "dice": [-1, 1, 0, 0],
+            "roll": 0,
+            "difficulty": 0,
+            "against": 3,
+            "shifts": 2,
+            "outcome": "SUCCESS"
+          },
+          {
+            "ms": 72102,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "sabotaj"
+          },
+          {
+            "ms": 72102,
+            "case": 1,
+            "tick": 9,
+            "type": "sabotage_check",
+            "dice": [-1, -1, 0, 0],
+            "roll": -2,
+            "difficulty": 2,
+            "shifts": -2,
+            "outcome": "FAIL",
+            "missed": false,
+            "detectChance": 0.5,
+            "detected": false
+          },
+          {
+            "ms": 77016,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "hayir",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          {
+            "ms": 93952,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E1",
+            "b": "E7",
+            "ok": true
+          },
+          {
+            "ms": 96668,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E3",
+            "b": "E8",
+            "ok": true
+          },
+          {
+            "ms": 102750,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E5",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 106867,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E4",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 113636,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 4,
+              "total": 7,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 3,
+              "sicil": "Suç Ortağı",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv933d5ntr8lp",
+      "name": "",
+      "started_at": "2026-10-15T05:14:13.954Z",
+      "updated_at": "2026-10-15T05:27:06.396Z",
+      "data": {
+        "sid": "smv933d5ntr8lp",
+        "name": "",
+        "hint": false,
+        "startedAt": "2026-10-15T05:14:13.954Z",
+        "cases": {
+          "1": {
+            "got": ["R1", "R2", "B1", "S1"],
+            "reported": true,
+            "report": {
+              "cards": ["R1", "R2", "B1", "S1"],
+              "tone": "itirazli",
+              "tm": -2,
+              "inv": [],
+              "dice": [0, 1, 1, 0],
+              "roll": 2,
+              "diff": 0,
+              "against": 2,
+              "shifts": 4,
+              "outcome": "STYLE"
+            },
+            "fire": { "resp": "sabotaj" },
+            "post": { "second": "hayir", "rescue": "yuksek", "ktb": "acik" },
+            "detected": true,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E3",
+                "b": "E9",
+                "ok": false,
+                "msg": "Bu iki kart birbirine zıt bir şey söylemiyor."
+              },
+              {
+                "a": "E8",
+                "b": "E3",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E7",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E5",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Dost geçişi uyarısı yayımlandı” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E3|E8", "E1|E7", "E1|E5"],
+            "invalid": 1,
+            "result": {
+              "proven": 3,
+              "total": 7,
+              "need": 3,
+              "guilt": 1,
+              "bond": -1,
+              "cred": 2,
+              "sicil": "Suç Ortağı",
+              "notes": [
+                "Bilerek yanlış çözümün bir tanık tarafından fark edildi."
+              ]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": null,
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": false,
+            "name": ""
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 1001, "case": 1, "tick": 1, "type": "brief_close" },
+          { "ms": 537929, "case": 1, "tick": 1, "type": "clue", "id": "R1" },
+          {
+            "ms": 537929,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 549151, "case": 1, "tick": 2, "type": "clue", "id": "R2" },
+          {
+            "ms": 549151,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 552641,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          {
+            "ms": 601747,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          {
+            "ms": 601747,
+            "case": 1,
+            "tick": 5,
+            "type": "compel_offer",
+            "aspect": "sadik"
+          },
+          {
+            "ms": 603117,
+            "case": 1,
+            "tick": 5,
+            "type": "compel",
+            "aspect": "sadik",
+            "accepted": false
+          },
+          { "ms": 606978, "case": 1, "tick": 5, "type": "clue", "id": "B1" },
+          {
+            "ms": 606978,
+            "case": 1,
+            "tick": 5,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 611524, "case": 1, "tick": 6, "type": "clue", "id": "S1" },
+          {
+            "ms": 611524,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 617160,
+            "case": 1,
+            "tick": 7,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          {
+            "ms": 617160,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "mark",
+            "notes": []
+          },
+          {
+            "ms": 631435,
+            "case": 1,
+            "tick": 8,
+            "type": "report",
+            "cards": ["R1", "R2", "B1", "S1"],
+            "tone": "itirazli",
+            "toneMod": -2,
+            "invoked": [],
+            "dice": [0, 1, 1, 0],
+            "roll": 2,
+            "difficulty": 0,
+            "against": 2,
+            "shifts": 4,
+            "outcome": "STYLE"
+          },
+          {
+            "ms": 641351,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "sabotaj"
+          },
+          {
+            "ms": 641351,
+            "case": 1,
+            "tick": 9,
+            "type": "sabotage_check",
+            "dice": [1, -1, -1, 0],
+            "roll": -1,
+            "difficulty": 2,
+            "shifts": -1,
+            "outcome": "FAIL",
+            "missed": false,
+            "detectChance": 0.5,
+            "detected": true
+          },
+          {
+            "ms": 647935,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "hayir",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          {
+            "ms": 757284,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E3",
+            "b": "E9",
+            "ok": false
+          },
+          {
+            "ms": 761001,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E8",
+            "b": "E3",
+            "ok": true
+          },
+          {
+            "ms": 764068,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E7",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 766834,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E5",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 771903,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 3,
+              "total": 7,
+              "need": 3,
+              "guilt": 1,
+              "bond": -1,
+              "cred": 2,
+              "sicil": "Suç Ortağı",
+              "notes": [
+                "Bilerek yanlış çözümün bir tanık tarafından fark edildi."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv8mtr3mwsw4c",
+      "name": "Felix",
+      "started_at": "2026-10-14T21:38:51.631Z",
+      "updated_at": "2026-10-14T21:43:22.080Z",
+      "data": {
+        "sid": "smv8mtr3mwsw4c",
+        "name": "Felix",
+        "hint": true,
+        "startedAt": "2026-10-14T21:38:51.631Z",
+        "cases": {
+          "1": {
+            "got": ["R1", "R2", "S1", "B1", "B2", "S2"],
+            "reported": true,
+            "report": {
+              "cards": ["S2", "B2", "B1", "S1", "R2", "R1"],
+              "tone": "itirazli",
+              "tm": -2,
+              "inv": [],
+              "dice": [1, -1, 0, 1],
+              "roll": 1,
+              "diff": 0,
+              "against": 3,
+              "shifts": 3,
+              "outcome": "STYLE"
+            },
+            "fire": { "resp": "sabotaj" },
+            "post": { "second": "hayir", "rescue": "yuksek", "ktb": "acik" },
+            "detected": true,
+            "sunk": false,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E1",
+                "b": "E4",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Dost geçişi bekleniyordu” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E5",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Dost geçişi uyarısı yayımlandı” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E7",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E8",
+                "b": "E3",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E1|E4", "E1|E5", "E1|E7", "E3|E8"],
+            "invalid": 0,
+            "result": {
+              "proven": 4,
+              "total": 7,
+              "need": 3,
+              "guilt": 1,
+              "bond": -1,
+              "cred": 3,
+              "sicil": "Suç Ortağı",
+              "notes": [
+                "Bilerek yanlış çözümün bir tanık tarafından fark edildi."
+              ]
+            },
+            "fpEnd": 0
+          },
+          "2": {
+            "got": ["R1", "R2", "S1", "B1", "B2", "M1"],
+            "reported": false,
+            "report": null,
+            "fire": { "resp": "hesapla" },
+            "post": { "second": "evet", "rescue": "orta", "ktb": "acik" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [],
+            "skippedEvid": true,
+            "proven": [],
+            "invalid": 0,
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 0,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": { "rate": {}, "txt": {} },
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": true,
+            "name": "Felix"
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 1700, "case": 1, "tick": 1, "type": "brief_close" },
+          { "ms": 10826, "case": 1, "tick": 1, "type": "clue", "id": "R1" },
+          {
+            "ms": 10826,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 13973, "case": 1, "tick": 2, "type": "clue", "id": "R2" },
+          {
+            "ms": 13973,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 19712,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          { "ms": 24441, "case": 1, "tick": 4, "type": "clue", "id": "S1" },
+          {
+            "ms": 24442,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 24442,
+            "case": 1,
+            "tick": 5,
+            "type": "compel_offer",
+            "aspect": "sadik"
+          },
+          {
+            "ms": 28083,
+            "case": 1,
+            "tick": 5,
+            "type": "compel",
+            "aspect": "sadik",
+            "accepted": false
+          },
+          {
+            "ms": 36596,
+            "case": 1,
+            "tick": 5,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          {
+            "ms": 46111,
+            "case": 1,
+            "tick": 6,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 46111, "case": 1, "tick": 6, "type": "clue", "id": "B1" },
+          { "ms": 46111, "case": 1, "tick": 6, "type": "clue", "id": "B2" },
+          {
+            "ms": 46111,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu", "anlık olay yakalandı"]
+          },
+          { "ms": 57041, "case": 1, "tick": 7, "type": "clue", "id": "S2" },
+          {
+            "ms": 57041,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 67501,
+            "case": 1,
+            "tick": 8,
+            "type": "report",
+            "cards": ["S2", "B2", "B1", "S1", "R2", "R1"],
+            "tone": "itirazli",
+            "toneMod": -2,
+            "invoked": [],
+            "dice": [1, -1, 0, 1],
+            "roll": 1,
+            "difficulty": 0,
+            "against": 3,
+            "shifts": 3,
+            "outcome": "STYLE"
+          },
+          {
+            "ms": 76701,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "sabotaj"
+          },
+          {
+            "ms": 76702,
+            "case": 1,
+            "tick": 9,
+            "type": "sabotage_check",
+            "dice": [1, 0, -1, 1],
+            "roll": 1,
+            "difficulty": 2,
+            "shifts": 1,
+            "outcome": "SUCCESS",
+            "missed": true,
+            "detectChance": 0.8,
+            "detected": true
+          },
+          {
+            "ms": 83869,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "hayir",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": false
+          },
+          {
+            "ms": 105302,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E1",
+            "b": "E4",
+            "ok": true
+          },
+          {
+            "ms": 108453,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E5",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 112085,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E7",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 118601,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E8",
+            "b": "E3",
+            "ok": true
+          },
+          {
+            "ms": 121936,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 4,
+              "total": 7,
+              "need": 3,
+              "guilt": 1,
+              "bond": -1,
+              "cred": 3,
+              "sicil": "Suç Ortağı",
+              "notes": [
+                "Bilerek yanlış çözümün bir tanık tarafından fark edildi."
+              ]
+            }
+          },
+          {
+            "ms": 127535,
+            "case": 2,
+            "tick": 1,
+            "type": "case_start",
+            "caseId": 2
+          },
+          { "ms": 133041, "case": 2, "tick": 1, "type": "clue", "id": "R1" },
+          {
+            "ms": 133041,
+            "case": 2,
+            "tick": 1,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 138311, "case": 2, "tick": 2, "type": "clue", "id": "R2" },
+          {
+            "ms": 138311,
+            "case": 2,
+            "tick": 2,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 147146,
+            "case": 2,
+            "tick": 3,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 147146, "case": 2, "tick": 3, "type": "clue", "id": "S1" },
+          {
+            "ms": 147146,
+            "case": 2,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 158407,
+            "case": 2,
+            "tick": 4,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 158407, "case": 2, "tick": 4, "type": "clue", "id": "B1" },
+          {
+            "ms": 158407,
+            "case": 2,
+            "tick": 4,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 166395, "case": 2, "tick": 5, "type": "clue", "id": "B2" },
+          {
+            "ms": 166395,
+            "case": 2,
+            "tick": 5,
+            "type": "action",
+            "action": "beh",
+            "notes": ["anlık olay yakalandı"]
+          },
+          {
+            "ms": 166395,
+            "case": 2,
+            "tick": 6,
+            "type": "compel_offer",
+            "aspect": "kural"
+          },
+          {
+            "ms": 173119,
+            "case": 2,
+            "tick": 6,
+            "type": "compel",
+            "aspect": "kural",
+            "accepted": true
+          },
+          {
+            "ms": 176678,
+            "case": 2,
+            "tick": 6,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          {
+            "ms": 188679,
+            "case": 2,
+            "tick": 7,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          {
+            "ms": 188679,
+            "case": 2,
+            "tick": 7,
+            "type": "action",
+            "action": "mark",
+            "notes": []
+          },
+          { "ms": 192991, "case": 2, "tick": 8, "type": "clue", "id": "M1" },
+          {
+            "ms": 192991,
+            "case": 2,
+            "tick": 8,
+            "type": "action",
+            "action": "mark",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 206491,
+            "case": 2,
+            "tick": 9,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 210885,
+            "case": 2,
+            "tick": 10,
+            "type": "order_response",
+            "resp": "hesapla"
+          },
+          {
+            "ms": 216350,
+            "case": 2,
+            "tick": 10,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "orta",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": true
+          },
+          { "ms": 229185, "case": 2, "tick": 10, "type": "evid_skipped" },
+          {
+            "ms": 229185,
+            "case": 2,
+            "tick": 10,
+            "type": "case_end",
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 0,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            }
+          },
+          {
+            "ms": 270153,
+            "case": 2,
+            "tick": 10,
+            "type": "survey",
+            "rate": {},
+            "txt": {}
+          }
+        ]
+      }
+    },
+    {
+      "sid": "smv8lj3ofo8od7",
+      "name": "",
+      "started_at": "2026-10-14T21:02:35.221Z",
+      "updated_at": "2026-10-14T21:05:20.239Z",
+      "data": {
+        "sid": "smv8lj3ofo8od7",
+        "name": "",
+        "hint": false,
+        "startedAt": "2026-10-14T21:02:35.221Z",
+        "cases": {
+          "1": {
+            "got": ["B1", "R1", "R2", "S1", "S2"],
+            "reported": true,
+            "report": {
+              "cards": ["B1", "R1", "R2", "S1", "S2"],
+              "tone": "itirazli",
+              "tm": -2,
+              "inv": [],
+              "dice": [0, 1, -1, 1],
+              "roll": 1,
+              "diff": 0,
+              "against": 2,
+              "shifts": 3,
+              "outcome": "STYLE"
+            },
+            "fire": { "resp": "sabotaj" },
+            "post": { "second": "hayir", "rescue": "yuksek", "ktb": "acik" },
+            "detected": false,
+            "sunk": false,
+            "escaped": false,
+            "attempts": [
+              {
+                "a": "E3",
+                "b": "E8",
+                "ok": true,
+                "msg": "Kaptan “uyarılmadım” diyor; ama “Kaptan bilgilendirildi” kartı bilginin ya da uyarının ulaştığını gösteriyor."
+              },
+              {
+                "a": "E1",
+                "b": "E5",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Dost geçişi uyarısı yayımlandı” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E4",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Dost geçişi bekleniyordu” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              },
+              {
+                "a": "E7",
+                "b": "E1",
+                "ok": true,
+                "msg": "“Hedef düşman” kartı hedefi düşman gösteriyor; “Bot yazısı: Alman” kartı ise dost ya da tarafsız gösteriyor. İkisi birlikte doğru olamaz."
+              }
+            ],
+            "skippedEvid": false,
+            "proven": ["E3|E8", "E1|E5", "E1|E4", "E1|E7"],
+            "invalid": 0,
+            "result": {
+              "proven": 4,
+              "total": 7,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 3,
+              "sicil": "Suç Ortağı",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            },
+            "fpEnd": 0
+          },
+          "2": {
+            "got": ["R1", "S1", "R2", "B1", "B2", "S2", "M1"],
+            "reported": false,
+            "report": null,
+            "fire": { "resp": "hesapla" },
+            "post": { "second": "evet", "rescue": "dusuk", "ktb": "koru" },
+            "detected": false,
+            "sunk": true,
+            "escaped": false,
+            "attempts": [],
+            "skippedEvid": true,
+            "proven": [],
+            "invalid": 0,
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 1,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            },
+            "fpEnd": 0
+          }
+        },
+        "survey": {
+          "rate": {
+            "tension": 4,
+            "basis": 3,
+            "replay": 4,
+            "fate": 4,
+            "clarity": 3
+          },
+          "txt": {}
+        },
+        "events": [
+          {
+            "ms": 0,
+            "case": null,
+            "tick": null,
+            "type": "session_start",
+            "hint": false,
+            "name": ""
+          },
+          { "ms": 0, "case": 1, "tick": 1, "type": "case_start", "caseId": 1 },
+          { "ms": 1600, "case": 1, "tick": 1, "type": "brief_close" },
+          {
+            "ms": 4957,
+            "case": 1,
+            "tick": 1,
+            "type": "action",
+            "action": "beh",
+            "notes": []
+          },
+          { "ms": 6589, "case": 1, "tick": 2, "type": "clue", "id": "B1" },
+          {
+            "ms": 6589,
+            "case": 1,
+            "tick": 2,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 10810, "case": 1, "tick": 3, "type": "clue", "id": "R1" },
+          {
+            "ms": 10810,
+            "case": 1,
+            "tick": 3,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 14271, "case": 1, "tick": 4, "type": "clue", "id": "R2" },
+          {
+            "ms": 14271,
+            "case": 1,
+            "tick": 4,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 14271,
+            "case": 1,
+            "tick": 5,
+            "type": "compel_offer",
+            "aspect": "sadik"
+          },
+          {
+            "ms": 16198,
+            "case": 1,
+            "tick": 5,
+            "type": "compel",
+            "aspect": "sadik",
+            "accepted": false
+          },
+          {
+            "ms": 19175,
+            "case": 1,
+            "tick": 5,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 19175, "case": 1, "tick": 5, "type": "clue", "id": "S1" },
+          {
+            "ms": 19175,
+            "case": 1,
+            "tick": 5,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 27373,
+            "case": 1,
+            "tick": 6,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          { "ms": 31688, "case": 1, "tick": 7, "type": "clue", "id": "S2" },
+          {
+            "ms": 31688,
+            "case": 1,
+            "tick": 7,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 43981,
+            "case": 1,
+            "tick": 8,
+            "type": "report",
+            "cards": ["B1", "R1", "R2", "S1", "S2"],
+            "tone": "itirazli",
+            "toneMod": -2,
+            "invoked": [],
+            "dice": [0, 1, -1, 1],
+            "roll": 1,
+            "difficulty": 0,
+            "against": 2,
+            "shifts": 3,
+            "outcome": "STYLE"
+          },
+          {
+            "ms": 48699,
+            "case": 1,
+            "tick": 9,
+            "type": "order_response",
+            "resp": "sabotaj"
+          },
+          {
+            "ms": 48699,
+            "case": 1,
+            "tick": 9,
+            "type": "sabotage_check",
+            "dice": [1, 1, -1, 1],
+            "roll": 2,
+            "difficulty": 2,
+            "shifts": 2,
+            "outcome": "SUCCESS",
+            "missed": true,
+            "detectChance": 0.8,
+            "detected": false
+          },
+          {
+            "ms": 54400,
+            "case": 1,
+            "tick": 9,
+            "type": "post_fire",
+            "second": "hayir",
+            "rescue": "yuksek",
+            "ktb": "acik",
+            "escaped": false,
+            "sunk": false
+          },
+          {
+            "ms": 63816,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E3",
+            "b": "E8",
+            "ok": true
+          },
+          {
+            "ms": 67783,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E1",
+            "b": "E5",
+            "ok": true
+          },
+          {
+            "ms": 70467,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E4",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 73149,
+            "case": 1,
+            "tick": 9,
+            "type": "link",
+            "a": "E7",
+            "b": "E1",
+            "ok": true
+          },
+          {
+            "ms": 76734,
+            "case": 1,
+            "tick": 9,
+            "type": "case_end",
+            "result": {
+              "proven": 4,
+              "total": 7,
+              "need": 3,
+              "guilt": 0,
+              "bond": -1,
+              "cred": 3,
+              "sicil": "Suç Ortağı",
+              "notes": ["Bilerek yanlış çözümün fark edilmedi."]
+            }
+          },
+          {
+            "ms": 79650,
+            "case": 2,
+            "tick": 1,
+            "type": "case_start",
+            "caseId": 2
+          },
+          { "ms": 85055, "case": 2, "tick": 1, "type": "clue", "id": "R1" },
+          {
+            "ms": 85055,
+            "case": 2,
+            "tick": 1,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 89644,
+            "case": 2,
+            "tick": 2,
+            "type": "action",
+            "action": "sil",
+            "notes": []
+          },
+          { "ms": 93206, "case": 2, "tick": 3, "type": "clue", "id": "S1" },
+          {
+            "ms": 93206,
+            "case": 2,
+            "tick": 3,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          { "ms": 98260, "case": 2, "tick": 4, "type": "clue", "id": "R2" },
+          {
+            "ms": 98260,
+            "case": 2,
+            "tick": 4,
+            "type": "action",
+            "action": "route",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 102511,
+            "case": 2,
+            "tick": 5,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 102511, "case": 2, "tick": 5, "type": "clue", "id": "B1" },
+          { "ms": 102511, "case": 2, "tick": 5, "type": "clue", "id": "B2" },
+          {
+            "ms": 102511,
+            "case": 2,
+            "tick": 5,
+            "type": "action",
+            "action": "beh",
+            "notes": ["yeni ipucu", "anlık olay yakalandı"]
+          },
+          {
+            "ms": 102511,
+            "case": 2,
+            "tick": 6,
+            "type": "compel_offer",
+            "aspect": "kural"
+          },
+          {
+            "ms": 104131,
+            "case": 2,
+            "tick": 6,
+            "type": "compel",
+            "aspect": "kural",
+            "accepted": true
+          },
+          {
+            "ms": 108671,
+            "case": 2,
+            "tick": 6,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          { "ms": 108671, "case": 2, "tick": 6, "type": "clue", "id": "S2" },
+          {
+            "ms": 108671,
+            "case": 2,
+            "tick": 6,
+            "type": "action",
+            "action": "sil",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 113409,
+            "case": 2,
+            "tick": 7,
+            "type": "invoke",
+            "aspect": "keskin"
+          },
+          {
+            "ms": 113409,
+            "case": 2,
+            "tick": 7,
+            "type": "action",
+            "action": "mark",
+            "notes": []
+          },
+          { "ms": 119855, "case": 2, "tick": 8, "type": "clue", "id": "M1" },
+          {
+            "ms": 119855,
+            "case": 2,
+            "tick": 8,
+            "type": "action",
+            "action": "mark",
+            "notes": ["yeni ipucu"]
+          },
+          {
+            "ms": 131823,
+            "case": 2,
+            "tick": 9,
+            "type": "action",
+            "action": "wait"
+          },
+          {
+            "ms": 135232,
+            "case": 2,
+            "tick": 10,
+            "type": "order_response",
+            "resp": "hesapla"
+          },
+          {
+            "ms": 141533,
+            "case": 2,
+            "tick": 10,
+            "type": "post_fire",
+            "second": "evet",
+            "rescue": "dusuk",
+            "ktb": "koru",
+            "escaped": false,
+            "sunk": true
+          },
+          { "ms": 151549, "case": 2, "tick": 10, "type": "evid_skipped" },
+          {
+            "ms": 151549,
+            "case": 2,
+            "tick": 10,
+            "type": "case_end",
+            "result": {
+              "proven": 0,
+              "total": 0,
+              "need": 0,
+              "guilt": 0,
+              "bond": 1,
+              "cred": 3,
+              "sicil": null,
+              "notes": [
+                "Haklı çıkış: bu kez emre uymak doğruydu. Sadık Subay pekişti."
+              ]
+            }
+          },
+          {
+            "ms": 164766,
+            "case": 2,
+            "tick": 10,
+            "type": "survey",
+            "rate": {
+              "tension": 4,
+              "basis": 3,
+              "replay": 4,
+              "fate": 4,
+              "clarity": 3
+            },
+            "txt": {}
+          }
+        ]
+      }
+    }
+  ]
+}

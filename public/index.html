@@ -179,6 +179,23 @@ button.card{min-height:0;cursor:pointer}
 .help{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:0}
 .help>summary{padding:9px 12px;color:var(--ink);font-weight:500}
 .help ul{margin:0;padding:0 14px 12px 30px;display:flex;flex-direction:column;gap:4px;font-size:var(--f14)}
+/* emir kartı, kompakt ipucu kartları, seyir defteri */
+.act-card.ord-card{--foot:66px}
+.ticket .act-foot.ord-foot{flex-wrap:wrap;align-content:center;gap:6px;padding:4px 10px}
+.ticket .act-foot.ord-foot .kg{padding:2px 9px 2px 7px;font-size:var(--f12)}
+.ticket .act.ordhd{display:flex;flex-direction:column;gap:6px;width:100%;text-align:left;cursor:default;background:transparent;border:0;color:inherit;font:inherit;padding:inherit}
+.card.cmp{cursor:pointer}
+.card.cmp .one{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card.cmp.open .one{white-space:normal;overflow:visible}
+.card.cmp .src{margin-top:6px;font-size:var(--f11_5);opacity:.7}
+.card.cmp:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card.ord .hd .ttl{color:var(--card-ink)}
+.logbook{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:0;font:var(--f12_5)/1.45 var(--font-doc);color:var(--muted);max-height:260px;overflow:auto}
+.logbook li{padding:5px 0 5px 12px;border-left:2px solid var(--accent);position:relative}
+.logbook li+li{margin-top:2px}
+.logbook b{color:var(--ink);font-weight:500}
+.seyir h2{display:flex;align-items:center;gap:8px}
+
 .log{font:var(--f12_5)/1.55 var(--font-doc);color:var(--muted);display:flex;flex-direction:column;gap:2px;max-height:190px;overflow:auto}
 .log b{color:var(--ink);font-weight:500}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:var(--f14)}
@@ -870,7 +887,22 @@ const DESC={
   route:'Program ve seyir defteri · yön, dost geçişleri',
   beh:'UZO gözlemi · hız, zikzak, ışık, sinyal',
   mark:'Dürbün · bayrak, boya, armatör işareti'};
-const ACT_NAME={sil:'Siluet',route:'Rota',beh:'Davranış',mark:'İşaretler',report:'Kaptana rapor',wait:'Bekle'};
+const ACT_NAME={sil:'Siluet',route:'Rota',beh:'Davranış',mark:'İşaretler',report:'Kaptana rapor',wait:'Bekle',order:'Emir'};
+CAT.order='Emir';
+/* Emir ver: bir istasyona görev verirsin (1 hamle), sonuç 2 hamle sonra kâğıt olarak döner. Aynı anda en çok 2 emir. */
+const STN={uzo:{n:'Gözcü',ic:'scope'},hidro:{n:'Hidrofon',ic:'hphone'},telsiz:{n:'Telsiz',ic:'radio'},ktb:{n:'KTB katibi',ic:'report'}};
+const ORD_DELAY=2,ORD_MAX=2;
+const ORDERS={
+ 1:{uzo:{rel:.6,against:true,t:'Direkte iki kısa ışık yandı. Tanıma sinyali gibi.'},
+    hidro:{rel:.6,against:false,t:'Pervane yavaş ve yorgun. Ağır yüklü bir tüccar sesi.'},
+    telsiz:{rel:.75,against:true,t:'Kıyı istasyonu: Bordeaux’ya gecikmeli bir dost geçişi var.'},
+    ktb:{rel:.7,against:true,t:'Bugünkü programda bu hatta düşman konvoyu yok.'}},
+ 2:{uzo:{rel:.55,against:false,t:'Ön güvertede kapaklı bir top yuvası seçiliyor.'},
+    hidro:{rel:.65,against:false,t:'İki pervane, yüksek devir. Kaçış hızı.'},
+    telsiz:{rel:.4,against:false,t:'Şifreli kısa bir yayın. Kaynağı belirsiz.'},
+    ktb:{rel:.65,against:false,t:'Bu saatte dost geçiş kaydı yok.'}}
+};
+const ordLabel=(d,o)=>{const e=Math.round(o.rel*d.vis*100)/100;return e>=.6?['net','Net']:e>=.4?['bel','Belirsiz']:['zay','Zayıf'];};
 const ASP={
   keskin:{name:'Keskin Göz',when:'Gözlemde',desc:'Seçtiğin bir gözlem eylemi 1 hamle kısalır.'},
   kural:{name:'Kuralcı',when:'Raporda',desc:'Raporda bir Rota ipucu varsa zara +2.'},
@@ -945,6 +977,7 @@ const IC={
   radio:'<rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M7 9l9-6"/><circle cx="8.5" cy="14.5" r="2.3"/><path d="M14 13h4M14 16h4"/>',
   hphone:'<path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/>'
 };
+IC.order=IC.radio;
 const ico=(n,c)=>'<svg class="ico '+(c||'')+'" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>';
 const SHIPS={
   1:'<path d="M-60 0L-56 -9H50L60 -4L56 0Z"/><path d="M-52 -9V-22H-34V-9Z"/><path d="M-50 -22V-27H-38V-22Z"/><path d="M-30 -9V-20H-23V-9Z"/><path d="M-20 -9V-12H25V-9Z"/><path d="M30 -9V-25M26 -21H34" stroke-width="1.6" stroke="currentColor" fill="none"/>',
@@ -1026,7 +1059,7 @@ function heroHtml(){
 }
 
 /* ───────── Durum ───────── */
-const S={screen:'intro',name:'',hint:true,t0:0,sid:null,events:[],cases:{},st:null,survey:null,saveMsg:''};
+const S={open:{},screen:'intro',name:'',hint:true,t0:0,sid:null,events:[],cases:{},st:null,survey:null,saveMsg:''};
 function newId(){return 's'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
 function ev(type,data){S.events.push(Object.assign({ms:Math.round(performance.now()-S.t0),case:S.st?S.st.d.n:null,tick:S.st?S.st.tick:null,type:type},data||{}));}
 const $app=document.getElementById('app'),$modal=document.getElementById('modal');
@@ -1038,7 +1071,7 @@ function startCase(n){
     reported:false,report:null,compelDone:false,locked:false,phase:'act',brief:n===1,
     draft:null,fire:{resp:null},post:{second:null,rescue:null,ktb:null},
     sabotage:false,detected:false,escaped:false,sunk:false,narr:[],last:null,
-    cards:[],sel:[],attempts:[],proven:[],pinfo:{},skipped:false,invalid:0,lastLink:null,result:null};
+    orders:[],ordDone:[],doubt:0,cards:[],sel:[],attempts:[],proven:[],pinfo:{},skipped:false,invalid:0,lastLink:null,result:null};
   S.screen='case';
   ev('case_start',{caseId:n});
   afterAdvance();
@@ -1087,22 +1120,51 @@ function doAction(a,kg){
   // eylem sonucu özeti
   const after=stageInfo(st,a);
   let txt;
-  if(newIds.length){txt='<b>Yeni ipucu bulundu:</b> '+newIds.map(id=>CAT[st.d.clues[id].cat]+' ('+label(st.d,id)[1].toLowerCase()+')').join(', ')+'. “İpuçların” panosunda “YENİ” etiketiyle görünüyor.';}
-  else if(!after.done){const done=st.d.actions[a].reduce((x,s)=>x+s.n,0)-0;txt='İlerleme kaydedildi: bir sonraki ipucuna <b>'+after.remaining+' hamle</b> kaldı. Yeni ipucu henüz yok.';}
-  else txt='Yeni bir şey görülmedi.';
-  if(usedKeskin) txt+=' Keskin Göz sayesinde bu eylem 1 hamle kısaldı.';
+  if(newIds.length){txt='<b>Yeni ipucu:</b> '+newIds.map(id=>CAT[st.d.clues[id].cat]+' ('+label(st.d,id)[1].toLowerCase()+')').join(', ')+'.';}
+  else if(!after.done){const done=st.d.actions[a].reduce((x,s)=>x+s.n,0)-0;txt='İpucuna <b>'+after.remaining+' hamle</b> kaldı.';}
+  else txt='Yeni bir şey yok.';
+  if(usedKeskin) txt+=' Keskin Göz: 1 hamle kısaldı.';
   st.last={hamle,action:a,text:txt,newIds,r0,r1};
   st.log.push('<b>Hamle '+hamle+'</b> · '+CAT[a]+' · '+(newIds.length?'yeni ipucu':'ipucu yok')+' · mesafe '+r0+' → '+r1+' m');
   st.hist.push(a);
-  st.tick++;afterAdvance();render();
+  st.tick++;deliverOrders(st);afterAdvance();render();
+}
+function deliverOrders(st){
+  const out=[];
+  st.orders=st.orders.filter(o=>{
+    if(o.due>st.tick)return true;
+    st.ordDone.push({key:o.key,tick:st.tick,new:true});out.push(o.key);
+    const r=ORDERS[st.d.n][o.key];
+    ev('order_result',{station:o.key,against:r.against,label:ordLabel(st.d,r)[1]});
+    st.log.push('<b>Hamle '+st.tick+'</b> · '+STN[o.key].n+' yanıtı geldi · '+ordLabel(st.d,r)[1].toLowerCase());
+    if(r.against&&!st.doubt){st.doubt=1;st.fp=Math.min(FP0+1,st.fp+1);st.dbtNew=true;st.log.push('<b>Hamle '+st.tick+'</b> · Kaptan kulak veriyor · rapor 1 kolay, +1 FP');}
+    return false;});
+  st.ordDone.forEach(x=>{if(x.tick!==st.tick)x.new=false;});
+  if(out.length&&st.last){st.last.deliv=out;st.last.text+=' <b>Emir yanıtı:</b> '+out.map(k=>STN[k].n).join(', ')+'.'+(st.dbtNew?' Kaptan kulak veriyor: rapor kolaylaştı, +1 FP.':'');st.dbtNew=false;}
+}
+function ordBusy(st,k){return st.orders.some(o=>o.key===k)||st.ordDone.some(o=>o.key===k);}
+function ordState(st,k){
+  if(st.ordDone.some(o=>o.key===k))return {ok:false,text:'Yanıt geldi'};
+  if(st.orders.some(o=>o.key===k))return {ok:false,text:'Yolda'};
+  if(st.orders.length>=ORD_MAX)return {ok:false,text:'Dolu'};
+  return {ok:true,text:''};
+}
+function doOrder(k){
+  const st=S.st;if(st.phase!=='act'||!ordState(st,k).ok)return;
+  const hamle=st.tick,r0=rangeAt(st.tick),r1=rangeAt(st.tick+1);
+  ev('action',{action:'order',station:k});ev('order',{station:k,due:st.tick+ORD_DELAY});
+  st.orders.push({key:k,due:st.tick+ORD_DELAY,placed:st.tick});
+  st.last={hamle,action:'order',text:STN[k].n+' göreve gönderildi. Yanıt '+ORD_DELAY+' hamle sonra.',newIds:[],r0,r1};
+  st.log.push('<b>Hamle '+hamle+'</b> · Emir: '+STN[k].n+' · yanıt hamle '+(hamle+ORD_DELAY));
+  st.hist.push('order');st.tick++;deliverOrders(st);afterAdvance();render();
 }
 function doWait(){
   const st=S.st;if(st.phase!=='act')return;
   ev('action',{action:'wait'});
   const hamle=st.tick;
-  st.last={hamle,action:'wait',text:'Bir hamle bekledin. Hiçbir şey öğrenmedin; hedef yaklaştı.',newIds:[],r0:rangeAt(st.tick),r1:rangeAt(st.tick+1)};
+  st.last={hamle,action:'wait',text:'Bekledin. Hedef yaklaştı.',newIds:[],r0:rangeAt(st.tick),r1:rangeAt(st.tick+1)};
   st.log.push('<b>Hamle '+hamle+'</b> · Beklendi · mesafe '+st.last.r0+' → '+st.last.r1+' m');
-  st.hist.push('wait');st.tick++;afterAdvance();render();
+  st.hist.push('wait');st.tick++;deliverOrders(st);afterAdvance();render();
 }
 function afterAdvance(){
   const st=S.st;
@@ -1128,7 +1190,7 @@ const D4=[1,4,10,16,19,16,10,4,1];
 function reportOdds(diff,inv){let ok=0,bad=0;for(let r=-4;r<=4;r++){const sh=r+2+inv*2-diff,c=D4[r+4];if(sh>=1)ok+=c;else if(sh<0)bad+=c;}return {ok:Math.round(ok/.81),bad:Math.round(bad/.81)};}
 function draftDiff(st,tm){
   const d=st.draft,against=d.cards.filter(id=>st.d.clues[id].against).length;
-  return 4-Math.min(2,against)+(d.cards.length===0?1:0)+tm;
+  return 4-Math.min(2,against)-(st.doubt?1:0)+(d.cards.length===0?1:0)+tm;
 }
 function resolveReport(){
   const st=S.st,d=st.draft;
@@ -1145,7 +1207,7 @@ function resolveReport(){
   const shifts=roll+2+inv.length*2-diff;
   const out=outcome(shifts);
   st.reported=true;
-  st.report={cards:d.cards.slice(),tone:d.tone,tm,inv,dice,roll,diff,against,shifts,outcome:out};
+  st.report={dbt:st.doubt?1:0,cards:d.cards.slice(),tone:d.tone,tm,inv,dice,roll,diff,against,shifts,outcome:out};
   ev('report',{cards:d.cards,tone:d.tone,toneMod:tm,invoked:inv,dice,roll,difficulty:diff,against,shifts,outcome:out});
   st.log.push('<b>Hamle '+st.tick+'</b> · Kaptana rapor · '+OUT[out]);
   st.hist.push('report');
@@ -1523,7 +1585,7 @@ const textNodesOf=el=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT
 const scramble=t=>t.replace(/[A-Za-zÇĞİÖŞÜçğıöşü]/g,()=>String.fromCharCode(65+Math.floor(Math.random()*26)));
 const Fx={
   busy:false,work:null,typed:new Set(),timers:[],spin:null,
-  WORK:{sil:'Siluet, gemi kitabıyla karşılaştırılıyor…',route:'Şifreli seyir kaydı çözülüyor…',beh:'UZO gözlemleniyor…',mark:'Bayrak ve işaretler okunuyor…',wait:'Bekleniyor…'},
+  WORK:{sil:'Siluet, gemi kitabıyla karşılaştırılıyor…',route:'Şifreli seyir kaydı çözülüyor…',beh:'UZO gözlemleniyor…',mark:'Bayrak ve işaretler okunuyor…',wait:'Bekleniyor…',order:'Emir iletiliyor…'},
   /* eylem önce kısa bir "işleniyor" aşaması gösterir, sonra sonucu yazar */
   start(kind,fn){
     const st=S.st;
@@ -1590,18 +1652,19 @@ const Fx={
 
 /* Kaptanın telsiz mesajları: Almanca metin + Türkçe altyazı. Ses dosyası (audio/radio/<id>.mp3) varsa çalar. */
 const RTXT={
-  c1_1:['Erster Offizier, Tanker voraus. Allein, kein Geleit. Das ist ein Feind. Bestätigen Sie.','Birinci Subay, önümüzde tanker. Tek başına, refakatsiz. Bu bir düşman. Doğrulayın.'],
-  c1_4:['Der Abstand schrumpft. Was haben Sie für mich?','Mesafe kapanıyor. Bana ne getirdin?'],
-  c1_7:['Noch eine Minute. Die Rohre sind klar.','Bir dakika kaldı. Kovanlar hazır.'],
-  c1_8:['Letzte Gelegenheit, Erster Offizier. Gleich gebe ich den Feuerbefehl.','Son fırsat, Birinci Subay. Birazdan ateş emri veriyorum.'],
-  c2_1:['Erster Offizier, Frachter voraus. Kein Licht, Zickzackkurs. So fährt nur ein Feind.','Birinci Subay, önümüzde yük gemisi. Işıksız, zikzaklı. Böyle ancak bir düşman seyreder.'],
-  c2_4:['Es ist dunkel und die Zeit läuft. Was haben Sie?','Hava karanlık, zaman işliyor. Elinde ne var?'],
-  c2_8:['Noch eine Minute. Ich schieße, sobald er im Fadenkreuz steht.','Bir dakika kaldı. Nişangâha girer girmez ateş ediyorum.'],
+  c1_1:['Tanker voraus. Allein. Feind. Bestätigen.','Önümüzde tanker. Tek başına. Düşman. Doğrula.'],
+  c1_4:['Der Abstand schrumpft. Was haben Sie?','Mesafe kapanıyor. Ne var elinde?'],
+  c1_d:['Ihre Leute melden etwas? Ich höre.','Adamların bir şey bildiriyor? Dinliyorum.'],
+  c1_7:['Noch eine Minute. Rohre klar.','Bir dakika. Kovanlar hazır.'],
+  c1_8:['Letzte Gelegenheit, Erster Offizier.','Son fırsat, Birinci Subay.'],
+  c2_1:['Frachter voraus. Kein Licht, Zickzack. Ein Feind.','Önümüzde yük gemisi. Işıksız, zikzaklı. Düşman.'],
+  c2_4:['Es ist dunkel. Was haben Sie?','Hava karanlık. Ne var elinde?'],
+  c2_8:['Noch eine Minute. Dann Feuer.','Bir dakika. Sonra ateş.'],
   c2_9:['Jetzt oder nie, Erster Offizier.','Şimdi ya da hiç, Birinci Subay.'],
-  r_ok:['Ich habe Sie gehört, Erster Offizier. Das wird vermerkt.','Sizi duydum, Birinci Subay. Kayda geçilecek.'],
-  r_tie:['Zweifel, Erster Offizier, aber keine Beweise.','Şüphe var, Birinci Subay, ama kanıt yok.'],
-  r_fail:['Zweifel bringen mich nicht von meinem Befehl ab. Weitermachen!','Şüpheler beni emrimden döndürmez. Devam edin!'],
-  r_itirazli:['Das ist Befehlsverweigerung, Erster Offizier! Merken Sie sich das.','Bu emre itaatsizlik, Birinci Subay! Bunu aklınızda tutun.'],
+  r_ok:['Ich habe Sie gehört. Wird vermerkt.','Sizi duydum. Kayda geçilecek.'],
+  r_tie:['Zweifel, aber keine Beweise.','Şüphe var, kanıt yok.'],
+  r_fail:['Zweifel ändern nichts. Weitermachen!','Şüpheler emri değiştirmez. Devam!'],
+  r_itirazli:['Befehlsverweigerung! Merken Sie sich das.','Emre itaatsizlik! Bunu aklınızda tutun.'],
   f_fire:['Rohr eins, Feuer!','Birinci kovan, ateş!']
 };
 const RADIO={1:[{t:1,id:'c1_1'},{t:4,id:'c1_4'},{t:7,id:'c1_7'},{t:8,id:'c1_8'}],2:[{t:1,id:'c2_1'},{t:4,id:'c2_4'},{t:8,id:'c2_8'},{t:9,id:'c2_9'}]};
@@ -1643,7 +1706,7 @@ function tickRadio(st){
   if(!st||S.screen!=='case'||st.brief)return null;
   const ph=st.phase;
   if(ph!=='act'&&ph!=='compel'&&ph!=='report'&&ph!=='report_result')return null;
-  let id=null;(RADIO[st.d.n]||[]).forEach(l=>{if(st.tick>=l.t)id=l.id;});return id;
+  let id=null;(RADIO[st.d.n]||[]).forEach(l=>{if(st.tick>=l.t)id=l.id;});if(id==='c1_4'&&st.doubt)id='c1_d';return id;
 }
 function radioBox(id,cls){
   const t=RTXT[id],n=S.st?S.st.d.n:0;if(!t)return '';
@@ -1779,16 +1842,25 @@ const isFirst=()=>Object.keys(S.cases).length===0&&S.st&&S.st.d.n===1;
 function helpHtml(title,items,open){
   return `<details class="help info" ${open?'open':''}><summary>${ico('info','sm')}<span>${title}</span></summary><ul>${items.map(i=>'<li>'+i+'</li>').join('')}</ul></details>`;
 }
+const cardOpen=(k,isNew)=>S.open[k]===undefined?!!isNew:S.open[k];
 function clueCard(st,id,isNew){
-  const c=st.d.clues[id],[cls,txt]=label(st.d,id);
-  return `<div class="card${isNew?' new':''}">${isNew?'<span class="newtag">YENİ</span>':''}<div class="hd"><span class="ttl">${ico(c.cat,'sm')}${CAT[c.cat]} · ${SRC[c.cat]}</span><span class="tag ${cls}" title="Bu ipucuna ne kadar güvenebileceğin">${txt}</span></div><div${isNew?` data-fx="${c.cat==='route'?'decrypt':'type'}" data-k="clue:${st.d.n}:${id}" data-g="card"`:''}>${esc(c.t)}</div></div>`;
+  const c=st.d.clues[id],[cls,txt]=label(st.d,id),k=st.d.n+':'+id,op=cardOpen(k,isNew);
+  return `<div class="card cmp${op?' open':''}${isNew?' new':''}" data-do="cardToggle" data-k="${k}" role="button" tabindex="0" aria-expanded="${op}">${isNew?'<span class="newtag">YENİ</span>':''}<div class="hd"><span class="ttl">${ico(c.cat,'sm')}${CAT[c.cat]}</span><span class="tag ${cls}" title="Bu ipucuna ne kadar güvenebileceğin">${txt}</span></div><div class="one"${isNew?` data-fx="${c.cat==='route'?'decrypt':'type'}" data-k="clue:${st.d.n}:${id}" data-g="card"`:''}>${esc(c.t)}</div>${op?`<div class="src">Kaynak: ${SRC[c.cat]}</div>`:''}</div>`;
 }
+function orderCard(st,x){
+  const r=ORDERS[st.d.n][x.key],[cls,txt]=ordLabel(st.d,r),k=st.d.n+':o:'+x.key,op=cardOpen(k,x.new);
+  return `<div class="card cmp ord${op?' open':''}${x.new?' new':''}" data-do="cardToggle" data-k="${k}" role="button" tabindex="0" aria-expanded="${op}">${x.new?'<span class="newtag">YENİ</span>':''}<div class="hd"><span class="ttl">${ico(STN[x.key].ic,'sm')}Emir · ${STN[x.key].n}</span><span class="tag ${cls}">${txt}</span></div><div class="one">${esc(r.t)}</div>${op?'<div class="src">Kaynak: emir yanıtı, hamle '+x.tick+'</div>':''}</div>`;
+}
+const nClues=st=>st.got.length+st.ordDone.length;
 function boardHtml(st){
   const newIds=(st.last&&st.last.newIds)||[];
-  const items=st.got.slice().reverse().map(id=>clueCard(st,id,newIds.indexOf(id)>=0)).join('')||'<p class="muted small">Henüz ipucu yok. Bir gözlem eylemi seç.</p>';
-  return `<div class="stack"><h2 class="ttl">${ico('beh')}İpuçların (${st.got.length})</h2><p class="muted small">Etiket, ipucuna ne kadar güvenebileceğini söyler: net, belirsiz ya da zayıf.</p><div class="cards" style="grid-template-columns:minmax(0,1fr)">${items}</div></div>`;
+  const items=st.ordDone.slice().reverse().map(x=>orderCard(st,x)).join('')+st.got.slice().reverse().map(id=>clueCard(st,id,newIds.indexOf(id)>=0)).join('')||'<p class="muted small">Henüz ipucu yok. Bir gözlem eylemi seç.</p>';
+  return `<div class="stack"><h2 class="ttl">${ico('beh')}İpuçların (${nClues(st)})</h2><p class="muted small">Karta dokun: tamamı açılır. Etiket güvenilirliği söyler.</p><div class="cards" style="grid-template-columns:minmax(0,1fr)">${items}</div></div>`;
 }
-function logHtml(st){return `<details><summary>Geçmiş (${st.log.length} kayıt)</summary><div class="log" style="margin-top:8px">${st.log.slice().reverse().map(l=>'<div>'+l+'</div>').join('')||'<div>Henüz kayıt yok.</div>'}</div></details>`;}
+function logHtml(st){
+  const rows=st.log.slice().reverse().map(l=>'<li>'+l+'</li>').join('')||'<li class="muted">Henüz kayıt yok.</li>';
+  return `<div class="stack seyir"><h2 class="ttl">${ico('report')}Seyir defteri <span class="muted small">(${st.log.length})</span></h2><ol class="logbook">${rows}</ol></div>`;
+}
 function stagesHtml(st,a){
   const stages=st.d.actions[a];let cum=0;
   return '<span class="stages">'+stages.map((s,i)=>{
@@ -1805,6 +1877,10 @@ function kgState(st,a){
   if(info.remaining<2) return {ok:false,text:'Yalnız 1 hamlelik iş kaldı; kısaltmaya gerek yok.'};
   return {ok:true,text:'Bu eylem 1 hamle kısalır: tek hamlede 2 hamlelik ilerleme sağlar. 1 FP harcar.'};
 }
+function ordPending(st){
+  if(!st.orders.length)return '';
+  return '<span class="stub hot">Yolda: '+st.orders.map(o=>STN[o.key].n+' (hamle '+o.due+')').join(', ')+'</span>';
+}
 function actHtml(st){
   const btn=(a,no)=>{
     const as=actionState(st,a),info=stageInfo(st,a),nm=(a==='beh'&&info.done)?'Davranış (izlemeye devam)':CAT[a];
@@ -1818,8 +1894,9 @@ function actHtml(st){
   return `${hintOn?'<div class="banner" role="status">'+esc(st.d.timed.hint)+'</div>':''}
    <div class="actions">${btn('sil','01')}${btn('route','02')}${btn('beh','03')}${btn('mark','04')}
     <span class="grp">Kaptanla</span>
-    <div class="act-card cap"><div class="ticket"><button class="act" data-do="openReport" ${(st.reported||st.locked)?'disabled':''}><span class="act-hd"><b class="ttl">${ico('report')}Kaptana rapor ver</b><span class="serial">Nº 05</span></span><span class="desc">${rText}</span></button><div class="act-foot">${nudge?'<span class="stub hot">Yeni ipuçların var: bildir.</span>':'<span class="stub">Aspect’ler: Kuralcı, Sadık Subay</span>'}</div></div></div>
-    <div class="act-card"><div class="ticket"><button class="act" data-do="wait"><span class="act-hd"><b class="ttl">${ico('wait')}Bekle</b><span class="serial">Nº 06</span></span><span class="desc">1 hamle geçer; yeni bilgi yok.</span></button><div class="act-foot"><span class="stub">Hedef 300 m yaklaşır.</span></div></div></div></div>`;
+    <div class="act-card cap"><div class="ticket"><button class="act" data-do="openReport" ${(st.reported||st.locked)?'disabled':''}><span class="act-hd"><b class="ttl">${ico('report')}Kaptana rapor ver</b><span class="serial">Nº 05</span></span><span class="desc">${rText}</span></button><div class="act-foot">${nudge?'<span class="stub hot">Yeni ipuçların var: bildir.</span>':st.doubt&&!st.reported?'<span class="stub hot">Kaptan kulak veriyor: rapor kolay.</span>':'<span class="stub">Aspect’ler: Kuralcı, Sadık Subay</span>'}</div></div></div>
+    <div class="act-card ord-card"><div class="ticket"><div class="act ordhd" role="group" aria-label="Emir ver"><span class="act-hd"><b class="ttl">${ico('order')}Emir ver</b><span class="serial">Nº 06</span></span><span class="desc">Bir istasyona görev ver. Yanıt ${ORD_DELAY} hamle sonra.</span>${ordPending(st)}</div><div class="act-foot ord-foot">${Object.keys(STN).map(k=>{const os=ordState(st,k);return `<button class="kg" data-do="order" data-k="${k}" ${os.ok?'':'disabled'} title="${esc(os.text)}">${ico(STN[k].ic,'sm')}${STN[k].n}${os.text?`<span class="when">${esc(os.text)}</span>`:''}</button>`;}).join('')}</div></div></div>
+    <div class="act-card"><div class="ticket"><button class="act" data-do="wait"><span class="act-hd"><b class="ttl">${ico('wait')}Bekle</b><span class="serial">Nº 07</span></span><span class="desc">1 hamle geçer; yeni bilgi yok.</span></button><div class="act-foot"><span class="stub">Hedef 300 m yaklaşır.</span></div></div></div></div>`;
 }
 function capNudge(st){
   if(st.phase!=='act'||st.got.length<2||st.reported||st.locked)return '';
@@ -1831,20 +1908,21 @@ function toastHtml(st){
   const k=toastKey(st);
   if(!k||S.sheet||st.toastOff===k)return '';
   const enter=S.toastShown!==k;S.toastShown=k;
-  const fresh=st.got.length>(st.seen||0)&&!Fx.work;
+  const fresh=nClues(st)>(st.seen||0)&&!Fx.work;
   return `<div class="toast${enter?' enter':''}" data-do="toastOpen" data-k="${k}" role="status" aria-live="polite">${lastHtml(st)}${fresh?'<span class="dock-new">Yeni ipucu</span>':''}</div>`;
 }
 function dockHtml(st){
-  const n=st.got.length,fresh=n>(st.seen||0)&&S.sheet!=='clues';
+  const n=nClues(st),fresh=n>(st.seen||0)&&S.sheet!=='clues';
   const strip=(st.last||Fx.work)?'':'<div class="dock-hint">Bir eylem seçmek için “Eylemler”e dokun.</div>';
   const b=(s,ic,txt,extra,cls)=>`<button type="button" class="dk${cls?' '+cls:''}${S.sheet===s?' on':''}" data-do="openSheet" data-s="${s}" aria-haspopup="dialog" aria-expanded="${S.sheet===s}">${ico(ic)}<span>${txt}</span>${extra||''}</button>`;
-  return `<div class="dock">${strip}<div class="dock-bar">${b('act','bolt','Eylemler','','primary')}${b('clues','folder','İpuçların','<i class="cnt">'+n+'</i>'+(fresh?'<i class="dot" aria-label="yeni ipucu"></i>':''))}${b('more','info','Bilgi')}</div></div>`;
+  return `<div class="dock">${strip}<div class="dock-bar">${b('act','bolt','Eylem','','primary')}${b('clues','folder','İpucu','<i class="cnt">'+n+'</i>'+(fresh?'<i class="dot" aria-label="yeni ipucu"></i>':''))}${b('log','report','Defter')}${b('more','info','Bilgi')}</div></div>`;
 }
 function sheetHtml(st,helpH){
-  const T={act:'Eylemler',clues:'İpuçların ('+st.got.length+')',more:'Bilgi'};
+  const T={act:'Eylemler',clues:'İpuçların ('+nClues(st)+')',log:'Seyir defteri',more:'Bilgi'};
   const body=S.sheet==='act'?fpCard(st,true)+`<section class="stack">${actHtml(st)}</section>`
     :S.sheet==='clues'?boardHtml(st)
-    :helpH+`<section class="panel">${logHtml(st)}</section>`;
+    :S.sheet==='log'?logHtml(st)
+    :helpH;
   return `<div class="sheet-back" data-do="closeSheet"></div>
    <section class="sheet${S.sheetNew?' enter':''}" id="sheet" role="dialog" aria-modal="true" aria-label="${T[S.sheet]}" tabindex="-1">
     <header><b>${T[S.sheet]}</b><button type="button" class="sheet-x" data-do="closeSheet" aria-label="Kapat">×</button></header>
@@ -1905,7 +1983,7 @@ function reportResultHtml(st){
   const lines=[
     '4 zar: '+(r.roll>=0?'+':'')+r.roll,
     'Beceri: +2'+(r.inv.length?' · Aspect çağrısı: +'+r.inv.length*2+' ('+r.inv.map(k=>ASP[k].name).join(', ')+')':''),
-    'Zorluk: '+r.diff+' (taban 4'+(r.against?'; kaptanın görüşüne ters düşen '+r.against+' ipucu bildirdiğin için −'+Math.min(2,r.against):'')+(r.cards.length===0?'; hiç ipucu bildirmediğin için +1':'')+(r.tm?'; '+({israrli:'ısrarlı',itirazli:'itirazlı'}[r.tone])+' üslup için '+r.tm:'')+')',
+    'Zorluk: '+r.diff+' (taban 4'+(r.against?'; kaptanın görüşüne ters düşen '+r.against+' ipucu bildirdiğin için −'+Math.min(2,r.against):'')+(r.dbt?'; kaptan emir yanıtlarına kulak verdiği için −1':'')+(r.cards.length===0?'; hiç ipucu bildirmediğin için +1':'')+(r.tm?'; '+({israrli:'ısrarlı',itirazli:'itirazlı'}[r.tone])+' üslup için '+r.tm:'')+')',
     'Fark: '+(r.roll>=0?'+':'')+r.roll+' + 2'+(r.inv.length?' + '+r.inv.length*2:'')+' − '+r.diff+' = '+r.shifts+'. 0’ın altı başarısızlık, 0 beraberlik, 1–2 başarı, 3 ve üstü üstün başarı.'];
   return `<div class="modal-back"><div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="rrT" tabindex="-1"><div class="modal-body"><div class="stack"><div class="eyebrow" id="rrT">Rapor sonucu · 1 hamle harcandı</div><div class="stamp ${r.outcome==='FAIL'?'no':r.outcome==='TIE'?'mid':'ok'}">${OUT[r.outcome]}</div>${diceHtml(r.dice)}
    <ul class="plain small">${lines.map(w=>'<li>'+esc(w)+'</li>').join('')}</ul>
@@ -2167,12 +2245,12 @@ function render(){
         'Kaptana rapor vermek de 1 hamledir ve yalnız bir kez yapılır.',
         'Hidrofon kartının sağ üstündeki hoparlör düğmesi pervane sesini açar ya da kapatır. Hedef yaklaştıkça ses güçlenir.'],false);
       if(isM()){
-        if(S.sheet==='clues')st.seen=st.got.length;
+        if(S.sheet==='clues')st.seen=nClues(st);
         h+=toastHtml(st)+dockHtml(st)+(S.sheet?sheetHtml(st,helpH):'');
       }else{
         S.sheet=null;
         left=`${fpCard(st,true)}<section class="stack"><h2>Ne yapacaksın?</h2>${actHtml(st)}</section>`;
-        side=`${lastHtml(st)}<section class="panel">${boardHtml(st)}</section>${helpH}<section class="panel">${logHtml(st)}</section>`;
+        side=`${lastHtml(st)}<section class="panel seyirp">${logHtml(st)}</section><section class="panel">${boardHtml(st)}</section>${helpH}`;
       }
       if(ph==='compel')modal=compelHtml(st);
       else if(ph==='report')modal=reportHtml(st);
@@ -2317,6 +2395,8 @@ const H={
   act(d){if(S.st&&actionState(S.st,d.a).ok){S.sheet=null;Fx.start(d.a,()=>doAction(d.a));}},
   actKg(d){if(S.st&&actionState(S.st,d.a).ok){S.sheet=null;Fx.start(d.a,()=>doAction(d.a,true));}},
   wait(){S.sheet=null;Fx.start('wait',doWait);},
+  order(d){if(S.st&&ordState(S.st,d.k).ok){S.sheet=null;Fx.start('order',()=>doOrder(d.k));}},
+  cardToggle(d){const st=S.st;const nw=(st.last&&st.last.newIds||[]).some(i=>st.d.n+':'+i===d.k)||st.ordDone.some(x=>x.new&&st.d.n+':o:'+x.key===d.k);S.open[d.k]=!cardOpen(d.k,nw);render();},
   openSheet(d){S.sheet=d.s;S.sheetNew=true;render();},
   closeSheet(){S.sheet=null;render();},
   toastOpen(){const st=S.st;if(!st)return;st.toastOff=toastKey(st);S.sheet='clues';S.sheetNew=true;render();},
